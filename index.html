@@ -63,6 +63,10 @@
         border: 0;
       }
 
+      .main-content {
+        padding-right: 3em;
+      }
+
     </style>
 
     <!-- Le fav and touch icons -->
@@ -94,12 +98,39 @@
           <h1>Zachery Moneypenny <small>Lucha Warrior, Extraordinaire</small></h1>
         </div>
         <div class="row">
-          <div class="span10">
+          <div class="span9 main-content">
             <h2>Semi-Useful Information</h2>
-            <p>The github pages site is a navigational tool to move
-            around the non-code assets I have stored on GitHub. It is in
+            <p>This github pages site is a navigational tool to move
+            around the code and non-code assets I have stored on GitHub. It is in
             the bootstrapping phase right now.  Eventually I will add
             links to the presentations and dotfiles I have stored here.</p>
+
+            <h3>Presentations</h3>
+            <table class="zebra-striped bordered-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Topic</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="slides/metaprogramming.html">You're So Meta!</a></td>
+                  <td>
+                  Metaprogramming
+                  </td>
+                  <td>Under Development</td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                  An overview of the power and utility of
+                  metaprogramming.  Includes examples and discussion of
+                  metaprogramming in Ruby and .NET (using Reflection).
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <div class="span4">
@@ -114,8 +145,12 @@
                 </ul>
               </li>
               <li><a href="http://www.whazzmaster.com">Whazzmaster.com (swearing)</a></li>
-              <li>Presentations</li>
-              <li><a href="http://github.com/whazzmaster">My Source</a></li>
+              <li>Presentations
+                <ul>
+                  <li><a href="slides/metaprogramming.html">You're So Meta!</a></li>
+                </ul>
+              </li>
+              <li><a href="https://github.com/whazzmaster">All My Source</a></li>
             </ul>
           </div>
         </div>
