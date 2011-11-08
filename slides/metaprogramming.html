@@ -26,12 +26,107 @@
   <body style='display: none'>
     <section class='slides layout-regular template-default'>
       <article>
-        <h1>You're So Meta!</h1>
+      <h1>You're So Meta!</h1>
       </article>
 
       <article>
+        <style>
+          #meme-pic img { max-width: 100%; height: 320px; }
+        </style>
+        <p id="meme-pic">
+          <img class="centered" src="../lib/images/interesting-meme.jpg" border="0" />
+        </p>
         <h2>Or, yo dawg I heard you like code in your code so we put some code in your code
           so you can use it at runtime!</h2>
+      </article>
+
+      <article>
+        <h3>I'm Zachery Moneypenny...</h3>
+        <ul>
+          <li>AKA <b>whazzmaster</b> AKA <b>Lucha Warrior</b></li>
+          <li>I work for <a href="http://www.intuit.com">Intuit</a> (Quicken, QuickBooks, TurboTax)</li>
+          <li>Professionally: C, C++, C#, Ruby, (A Very Little) Java</li>
+          <li>Personally: Ruby, (A Very Little) Clojure, Javascript</li>
+          <li>Milwaukee Brewers Enthusiast</li>
+          <li>UW Computer Science Alum</li>
+          <li>Ghost in the Shell lover</li>
+          <li>Interested in fitness software development</li>
+          <li>I hate the term 'gamification'</li>
+        </ul>
+      </article>
+
+      <article>
+        <h1>LOLWUT? METAWHO?</h1>
+        <div class="build">
+          <p>A Definition: Metaprogramming is the writing of computer programs that write or manipulate other programs (or themselves) as their data...</p>
+          <div class="source">
+            Source: <a href="http://en.wikipedia.org/wiki/Metaprogramming">Wikipedia</a>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <style>
+          #button-container { text-align: center; }
+          #pressMeEval {
+            font-size: 24pt;
+            margin: 0 auto;
+          }
+        </style>
+        <p>A <i>very simple</i> example, then we'll parley...</p>
+<pre>
+&lt;script type="text/javascript"&gt;
+  eval("alert('hello world')");
+&lt;/script&gt;
+</pre>
+        <div id="button-container">
+          <button id="pressMeEval">Press Me!</button>
+        </div>
+        <script type="text/javascript">
+          var btn = document.getElementById('pressMeEval');
+          btn.addEventListener('click', function() { eval("alert('hello world!')"); });
+        </script>
+
+        <p>Pro Tip: don't do this with any data that came from the user.  As a matter of fact, 
+        just don't do this.  More on that later...</p>
+      </article>
+
+      <article>
+        <h3>Today's Topics</h3>
+        <p>There will not be quiz, but I'll be your pal if you learn something today...</p>
+        <ul class="build" id="topic-list">
+          <li>Why is Metaprogramming Good?</li>
+          <li>Case Study: Extend a Ruby Class</li>
+          <li>Case Study: Dynamically Build a .NET Component Adapter</li>
+          <li>Gales of Applause</li>
+        </ul>
+      </article>
+
+      <article>
+        <h1>Ugg Want Know:<br/>Why Metaprogramming Good?</h1>
+      </article>
+
+      <article>
+        <h1>Case Study:<br/>Extend A Ruby Class</h1>
+      </article>
+
+      <article>
+      <h1>Case Study:<br/>Dynamically Build a .NET Component Adapter</h1>
+      </article>
+
+      <article>
+        <h3>Tidying Up</h3>
+        <ul>
+          <li>Slides available at <a href="http://whazzmaster.github.com/slides/metaprogramming.html">whazzmaster.github.com</a></li>
+          <li>HTML5 Slides platform <a href="http://code.google.com/p/html5slides/">available here</a></li>
+          <li>My contact info available at <a href="http://www.whazzing.com/me">whazzing.com/me</a></li>
+        </ul>
+        <p>&nbsp;</p>
+        <h3>More Information</h3>
+        <ul>
+          <li><a href="http://pragprog.com/book/ppmetr/metaprogramming-ruby">Metaprogramming Ruby</a></li>
+          <li><a href="http://www.amazon.com/Beautiful-Code-Leading-Programmers-Practice/dp/0596510047/ref=sr_1_1?ie=UTF8&qid=1320716279&sr=8-1">Beautiful Code</li>
+        </ul>
       </article>
 
       <!--<article class='biglogo'>
