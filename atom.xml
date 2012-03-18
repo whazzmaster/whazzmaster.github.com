@@ -1,98 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>whazzing around</title>
-  <meta name="author" content="Zachery Moneypenny">
-
-  
-  <meta name="description" content="I&#8217;m happy to announce that the latest Fitbit API features have been exposed through the fitgem ruby library and released as v0.5.0. New &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://whazzmaster.github.com">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="whazzing around" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">whazzing around</a></h1>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:whazzmaster.github.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/presentations">Presentations</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[whazzing around]]></title>
+  <link href="http://whazzmaster.github.com/atom.xml" rel="self"/>
+  <link href="http://whazzmaster.github.com/"/>
+  <updated>2012-03-17T22:41:03-07:00</updated>
+  <id>http://whazzmaster.github.com/</id>
+  <author>
+    <name><![CDATA[Zachery Moneypenny]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2012/01/22/fitgem-v0-5-0/">Fitgem v0.5.0</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2012-01-22T00:00:00-08:00" pubdate data-updated="true">Jan 22<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&#8217;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/8e8aed16706642d6#">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.5.0.</p>
+  <entry>
+    <title type="html"><![CDATA[Fitgem v0.5.0]]></title>
+    <link href="http://whazzmaster.github.com/blog/2012/01/22/fitgem-v0-5-0/"/>
+    <updated>2012-01-22T00:00:00-08:00</updated>
+    <id>http://whazzmaster.github.com/blog/2012/01/22/fitgem-v0-5-0</id>
+    <content type="html"><![CDATA[<p>I&#8217;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/8e8aed16706642d6#">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.5.0.</p>
 
 <p>New features include glucose, blood pressure, and heart rate logging and retrieval methods.   Documentation has also been updated to include new endpoints for the Time Series interface.</p>
 
@@ -120,42 +46,15 @@ fitgem&#8221; or &#8220;gem update fitgem&#8221;)</li>
 <li>Updated README</li>
 </ul>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/12/08/long-live-markdown/">Long Live Markdown</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-08T00:00:00-08:00" pubdate data-updated="true">Dec 8<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&#8217;ve been doing a lot of development around <a href="http://daringfireball.net/projects/markdown/syntax">markdown</a> lately and I&#8217;m really starting to love it.  Specifically, <a href="http://github.github.com/github-flavored-markdown/">Github-flavored markdown</a> has grown on me with its ability to do easy fenced code blocks and syntax highlighting.</p>
+  <entry>
+    <title type="html"><![CDATA[Long Live Markdown]]></title>
+    <link href="http://whazzmaster.github.com/blog/2011/12/08/long-live-markdown/"/>
+    <updated>2011-12-08T00:00:00-08:00</updated>
+    <id>http://whazzmaster.github.com/blog/2011/12/08/long-live-markdown</id>
+    <content type="html"><![CDATA[<p>I&#8217;ve been doing a lot of development around <a href="http://daringfireball.net/projects/markdown/syntax">markdown</a> lately and I&#8217;m really starting to love it.  Specifically, <a href="http://github.github.com/github-flavored-markdown/">Github-flavored markdown</a> has grown on me with its ability to do easy fenced code blocks and syntax highlighting.</p>
 
 <pre><code>```ruby
 comments = Comment.all
@@ -178,42 +77,15 @@ comments = Comment.all
 <p>I also recently forked <a href="https://github.com/sr/git-wiki">git-wiki</a> and started working on improving it for my own use.  It also uses Markdown to write the wiki entries, which gets a little weird if you&#8217;ve ever used <a href="http://www.mediawiki.org/wiki/MediaWiki">MediaWiki</a> or <a href="http://www.wikipedia.com">Wikipedia</a>.  The default way to define <a href="http://twiki.org/cgi-bin/view/TWiki/WikiWord">wikiwords</a> in git-wiki didn&#8217;t really work for me so I updated it and checked everything back into <a href="https://github.com/whazzmaster/git-wiki">my own repo</a>.  I&#8217;ll be updating more about my git-wiki fork once I get it refactored and a little more configurable.</p>
 
 <p>So there you go- markdown is awesome and you should write your content in it; if you&#8217;ve never worked with it then try it out on Github (just make a public repo and create a README.md in the index).</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/12/02/fitgem-v0-4-0/">Fitgem v0.4.0</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-02T00:00:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&#8217;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/3144a7299b60fa16">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.4.0.</p>
+  <entry>
+    <title type="html"><![CDATA[Fitgem v0.4.0]]></title>
+    <link href="http://whazzmaster.github.com/blog/2011/12/02/fitgem-v0-4-0/"/>
+    <updated>2011-12-02T00:00:00-08:00</updated>
+    <id>http://whazzmaster.github.com/blog/2011/12/02/fitgem-v0-4-0</id>
+    <content type="html"><![CDATA[<p>I&#8217;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/3144a7299b60fa16">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.4.0.</p>
 
 <p>In addition to the new features, I thoroughly documented the entire library API (<a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">available here</a>), added many more unit tests, refactored the subscriptions methods, and moved the oauth process documentation to the <a href="https://github.com/whazzmaster/fitgem/wiki/The-OAuth-Process">project wiki on github</a>.</p>
 
@@ -248,42 +120,15 @@ for information on how to interpret each of the error codes.</li>
 <li>Moved OAuth documentation from the README to the <a href="https://github.com/whazzmaster/fitgem/wiki/The-OAuth-Process">fitgem wiki</a></li>
 </ul>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/12/02/december-2011-reading-list/">December 2011 Reading List</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-02T00:00:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I thought I&#8217;d jot down my current technical reading list.  I tend not to read technical books straight through, but instead I pick up a few at a time and refresh myself on whatever I&#8217;m interested in at the time.  (Full disclosure: these links include my Amazon affiliate code).</p>
+  <entry>
+    <title type="html"><![CDATA[December 2011 Reading List]]></title>
+    <link href="http://whazzmaster.github.com/blog/2011/12/02/december-2011-reading-list/"/>
+    <updated>2011-12-02T00:00:00-08:00</updated>
+    <id>http://whazzmaster.github.com/blog/2011/12/02/december-2011-reading-list</id>
+    <content type="html"><![CDATA[<p>I thought I&#8217;d jot down my current technical reading list.  I tend not to read technical books straight through, but instead I pick up a few at a time and refresh myself on whatever I&#8217;m interested in at the time.  (Full disclosure: these links include my Amazon affiliate code).</p>
 
 <ul>
 <li><a href="http://www.amazon.com/gp/product/0596008643/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596008643">Learning Mysql</a><p>Back in 2002 I got my exposure to SQL while doing elemntary PHP programming.  I read a little about MySQL back then, but never really went deep into things such as indexes and optimizations.  Rails obscures a lot of that stuff, but I wanted to be able to optimize efficiently and learn more about the underlying technology. So far this book has been really good at diving down underneath your SELECT, UPDATE, CREATE, and DROP actions.</p></li>
@@ -293,42 +138,15 @@ for information on how to interpret each of the error codes.</li>
 
 
 <p>My technical reading list changes often; I&#8217;ll usually read through three books over the course of several weeks and then pull more off my shelf and refresh myself on a different topic.  It&#8217;s why I also buy books on the periphery of my interests just to have them on my shelf.  I enjoy having the references available, even if I don&#8217;t read them as soon as they arrive.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/25/whazzing-com-v1-2/">Whazzing.com v1.2</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-25T00:00:00-07:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Whazzing.com v1.2 has been deployed to production.  Updates include:</p>
+  <entry>
+    <title type="html"><![CDATA[Whazzing.com v1.2]]></title>
+    <link href="http://whazzmaster.github.com/blog/2011/10/25/whazzing-com-v1-2/"/>
+    <updated>2011-10-25T00:00:00-07:00</updated>
+    <id>http://whazzmaster.github.com/blog/2011/10/25/whazzing-com-v1-2</id>
+    <content type="html"><![CDATA[<p>Whazzing.com v1.2 has been deployed to production.  Updates include:</p>
 
 <ul>
 <li>Posts can now be attached to projects in order to create news feeds on a per-project basis.</li>
@@ -348,42 +166,15 @@ for information on how to interpret each of the error codes.</li>
 <li>Twitter integration on projects</li>
 </ul>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/25/fitgem-v0-3-6/">Fitgem v0.3.6</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-25T00:00:00-07:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>On October 14th Fitbit <a href="http://groups.google.com/group/fitbit-api/msg/069c80e969cf603e">announced the latest version of their API</a>, including support for features of their new Fitbit Ultra tracker hardware.</p>
+  <entry>
+    <title type="html"><![CDATA[Fitgem v0.3.6]]></title>
+    <link href="http://whazzmaster.github.com/blog/2011/10/25/fitgem-v0-3-6/"/>
+    <updated>2011-10-25T00:00:00-07:00</updated>
+    <id>http://whazzmaster.github.com/blog/2011/10/25/fitgem-v0-3-6</id>
+    <content type="html"><![CDATA[<p>On October 14th Fitbit <a href="http://groups.google.com/group/fitbit-api/msg/069c80e969cf603e">announced the latest version of their API</a>, including support for features of their new Fitbit Ultra tracker hardware.</p>
 
 <p>The rubygem for connecting to the <a href="http://dev.fitbit.com/">Fitbit API</a>, <a href="http://rubygems.org/gems/fitgem">Fitgem</a>, has now been updated to 0.3.6 to support the new functionality.</p>
 
@@ -559,42 +350,15 @@ pp client.find_food("GoLean Raisin Bran Crunch Cereal")
 }
 </pre>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/26/searching-vs-finding/">Searching vs Finding</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-26T00:00:00-07:00" pubdate data-updated="true">Sep 26<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&#8217;ve found that many of the truly interesting and outlook-altering pieces of information I&#8217;ve acquired have come via finding something randomly or pseudo-randomly as opposed to searching it out.</p>
+  <entry>
+    <title type="html"><![CDATA[Searching vs Finding]]></title>
+    <link href="http://whazzmaster.github.com/blog/2011/09/26/searching-vs-finding/"/>
+    <updated>2011-09-26T00:00:00-07:00</updated>
+    <id>http://whazzmaster.github.com/blog/2011/09/26/searching-vs-finding</id>
+    <content type="html"><![CDATA[<p>I&#8217;ve found that many of the truly interesting and outlook-altering pieces of information I&#8217;ve acquired have come via finding something randomly or pseudo-randomly as opposed to searching it out.</p>
 
 <p>These days the information in question is often a tool, configuration, or piece of code that radically shortcuts an oft-repeated activity.  It has nothing to with luck, or ability to use Google, however.  <strong>The delight in finding the perfect tool or option is often that you never conceived that it could exist in the first place</strong>.</p>
 
@@ -607,42 +371,15 @@ pp client.find_food("GoLean Raisin Bran Crunch Cereal")
 <p>When worrying about getting a primary goal completed (say, a feature in an application) you don&#8217;t often think about solutions to one-off problems or annoyances, let alone prioritize solving them.  This is partially why I invest time at the beginning of a project to develop and optimize the code-test-fix cycle, why I obsess over the deployment model when I only have a README, and why I like continuous integration before a test has been written.  Once your process for coding is solid, you can optimize it piecemeal as you <strong>need to</strong> or as you <strong>find unexpected tools or processes</strong> that would increase your productivity drastically.</p>
 
 <p>An example: my tests were already running really well under guard, but 15 minutes or install and configuration of <a href="https://github.com/guard/guard-spork">guard-spork</a> I saw immediate speed gains.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/">Paperclip and ImageMagick on Ubuntu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-23T00:00:00-07:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In getting the <a href="https://github.com/thoughtbot/paperclip">paperclip gem</a> working on my server for some screenshots I ran into a frustrating problem.  I kept getting an error during model saving: <strong>&#8220;/tmp/1234bduct-123.png is not recognized by the &#8216;identify&#8217; command&#8221;</strong>.  Eventually I solved the problem, so here is my solution, hoping that it helps someone else out there.</p>
+  <entry>
+    <title type="html"><![CDATA[Paperclip and ImageMagick on Ubuntu]]></title>
+    <link href="http://whazzmaster.github.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/"/>
+    <updated>2011-09-23T00:00:00-07:00</updated>
+    <id>http://whazzmaster.github.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu</id>
+    <content type="html"><![CDATA[<p>In getting the <a href="https://github.com/thoughtbot/paperclip">paperclip gem</a> working on my server for some screenshots I ran into a frustrating problem.  I kept getting an error during model saving: <strong>&#8220;/tmp/1234bduct-123.png is not recognized by the &#8216;identify&#8217; command&#8221;</strong>.  Eventually I solved the problem, so here is my solution, hoping that it helps someone else out there.</p>
 
 <p>After some googling and reading <a href="http://www.stackoverflow.com">Stack Overflow</a> I quickly came across the solution that Paperclips :command_path option wasn&#8217;t being set correctly.  The problem, however, was that it looked like I was correctly setting the ImageMagick path:</p>
 
@@ -680,42 +417,15 @@ end
 
 
 <p>&#8230;and refreshed the page and everthing worked as expected!</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/21/redesigning-whazzing-com/">Redesigning Whazzing.com</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-21T00:00:00-07:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For the last month I&#8217;ve been working to create this new development-focused blog and project repository for my work.  I was previously self-hosting a <a href="http://www.wordpress.org">Wordpress</a> blog, but I&#8217;ve developed a desire to own my destiny when it comes to the display of my work.  There were a ton of little features I wanted to develop but didn&#8217;t really want to delve (back) into the PHP world or hack at the Wordpress template framework.</p>
+  <entry>
+    <title type="html"><![CDATA[Redesigning Whazzing.com]]></title>
+    <link href="http://whazzmaster.github.com/blog/2011/09/21/redesigning-whazzing-com/"/>
+    <updated>2011-09-21T00:00:00-07:00</updated>
+    <id>http://whazzmaster.github.com/blog/2011/09/21/redesigning-whazzing-com</id>
+    <content type="html"><![CDATA[<p>For the last month I&#8217;ve been working to create this new development-focused blog and project repository for my work.  I was previously self-hosting a <a href="http://www.wordpress.org">Wordpress</a> blog, but I&#8217;ve developed a desire to own my destiny when it comes to the display of my work.  There were a ton of little features I wanted to develop but didn&#8217;t really want to delve (back) into the PHP world or hack at the Wordpress template framework.</p>
 
 <p>I&#8217;d recently read the excellent <a href="http://www.abookapart.com/products/responsive-web-design">Responsive Web Design</a> and it made me very excited to design a site that effortlessly works on phones, tablets, monitors, and TVs.  Another project I have in mind is primarily aimed at mobile form factors, so I thought a semi-major experiment was in order to ensure I was thinking in the right direction when it came to media queries and mobile design.</p>
 
@@ -795,130 +505,7 @@ assets
 <p>Also, thanks to <a href="http://kev.inburke.com/">Kevin Burke</a>. I read his blog post on <a href="http://kev.inburke.com/kevin/site-redesign/">designing your personal site</a> and was inspired to go beyond the usual &#8220;reverse chronological order of posts&#8221; home page.  Instead I tried to create a homepage that advertises all the things I&#8217;m working on, blog posts being only one of the pieces.</p>
 
 <p>Thanks to <a href="http://www.dalesande.com/">Dale Sande</a>, who helped me step up my CSS game with his excellent <a href="http://axle.dalesande.com">Axle framework</a> and thoughts on OOCSS (object-oriented CSS).  If you ever get a chance to attend his OOCSS talk definitely do it; as a primarily backend dude I found it immensely helpful for structuring my CSS and semantic markup.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2012/01/22/fitgem-v0-5-0/">Fitgem v0.5.0</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/12/08/long-live-markdown/">Long Live Markdown</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/12/02/fitgem-v0-4-0/">Fitgem v0.4.0</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/12/02/december-2011-reading-list/">December 2011 Reading List</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/25/whazzing-com-v1-2/">Whazzing.com v1.2</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/whazzmaster">@whazzmaster</a> on GitHub
-  
-  <script type="text/javascript">
-    $.domReady(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'whazzmaster',
-            count: 5,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-<section>
-  <h1>Latest Tweets</h1>
-  <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  <script type="text/javascript">
-    $.domReady(function(){
-      getTwitterFeed("whazzmaster", 4, false);
-    });
-  </script>
-  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
-  
-    <a href="http://twitter.com/whazzmaster" class="twitter-follow-button" data-show-count="false">Follow @whazzmaster</a>
-  
-</section>
-
-
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Zachery Moneypenny -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>

@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Fitgem v0.3.6 - whazzing around</title>
+  <meta name="author" content="Zachery Moneypenny">
+
+  
+  <meta name="description" content="On October 14th Fitbit announced the latest version of their API, including support for features of their new Fitbit Ultra tracker hardware. The &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://whazzmaster.github.com/blog/2011/10/25/fitgem-v0-3-6">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="whazzing around" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">whazzing around</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:whazzmaster.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/presentations">Presentations</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Fitgem v0.3.6</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-25T00:00:00-07:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>On October 14th Fitbit <a href="http://groups.google.com/group/fitbit-api/msg/069c80e969cf603e">announced the latest version of their API</a>, including support for features of their new Fitbit Ultra tracker hardware.</p>
+
+<p>The rubygem for connecting to the <a href="http://dev.fitbit.com/">Fitbit API</a>, <a href="http://rubygems.org/gems/fitgem">Fitgem</a>, has now been updated to 0.3.6 to support the new functionality.</p>
+
+<p>The source is on <a href="https://github.com/whazzmaster/fitgem">github</a> and the latest version has been pushed to <a href="http://rubygems.org/gems/fitgem">rubygems.org</a>.  Please don&#8217;t hesitate to log any issues on <a href="https://github.com/whazzmaster/fitgem/issues">github</a>.</p>
+
+<h1>Updates</h1>
+
+<h3>Floors and elevation info from <code>activities_on_date</code></h3>
+
+<pre lang="ruby">
+pp client.activities_on_date("2011-10-24")
+</pre>
+
+
+
+
+<pre lang="javascript">
+{"activities"=>
+  [{"activityId"=>2130,
+    "activityParentId"=>2130,
+    "activityParentName"=>
+     "Weight lifting (free, nautilus or universal-type), light or moderate effort, light workout, general",
+    "calories"=>228,
+    "description"=>"",
+    "duration"=>3600000,
+    "hasStartTime"=>true,
+    "isFavorite"=>true,
+    "logId"=>2136964,
+    "name"=>
+     "Weight lifting (free, nautilus or universal-type), light or moderate effort, light workout, general",
+    "startTime"=>"16:15"}],
+ "goals"=>
+  {"activeScore"=>1000,
+   "caloriesOut"=>2911,
+   "distance"=>5,
+   "floors"=>10,
+   "steps"=>10000},
+ "summary"=>
+  {"activeScore"=>495,
+   "activityCalories"=>927,
+   "caloriesOut"=>2458,
+   "distances"=>
+    [{"activity"=>"total", "distance"=>2.07},
+     {"activity"=>"tracker", "distance"=>2.07},
+     {"activity"=>"loggedActivities", "distance"=>0},
+     {"activity"=>"veryActive", "distance"=>0.3},
+     {"activity"=>"moderatelyActive", "distance"=>0.68},
+     {"activity"=>"lightlyActive", "distance"=>1.09},
+     {"activity"=>"sedentaryActive", "distance"=>0},
+     {"activity"=>
+       "Weight lifting (free, nautilus or universal-type), light or moderate effort, light workout, general",
+      "distance"=>0}],
+   "elevation"=>90,
+   "fairlyActiveMinutes"=>118,
+   "floors"=>9,
+   "lightlyActiveMinutes"=>102,
+   "marginalCalories"=>562,
+   "sedentaryMinutes"=>1210,
+   "steps"=>4590,
+   "veryActiveMinutes"=>10}
+}
+</pre>
+
+
+<h3>Floors and elevation info from <code>data_by_time_range</code></h3>
+
+<pre lang="ruby">
+pp client.data_by_time_range("/activities/log/floors", {:base_date => "2011-10-24", :period => "1d"})
+</pre>
+
+
+
+
+<pre lang="javascript">
+{"activities-log-floors"=>[{"dateTime"=>"2011-10-24", "value"=>"9"}]}
+</pre>
+
+
+<h3>Food Goals now available through the <code>foods_on_date</code> method</h3>
+
+<pre lang="ruby">
+pp client.foods_on_date("2011-10-24")
+</pre>
+
+
+
+
+<pre lang="javascript">
+{"foods"=>[],
+ "goals"=>{"calories"=>2911},
+ "summary"=>
+  {"calories"=>0,
+   "carbs"=>0,
+   "fat"=>0,
+   "fiber"=>0,
+   "protein"=>0,
+   "sodium"=>0,
+   "water"=>0}
+}
+</pre>
+
+
+<h3>Device info now returns lastSyncTime</h3>
+
+<pre lang="ruby">
+pp client.devices
+</pre>
+
+
+
+
+<pre lang="javascript">
+[{"battery"=>"Full",
+  "id"=>*****,
+  "lastSyncTime"=>"2011-10-25T09:54:40.000",
+  "type"=>"TRACKER"}]
+</pre>
+
+
+<h3>Get details on a food with new method <code>food_info</code></h3>
+
+<p>There is a new method that will fetch detailed food information given a food ID.  Food IDs are generally retrieved by searching for a food using <code>find_food</code>.</p>
+
+<pre lang="ruby">
+# Get food info for an apple
+pp client.food_info 20711
+</pre>
+
+
+
+
+<pre lang="javascript">
+{"food"=>
+  {"accessLevel"=>"PUBLIC",
+   "brand"=>"Shoney's",
+   "calories"=>81,
+   "defaultServingSize"=>5,
+   "defaultUnit"=>{"id"=>226, "name"=>"oz", "plural"=>"oz"},
+   "foodId"=>20711,
+   "name"=>"Apple",
+   "units"=>[226, 180, 147, 389]}
+}
+</pre>
+
+
+<h3>Calories now returned in <code>find_food</code> results</h3>
+
+<pre lang="ruby">
+pp client.find_food("GoLean Raisin Bran Crunch Cereal")
+</pre>
+
+
+
+
+<pre lang="javascript">
+{"foods"=>
+  [{"accessLevel"=>"PUBLIC",
+    "brand"=>"Kellogg's",
+    "calories"=>110,
+    "defaultServingSize"=>1,
+    "defaultUnit"=>{"id"=>17, "name"=>"bar", "plural"=>"bars"},
+    "foodId"=>20942,
+    "name"=>"Cereal Bar, Raisin Bran Crunch",
+    "units"=>[17]},
+   {"accessLevel"=>"PUBLIC",
+    "brand"=>"Safeway",
+    "calories"=>230,
+    "defaultServingSize"=>1,
+    "defaultUnit"=>{"id"=>304, "name"=>"serving", "plural"=>"servings"},
+    "foodId"=>79051,
+    "name"=>"Raisin Bran Crunch Cereal",
+    "units"=>[304, 91, 256, 279]}]
+}
+</pre>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Zachery Moneypenny</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-25T00:00:00-07:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whazzmaster.github.com/blog/2011/10/25/fitgem-v0-3-6/" data-via="whazzmaster" data-counturl="http://whazzmaster.github.com/blog/2011/10/25/fitgem-v0-3-6/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/09/26/searching-vs-finding/" title="Previous Post: Searching vs Finding">&laquo; Searching vs Finding</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/10/25/whazzing-com-v1-2/" title="Next Post: Whazzing.com v1.2">Whazzing.com v1.2 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/01/22/fitgem-v0-5-0/">Fitgem v0.5.0</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/long-live-markdown/">Long Live Markdown</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/02/fitgem-v0-4-0/">Fitgem v0.4.0</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/02/december-2011-reading-list/">December 2011 Reading List</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/25/whazzing-com-v1-2/">Whazzing.com v1.2</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/whazzmaster">@whazzmaster</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'whazzmaster',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("whazzmaster", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/whazzmaster" class="twitter-follow-button" data-show-count="false">Follow @whazzmaster</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Zachery Moneypenny -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

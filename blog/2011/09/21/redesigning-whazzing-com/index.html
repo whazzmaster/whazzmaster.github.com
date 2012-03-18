@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Redesigning Whazzing.com - whazzing around</title>
+  <meta name="author" content="Zachery Moneypenny">
+
+  
+  <meta name="description" content="For the last month I&#8217;ve been working to create this new development-focused blog and project repository for my work. I was previously self- &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://whazzmaster.github.com/blog/2011/09/21/redesigning-whazzing-com">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="whazzing around" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">whazzing around</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:whazzmaster.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/presentations">Presentations</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Redesigning Whazzing.com</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-21T00:00:00-07:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>For the last month I&#8217;ve been working to create this new development-focused blog and project repository for my work.  I was previously self-hosting a <a href="http://www.wordpress.org">Wordpress</a> blog, but I&#8217;ve developed a desire to own my destiny when it comes to the display of my work.  There were a ton of little features I wanted to develop but didn&#8217;t really want to delve (back) into the PHP world or hack at the Wordpress template framework.</p>
+
+<p>I&#8217;d recently read the excellent <a href="http://www.abookapart.com/products/responsive-web-design">Responsive Web Design</a> and it made me very excited to design a site that effortlessly works on phones, tablets, monitors, and TVs.  Another project I have in mind is primarily aimed at mobile form factors, so I thought a semi-major experiment was in order to ensure I was thinking in the right direction when it came to media queries and mobile design.</p>
+
+<h2>Technology</h2>
+
+<p>I built <a href="http://whazzing.com">whazzing.com</a> with ruby 1.9.2, rails 3.1, mysql, and various gems.  My first commit was August 19th, 2011 and I deployed version 1.0 to production on September 20th, 2011.</p>
+
+<p>As I started coding this site, Rails 3.1 was entering it&#8217;s final release candidate testing phase so I decided to start fresh on it.  The asset pipeline is just a terrific addition to the framework, and combining it with the style organization I&#8217;ve been developing off of Dale Sande&#8217;s incredible <a href="http://axle.dalesande.com">Axle framework</a> provided for a <strong>very smooth visual design experience</strong>.  I added a little bit to Dale&#8217;s CSS organization to support the media queries I wanted to support.</p>
+
+<pre>
+assets
+|-- stylesheets
+    |-- admin.css.scss
+    |-- application.css.scss
+    |-- design.css.scss
+    |-- devices
+    |    |-- phones.css.scss
+    |    |-- tablets.css.scss
+    |    |-- high-resolution.css.scss
+    |-- imports
+    |    |-- colors.css.scss
+    |    |-- form.css.scss
+    |    |-- mixins.css.scss
+    |    |-- navigation.css.scss
+    |    |-- text.css.scss
+    |-- reset.css.scss
+    |-- typography.css.scss
+</pre>
+
+
+<p>One of the interesting takeways from the excellent testing panel at <a href="http://madisonruby.org/schedule">Madison Ruby</a> was that people are divided about the usefulness of <a href="http://cukes.info/">cucumber</a>.  I had always stumbled in wrangling cucumber to be really useful for the applications I was writing and so I decided to eschew its usage this time. I focused instead on getting good coverage via my <a href="https://www.relishapp.com/rspec">RSpec</a> controller and model tests.  I found that leaving cucumber aside really streamlined the process and didn&#8217;t leave me eternally feeling like I was losing focus on the functionality I wanted due to the the myriad tests that were demanded by all the tools I was using.</p>
+
+<p>Madison Ruby was a fantastic source of information on how to write better ruby code and rails applications.  In particular, <a href="http://twitter.com/#!/j3">Jeff Casimir&#8217;s</a> talk on using view-models and decorators as opposed to helpers in rails was food for thought.  Halfway through implementation on this site I switched over to using <a href="https://github.com/jcasimir/draper">draper</a> for my presentation logic and I <strong>love it</strong>.</p>
+
+<p>Another tool I wanted to test out for this project was <a href="https://github.com/nvie/gitflow">git-flow</a>.  At <a href="http://scottchacon.com/">Scott Chacon&#8217;s</a> eye-opening Git workshop I increased my git knowledge 10 times, easily.  Going through the underlying structures of git taught me a lot about what&#8217;s really going on during commits, push, and branching, and I wanted to try to formalize the release process of this project a bit more using git-flow&#8217;s branching model.  The result: I loved the structure of the branches, even if this was a one-man project, and will definitely use it on more projects in the future.</p>
+
+<p>Finally, I&#8217;ve been more and more intrigued by <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> since Github and many other sites support it these days.  Instead of pouring time into creating a WYSIWYG editor or trying to drop one in, I instead grabbed the <a href="https://github.com/blog/832-rolling-out-the-redcarpet">Redcarpet</a> gem and simply use markdown to create the posts and project descriptions.  I also use <a href="https://github.com/github/albino">albino</a> and <a href="http://pygments.org/">pygments</a> for code highlighting.</p>
+
+<h2>Methodology &amp; Features</h2>
+
+<p>The problem I had to overcome this time (and every time I jumpstart a project) is that too often I get bogged down on tangents.  I&#8217;ll get fixated on one unimportant feature or line of code, I&#8217;ll get frustrated that I can&#8217;t get it the way I want, and eventually I won&#8217;t even want to open the text editor due to feelings of dread.  This time I was determined to mercilessly cut features until I had something simple I could get coded and deployed, and then iterate from there.  A few times I almost got bogged down, but forced myself to leave features on the table for future releases so that I could get my high priority functionality into production.</p>
+
+<p>I settled on <strong>four</strong> main features for the first release:</p>
+
+<ul>
+<li><strong>Responsive design</strong> so that the site would look great on regular monitors, phones, and tablets.</li>
+<li><strong>A micro-resume</strong> <a href="http://www.whazzing.com/me">viewable here</a> that I could link to from my new business cards and elsewhere</li>
+<li><strong>Taggable blog posts</strong> without comments (for now)</li>
+<li><strong>A project guide</strong> so that I can link to all my projects in one place, with links to docs and code where appropriate</li>
+</ul>
+
+
+<p>My major feature list for the next release includes:</p>
+
+<ul>
+<li><strong>Comments</strong> on blog posts (spam-protected and everything!)</li>
+<li><strong>RSS feeds</strong> of blog posts</li>
+<li><strong>Release tracking</strong> of projects</li>
+<li><strong>Rating and ranking</strong> of blog posts</li>
+</ul>
+
+
+<p>I&#8217;ll also, of course, be correcting anything that shakes out while using it.</p>
+
+<h2>What&#8217;s Next</h2>
+
+<p>I&#8217;m looking forward to extending this project, while using it as a platform to document the other things I&#8217;m working on.  I would really like to use <a href="http://redis.io/">redis</a> for some analytics/tracking ideas I have, and I&#8217;m interested in how to tie in <a href="http://akismet.com/">akismet</a> spam-blocking for comments.</p>
+
+<p>The images along the left side don&#8217;t scan well on mobile devices, so I&#8217;m going to look into replacing them in the next release as well.  I like the structure of the site, but the specific details could be tightened a little.</p>
+
+<p>I&#8217;d like to get a styleguide up and running so that my CSS can be standardized a little.  I tried as much as possible to be OO in my CSS but failed in a few places that I&#8217;d like to clean up.</p>
+
+<h2>Thanks</h2>
+
+<p>Many, many thanks to <a href="http://begriffsschrift.com/">Joe Nelson</a>, from whom I shamelessly stole the idea for the micro-resume.  Thanks so much for the idea- it jump-started what became the new site, blog, etc.</p>
+
+<p>Also, thanks to <a href="http://kev.inburke.com/">Kevin Burke</a>. I read his blog post on <a href="http://kev.inburke.com/kevin/site-redesign/">designing your personal site</a> and was inspired to go beyond the usual &#8220;reverse chronological order of posts&#8221; home page.  Instead I tried to create a homepage that advertises all the things I&#8217;m working on, blog posts being only one of the pieces.</p>
+
+<p>Thanks to <a href="http://www.dalesande.com/">Dale Sande</a>, who helped me step up my CSS game with his excellent <a href="http://axle.dalesande.com">Axle framework</a> and thoughts on OOCSS (object-oriented CSS).  If you ever get a chance to attend his OOCSS talk definitely do it; as a primarily backend dude I found it immensely helpful for structuring my CSS and semantic markup.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Zachery Moneypenny</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-21T00:00:00-07:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whazzmaster.github.com/blog/2011/09/21/redesigning-whazzing-com/" data-via="whazzmaster" data-counturl="http://whazzmaster.github.com/blog/2011/09/21/redesigning-whazzing-com/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/" title="Next Post: Paperclip and ImageMagick on Ubuntu">Paperclip and ImageMagick on Ubuntu &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/01/22/fitgem-v0-5-0/">Fitgem v0.5.0</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/long-live-markdown/">Long Live Markdown</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/02/fitgem-v0-4-0/">Fitgem v0.4.0</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/02/december-2011-reading-list/">December 2011 Reading List</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/25/whazzing-com-v1-2/">Whazzing.com v1.2</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/whazzmaster">@whazzmaster</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'whazzmaster',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("whazzmaster", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/whazzmaster" class="twitter-follow-button" data-show-count="false">Follow @whazzmaster</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Zachery Moneypenny -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
