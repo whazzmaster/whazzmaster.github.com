@@ -4,7 +4,7 @@
   <title><![CDATA[whazzing around]]></title>
   <link href="http://whazzmaster.github.com/atom.xml" rel="self"/>
   <link href="http://whazzmaster.github.com/"/>
-  <updated>2012-03-17T22:41:03-07:00</updated>
+  <updated>2012-03-17T23:21:23-07:00</updated>
   <id>http://whazzmaster.github.com/</id>
   <author>
     <name><![CDATA[Zachery Moneypenny]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Whazzing.com Moved to Github]]></title>
+    <link href="http://whazzmaster.github.com/blog/2012/03/17/whazzing-dot-com-moved-to-github/"/>
+    <updated>2012-03-17T23:09:00-07:00</updated>
+    <id>http://whazzmaster.github.com/blog/2012/03/17/whazzing-dot-com-moved-to-github</id>
+    <content type="html"><![CDATA[<p>Two things forced my hand to move my development blog off of my own Rails-based blogging codebase and onto
+<a href="http://pages.github.com/">Github Pages</a> via <a href="http://octopress.org/">Octopress</a>:</p>
+
+<ol>
+<li>My VPS is becoming severely overcrowded with deployed apps; I use it as a testbed for a lot of ideas as well as my <a href="http://www.whazzmaster.com">main swearing-at-pop-culture blog</a> and I didn&#8217;t want to host yet another heavyweight rails app to chew through limited resources.</li>
+<li>I reaaally like the &#8216;one-file-per-post&#8217; model of Octopress/Jekyll, and keeping my development blog/presentations right next to my open source code is very appealing.</li>
+</ol>
+
+
+<p>Since I wrote my latest blog engine to take markdown input it was easy-as-pie to export the existing posts to files and then use them to bootstrap this Octopress site.  For now I&#8217;ll ride on the default theme and see how it goes.  I hope to spend more time iterating on my presentations and a bunch of C++ code that I&#8217;m working on for a work project, so it&#8217;s also a plus that I don&#8217;t have maintain the platform source tree anymore.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fitgem v0.5.0]]></title>

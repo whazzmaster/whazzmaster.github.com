@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>December 2011 Reading List - whazzing around</title>
+  <title>Whazzing.com Moved to Github - whazzing around</title>
   <meta name="author" content="Zachery Moneypenny">
 
   
-  <meta name="description" content="I thought I&#8217;d jot down my current technical reading list. I tend not to read technical books straight through, but instead I pick up a few at a &hellip;">
+  <meta name="description" content="Two things forced my hand to move my development blog off of my own Rails-based blogging codebase and onto
+Github Pages via Octopress: My VPS is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whazzmaster.github.com/blog/2011/12/02/december-2011-reading-list">
+  <link rel="canonical" href="http://whazzmaster.github.com/blog/2012/03/17/whazzing-dot-com-moved-to-github">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -80,7 +81,7 @@
   
   <header>
     
-      <h1 class="entry-title">December 2011 Reading List</h1>
+      <h1 class="entry-title">Whazzing.com Moved to Github</h1>
     
     
       <p class="meta">
@@ -96,7 +97,7 @@
   
 
 
-<time datetime="2011-12-02T00:00:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+<time datetime="2012-03-17T23:09:00-07:00" pubdate data-updated="true">Mar 17<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -105,16 +106,16 @@
   </header>
 
 
-<div class="entry-content"><p>I thought I&#8217;d jot down my current technical reading list.  I tend not to read technical books straight through, but instead I pick up a few at a time and refresh myself on whatever I&#8217;m interested in at the time.  (Full disclosure: these links include my Amazon affiliate code).</p>
+<div class="entry-content"><p>Two things forced my hand to move my development blog off of my own Rails-based blogging codebase and onto
+<a href="http://pages.github.com/">Github Pages</a> via <a href="http://octopress.org/">Octopress</a>:</p>
 
-<ul>
-<li><a href="http://www.amazon.com/gp/product/0596008643/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596008643">Learning Mysql</a><p>Back in 2002 I got my exposure to SQL while doing elemntary PHP programming.  I read a little about MySQL back then, but never really went deep into things such as indexes and optimizations.  Rails obscures a lot of that stuff, but I wanted to be able to optimize efficiently and learn more about the underlying technology. So far this book has been really good at diving down underneath your SELECT, UPDATE, CREATE, and DROP actions.</p></li>
-<li><a href="http://www.amazon.com/gp/product/1934356476/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1934356476">Metaprogramming Ruby</a> <p>This is bar none my favorite Ruby book, and in my opinion is far better than the Pickaxe book for those who are coming to Ruby from another language/ecosystem.  The fellas at <a href="http://www.bendyworks.com">Bendyworks</a> have been doing a bi-weekly book club on this book and I&#8217;ve happily attended as many as I could to talk about it.  This book goes into incredible, understandable detail about the object model and dynamic nature of programming in Ruby.  It gets my highest recommendation.</p></li>
-<li><a href="http://www.amazon.com/gp/product/0393979504/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0393979504">C Programming: A Modern Approach</a> <p>My college computer science curriculum was in C++ and Java.  My job at <a href="http://www.intuit.com">Intuit</a> involves C/C++/C# development, but it tends to fall heavily into the C++/C# side of things.  I respect the hell out of Zed Shaw&#8217;s outlook on programming, and truly believe that a working knowledge of C development will take you far.  To that end, I&#8217;ve been working through <a href="http://c.learncodethehardway.org/">Learn C the Hard Way</a> online while reading this superb book.  I also purchased the original <a href="http://www.amazon.com/gp/product/0131103628/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0131103628">The C Programming Language</a> book, but A Modern Approach is, in my opinion, superior as a reference and primer.</p></li>
-</ul>
+<ol>
+<li>My VPS is becoming severely overcrowded with deployed apps; I use it as a testbed for a lot of ideas as well as my <a href="http://www.whazzmaster.com">main swearing-at-pop-culture blog</a> and I didn&#8217;t want to host yet another heavyweight rails app to chew through limited resources.</li>
+<li>I reaaally like the &#8216;one-file-per-post&#8217; model of Octopress/Jekyll, and keeping my development blog/presentations right next to my open source code is very appealing.</li>
+</ol>
 
 
-<p>My technical reading list changes often; I&#8217;ll usually read through three books over the course of several weeks and then pull more off my shelf and refresh myself on a different topic.  It&#8217;s why I also buy books on the periphery of my interests just to have them on my shelf.  I enjoy having the references available, even if I don&#8217;t read them as soon as they arrive.</p>
+<p>Since I wrote my latest blog engine to take markdown input it was easy-as-pie to export the existing posts to files and then use them to bootstrap this Octopress site.  For now I&#8217;ll ride on the default theme and see how it goes.  I hope to spend more time iterating on my presentations and a bunch of C++ code that I&#8217;m working on for a work project, so it&#8217;s also a plus that I don&#8217;t have maintain the platform source tree anymore.</p>
 </div>
 
 
@@ -137,7 +138,7 @@
   
 
 
-<time datetime="2011-12-02T00:00:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+<time datetime="2012-03-17T23:09:00-07:00" pubdate data-updated="true">Mar 17<span>th</span>, 2012</time>
       
 
 
@@ -145,7 +146,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whazzmaster.github.com/blog/2011/12/02/december-2011-reading-list/" data-via="whazzmaster" data-counturl="http://whazzmaster.github.com/blog/2011/12/02/december-2011-reading-list/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whazzmaster.github.com/blog/2012/03/17/whazzing-dot-com-moved-to-github/" data-via="whazzmaster" data-counturl="http://whazzmaster.github.com/blog/2012/03/17/whazzing-dot-com-moved-to-github/" >Tweet</a>
   
   
   
@@ -154,14 +155,18 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/10/25/whazzing-com-v1-2/" title="Previous Post: Whazzing.com v1.2">&laquo; Whazzing.com v1.2</a>
+        <a class="basic-alignment left" href="/blog/2012/01/22/fitgem-v0-5-0/" title="Previous Post: Fitgem v0.5.0">&laquo; Fitgem v0.5.0</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2011/12/02/fitgem-v0-4-0/" title="Next Post: Fitgem v0.4.0">Fitgem v0.4.0 &raquo;</a>
       
     </p>
   </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -262,7 +267,10 @@
       var disqus_shortname = 'whazzingcom';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://whazzmaster.github.com/blog/2012/03/17/whazzing-dot-com-moved-to-github/';
+        var disqus_url = 'http://whazzmaster.github.com/blog/2012/03/17/whazzing-dot-com-moved-to-github/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

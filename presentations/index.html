@@ -30,12 +30,26 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8888483-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
 <body   >
   <header role="banner"><hgroup>
   <h1><a href="/">whazzing around</a></h1>
+  
+    <h2>a thing on the internet</h2>
   
 </hgroup>
 
@@ -134,6 +148,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/03/17/whazzing-dot-com-moved-to-github/">Whazzing.com Moved to Github</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/01/22/fitgem-v0-5-0/">Fitgem v0.5.0</a>
       </li>
     
@@ -147,10 +165,6 @@
     
       <li class="post">
         <a href="/blog/2011/12/02/december-2011-reading-list/">December 2011 Reading List</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/10/25/whazzing-com-v1-2/">Whazzing.com v1.2</a>
       </li>
     
   </ul>
@@ -193,12 +207,12 @@
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
-      getTwitterFeed("whazzmaster", 4, false);
+      getTwitterFeed("whazzmaster", 5, false);
     });
   </script>
   <script src="/javascripts/twitter.js" type="text/javascript"> </script>
   
-    <a href="http://twitter.com/whazzmaster" class="twitter-follow-button" data-show-count="false">Follow @whazzmaster</a>
+    <a href="http://twitter.com/whazzmaster" class="twitter-follow-button" data-show-count="true">Follow @whazzmaster</a>
   
 </section>
 
