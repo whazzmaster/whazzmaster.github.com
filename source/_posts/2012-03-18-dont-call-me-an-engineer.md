@@ -3,7 +3,7 @@ layout: post
 title: "Don't Call Me an Engineer"
 date: 2012-03-18 11:13
 comments: true
-categories: the business, engineering, recruiting, discipline
+categories: the-business, engineering, recruiting, discipline
 ---
 
 When I go <a href="http://www.wisc.edu">on campus</a> to do university recruiting, or I'm in a non-technical social situation where I must explain what I do for a living, I often take great pains to explain what should be a simple thing.  My title in my company is "Senior Software Engineer" but I always very precisely call myself a "software developer," "programmer," or "software nerd."  
