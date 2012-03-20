@@ -9,7 +9,7 @@
   <meta name="author" content="Zachery Moneypenny">
 
   
-  <meta name="description" content="When I go on campus to do university recruiting, or I&#8217;m in a non-technical social situation where I must explain what I do for a living, I &hellip;">
+  <meta name="description" content="Via Hacker News this morning I read Jacques Mattheij&#8217;s The Starter, the Architect, the Debugger and the Finisher. It was a great topic and one &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/20/becoming-the-finisher/">Becoming the Finisher</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-20T09:13:00-07:00" pubdate data-updated="true">Mar 20<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/03/20/becoming-the-finisher/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Via <a href="http://news.ycombinator.com/item?id=3728664">Hacker News</a> this morning I read Jacques Mattheij&#8217;s <a href="http://jacquesmattheij.com/The+Starter+the+Architect+the+Debugger+and+the+Finisher">The Starter, the Architect, the Debugger and the Finisher</a>.  It was a great topic and one that I think about often; for me personally <strong>finishing projects smoothly is my biggest challenge</strong>.</p>
+
+<p>For me, starting projects is a great time to be alive.  I love bootstrapping repeatable builds, testing systems, automatic doc generation, etc.  It&#8217;s a reflexive response having seen so many projects that were doomed from the word &#8216;go&#8217; by developers who named folders any old thing.  Even folks that joined the team within the first year were confused as to where code was located and what (if any) naming conventions existed.</p>
+
+<p>Similarly, I&#8217;ve been writing software for millions of users for ten years now and these days I think intensely about architecture when bootstrapping new components or applications.  Making the appropriate trade-offs between short- and long-term design up front will accelerate development while leaving you open to pivoting or scaling when the time is right.</p>
+
+<p>My problem comes to the final touches of a release.  For example, often when I&#8217;m working on a new release of <a href="https://github.com/whazzmaster/fitgem">fitgem</a> I code up the functionality, write new tests, write inline API documentation as I create new methods, etc.  After I think I&#8217;m done I&#8217;ll take the library for a spin in <a href="http://pry.github.com">Pry</a> and start coding against the new API functions.  Things will go well for awhile and then I&#8217;ll hit a snag where I forgot a parameter or had a typo in the code.  Great! My ad-hoc testing revealed something I hadn&#8217;t included in the unit tests. <strong>AND THEN I RELEASE</strong>.  This is not a good thing, but I often spaz out when I get 95% of the way to finishing, hit a snag, and then fix my issue.  I guess I feel exasperated about how long this thing is taking and then just wig out and push it (WE&#8217;LL DO IT LIVE!)</p>
+
+<p>To be a good finisher I need to slow down and restart my release process (as light as it is!) when I hit problems.  I need to suppress the anxiousness when I hit minor problems before pushing live, go back to the top of my checklist, and start it over.  Doing that on small projects like a gem will instill good mental resistance to spazzing for large, important releases.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -749,81 +795,6 @@ pp client.find_food("GoLean Raisin Bran Crunch Cereal")
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/">Paperclip and ImageMagick on Ubuntu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-23T00:00:00-07:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2011</time>
-        
-         | <a href="/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In getting the <a href="https://github.com/thoughtbot/paperclip">paperclip gem</a> working on my server for some screenshots I ran into a frustrating problem.  I kept getting an error during model saving: <strong>&#8220;/tmp/1234bduct-123.png is not recognized by the &#8216;identify&#8217; command&#8221;</strong>.  Eventually I solved the problem, so here is my solution, hoping that it helps someone else out there.</p>
-
-<p>After some googling and reading <a href="http://www.stackoverflow.com">Stack Overflow</a> I quickly came across the solution that Paperclips :command_path option wasn&#8217;t being set correctly.  The problem, however, was that it looked like I was correctly setting the ImageMagick path:</p>
-
-<pre lang="bash">
-$ which identify
-/usr/local/bin/identify
-</pre>
-
-
-<p>I kept double- and triple-checking that the option was set correctly in my config/environments/staging.rb file:</p>
-
-<pre lang="ruby">
-WhazzingCom::Application.configure do
-  ....
-  Paperclip.options[:command_path] = "/usr/local/bin"
-end
-</pre>
-
-
-<p>That seemed to be correct, but I still kept getting the same error.  Eventually I came across an <a href="http://blog.e-thang.net/2009/12/30/paperclipimagemagickrmagick-error-is-not-recognized-by-the-identify-command/comment-page-1/#comment-1067">excellent suggestion</a> that perhaps my installed version of ImageMagick was incomplete, corrupt, or missing libs or dependencies.  First I reran the ImageMagick apt-get install&#8230;</p>
-
-<pre lang="bash">
-$ sudo apt-get install imagemagick --fix-missing
-</pre>
-
-
-<p>&#8230;which installed identify to <strong>/usr/bin</strong> rather than the existing version in <strong>/usr/local/bin</strong>.  I then updated my environment file to the following&#8230;</p>
-
-<pre lang="ruby">
-WhazzingCom::Application.configure do
-  ....
-  Paperclip.options[:command_path] = "/usr/bin"
-end
-</pre>
-
-
-<p>&#8230;and refreshed the page and everthing worked as expected!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -848,6 +819,10 @@ end
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/03/20/becoming-the-finisher/">Becoming the Finisher</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/03/18/dont-call-me-an-engineer/">Don&#8217;t Call Me an Engineer</a>
       </li>
     
@@ -861,10 +836,6 @@ end
     
       <li class="post">
         <a href="/blog/2011/12/08/long-live-markdown/">Long Live Markdown</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/12/02/fitgem-v0-4-0/">Fitgem v0.4.0</a>
       </li>
     
   </ul>
