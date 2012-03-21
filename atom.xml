@@ -4,7 +4,7 @@
   <title><![CDATA[whazzing around]]></title>
   <link href="http://whazzmaster.github.com/atom.xml" rel="self"/>
   <link href="http://whazzmaster.github.com/"/>
-  <updated>2012-03-20T09:44:22-07:00</updated>
+  <updated>2012-03-21T08:42:16-07:00</updated>
   <id>http://whazzmaster.github.com/</id>
   <author>
     <name><![CDATA[Zachery Moneypenny]]></name>
@@ -88,14 +88,7 @@ CAN produce incredible feats of redundant, bug-free software system design and i
 
 <p>New features include glucose, blood pressure, and heart rate logging and retrieval methods.   Documentation has also been updated to include new endpoints for the Time Series interface.</p>
 
-<ul>
-<li>Get the source at: https://github.com/whazzmaster/fitgem</li>
-<li>Get the gem from: http://rubygems.org/gems/fitgem (&#8220;gem install
-fitgem&#8221; or &#8220;gem update fitgem&#8221;)</li>
-<li>Log issues at: https://github.com/whazzmaster/fitgem/issues</li>
-<li>Documentation at: http://rubydoc.info/github/whazzmaster/fitgem/master/frames</li>
-</ul>
-
+<p><a href="https://github.com/whazzmaster/fitgem">Source</a> | <a href="http://rubygems.org/gems/fitgem">Gem</a> | <a href="https://github.com/whazzmaster/fitgem/issues">Issues</a> | <a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">Documentation</a></p>
 
 <h3>v0.5.0 changelog</h3>
 
@@ -155,13 +148,7 @@ comments = Comment.all
 
 <p>In addition to the new features, I thoroughly documented the entire library API (<a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">available here</a>), added many more unit tests, refactored the subscriptions methods, and moved the oauth process documentation to the <a href="https://github.com/whazzmaster/fitgem/wiki/The-OAuth-Process">project wiki on github</a>.</p>
 
-<ul>
-<li>Get the source at: https://github.com/whazzmaster/fitgem</li>
-<li>Get the gem from: http://rubygems.org/gems/fitgem (or &#8220;gem install
-fitgem&#8221;)</li>
-<li>Log issues at: https://github.com/whazzmaster/fitgem/issues</li>
-</ul>
-
+<p><a href="https://github.com/whazzmaster/fitgem">Source</a> | <a href="http://rubygems.org/gems/fitgem">Gem</a> | <a href="https://github.com/whazzmaster/fitgem/issues">Issues</a> | <a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">Documentation</a></p>
 
 <h3>v0.4.0 changelog</h3>
 
@@ -242,9 +229,7 @@ for information on how to interpret each of the error codes.</li>
     <id>http://whazzmaster.github.com/blog/2011/10/25/fitgem-v0-3-6</id>
     <content type="html"><![CDATA[<p>On October 14th Fitbit <a href="http://groups.google.com/group/fitbit-api/msg/069c80e969cf603e">announced the latest version of their API</a>, including support for features of their new Fitbit Ultra tracker hardware.</p>
 
-<p>The rubygem for connecting to the <a href="http://dev.fitbit.com/">Fitbit API</a>, <a href="http://rubygems.org/gems/fitgem">Fitgem</a>, has now been updated to 0.3.6 to support the new functionality.</p>
-
-<p>The source is on <a href="https://github.com/whazzmaster/fitgem">github</a> and the latest version has been pushed to <a href="http://rubygems.org/gems/fitgem">rubygems.org</a>.  Please don&#8217;t hesitate to log any issues on <a href="https://github.com/whazzmaster/fitgem/issues">github</a>.</p>
+<p><a href="https://github.com/whazzmaster/fitgem">Source</a> | <a href="http://rubygems.org/gems/fitgem">Gem</a> | <a href="https://github.com/whazzmaster/fitgem/issues">Issues</a> | <a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">Documentation</a></p>
 
 <h1>Updates</h1>
 
