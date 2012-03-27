@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[whazzing around]]></title>
-  <link href="http://whazzmaster.github.com/atom.xml" rel="self"/>
-  <link href="http://whazzmaster.github.com/"/>
-  <updated>2012-03-21T08:42:16-07:00</updated>
-  <id>http://whazzmaster.github.com/</id>
+  <link href="http://whazzing.com/atom.xml" rel="self"/>
+  <link href="http://whazzing.com/"/>
+  <updated>2012-03-27T09:42:52-05:00</updated>
+  <id>http://whazzing.com/</id>
   <author>
     <name><![CDATA[Zachery Moneypenny]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Becoming the Finisher]]></title>
-    <link href="http://whazzmaster.github.com/blog/2012/03/20/becoming-the-finisher/"/>
-    <updated>2012-03-20T09:13:00-07:00</updated>
-    <id>http://whazzmaster.github.com/blog/2012/03/20/becoming-the-finisher</id>
+    <link href="http://whazzing.com/blog/2012/03/20/becoming-the-finisher/"/>
+    <updated>2012-03-20T09:13:00-05:00</updated>
+    <id>http://whazzing.com/blog/2012/03/20/becoming-the-finisher</id>
     <content type="html"><![CDATA[<p>Via <a href="http://news.ycombinator.com/item?id=3728664">Hacker News</a> this morning I read Jacques Mattheij&#8217;s <a href="http://jacquesmattheij.com/The+Starter+the+Architect+the+Debugger+and+the+Finisher">The Starter, the Architect, the Debugger and the Finisher</a>.  It was a great topic and one that I think about often; for me personally <strong>finishing projects smoothly is my biggest challenge</strong>.</p>
 
 <p>For me, starting projects is a great time to be alive.  I love bootstrapping repeatable builds, testing systems, automatic doc generation, etc.  It&#8217;s a reflexive response having seen so many projects that were doomed from the word &#8216;go&#8217; by developers who named folders any old thing.  Even folks that joined the team within the first year were confused as to where code was located and what (if any) naming conventions existed.</p>
@@ -32,9 +32,9 @@
   
   <entry>
     <title type="html"><![CDATA[Don't Call Me an Engineer]]></title>
-    <link href="http://whazzmaster.github.com/blog/2012/03/18/dont-call-me-an-engineer/"/>
-    <updated>2012-03-18T11:13:00-07:00</updated>
-    <id>http://whazzmaster.github.com/blog/2012/03/18/dont-call-me-an-engineer</id>
+    <link href="http://whazzing.com/blog/2012/03/18/dont-call-me-an-engineer/"/>
+    <updated>2012-03-18T11:13:00-05:00</updated>
+    <id>http://whazzing.com/blog/2012/03/18/dont-call-me-an-engineer</id>
     <content type="html"><![CDATA[<p>When I go <a href="http://www.wisc.edu">on campus</a> to do university recruiting, or I&#8217;m in a non-technical social situation where I must explain what I do for a living, I often take great pains to explain what should be a simple thing.  My title in my company is &#8220;Senior Software Engineer&#8221; but I always very precisely call myself a &#8220;software developer,&#8221; &#8220;programmer,&#8221; or &#8220;software nerd.&#8221;</p>
 
 <p>I am uncomfortable specifically with the &#8220;engineer&#8221; label, and that discomfort stems primarily from a panel discussion I attended in conjunction with the <a href="https://ecs.engr.wisc.edu/public/index.php">UW Engineering Career Services</a> group.</p>
@@ -63,9 +63,9 @@ CAN produce incredible feats of redundant, bug-free software system design and i
   
   <entry>
     <title type="html"><![CDATA[Whazzing.com Moved to Github]]></title>
-    <link href="http://whazzmaster.github.com/blog/2012/03/17/whazzing-dot-com-moved-to-github/"/>
-    <updated>2012-03-17T23:09:00-07:00</updated>
-    <id>http://whazzmaster.github.com/blog/2012/03/17/whazzing-dot-com-moved-to-github</id>
+    <link href="http://whazzing.com/blog/2012/03/17/whazzing-dot-com-moved-to-github/"/>
+    <updated>2012-03-17T23:09:00-05:00</updated>
+    <id>http://whazzing.com/blog/2012/03/17/whazzing-dot-com-moved-to-github</id>
     <content type="html"><![CDATA[<p>Two things forced my hand to move my development blog off of my own Rails-based blogging codebase and onto
 <a href="http://pages.github.com/">Github Pages</a> via <a href="http://octopress.org/">Octopress</a>:</p>
 
@@ -81,9 +81,9 @@ CAN produce incredible feats of redundant, bug-free software system design and i
   
   <entry>
     <title type="html"><![CDATA[Fitgem v0.5.0]]></title>
-    <link href="http://whazzmaster.github.com/blog/2012/01/22/fitgem-v0-5-0/"/>
-    <updated>2012-01-22T00:00:00-08:00</updated>
-    <id>http://whazzmaster.github.com/blog/2012/01/22/fitgem-v0-5-0</id>
+    <link href="http://whazzing.com/blog/2012/01/22/fitgem-v0-5-0/"/>
+    <updated>2012-01-22T00:00:00-06:00</updated>
+    <id>http://whazzing.com/blog/2012/01/22/fitgem-v0-5-0</id>
     <content type="html"><![CDATA[<p>I&#8217;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/8e8aed16706642d6#">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.5.0.</p>
 
 <p>New features include glucose, blood pressure, and heart rate logging and retrieval methods.   Documentation has also been updated to include new endpoints for the Time Series interface.</p>
@@ -110,9 +110,9 @@ CAN produce incredible feats of redundant, bug-free software system design and i
   
   <entry>
     <title type="html"><![CDATA[Long Live Markdown]]></title>
-    <link href="http://whazzmaster.github.com/blog/2011/12/08/long-live-markdown/"/>
-    <updated>2011-12-08T00:00:00-08:00</updated>
-    <id>http://whazzmaster.github.com/blog/2011/12/08/long-live-markdown</id>
+    <link href="http://whazzing.com/blog/2011/12/08/long-live-markdown/"/>
+    <updated>2011-12-08T00:00:00-06:00</updated>
+    <id>http://whazzing.com/blog/2011/12/08/long-live-markdown</id>
     <content type="html"><![CDATA[<p>I&#8217;ve been doing a lot of development around <a href="http://daringfireball.net/projects/markdown/syntax">markdown</a> lately and I&#8217;m really starting to love it.  Specifically, <a href="http://github.github.com/github-flavored-markdown/">Github-flavored markdown</a> has grown on me with its ability to do easy fenced code blocks and syntax highlighting.</p>
 
 <pre><code>```ruby
@@ -141,9 +141,9 @@ comments = Comment.all
   
   <entry>
     <title type="html"><![CDATA[Fitgem v0.4.0]]></title>
-    <link href="http://whazzmaster.github.com/blog/2011/12/02/fitgem-v0-4-0/"/>
-    <updated>2011-12-02T00:00:00-08:00</updated>
-    <id>http://whazzmaster.github.com/blog/2011/12/02/fitgem-v0-4-0</id>
+    <link href="http://whazzing.com/blog/2011/12/02/fitgem-v0-4-0/"/>
+    <updated>2011-12-02T00:00:00-06:00</updated>
+    <id>http://whazzing.com/blog/2011/12/02/fitgem-v0-4-0</id>
     <content type="html"><![CDATA[<p>I&#8217;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/3144a7299b60fa16">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.4.0.</p>
 
 <p>In addition to the new features, I thoroughly documented the entire library API (<a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">available here</a>), added many more unit tests, refactored the subscriptions methods, and moved the oauth process documentation to the <a href="https://github.com/whazzmaster/fitgem/wiki/The-OAuth-Process">project wiki on github</a>.</p>
@@ -178,9 +178,9 @@ for information on how to interpret each of the error codes.</li>
   
   <entry>
     <title type="html"><![CDATA[December 2011 Reading List]]></title>
-    <link href="http://whazzmaster.github.com/blog/2011/12/02/december-2011-reading-list/"/>
-    <updated>2011-12-02T00:00:00-08:00</updated>
-    <id>http://whazzmaster.github.com/blog/2011/12/02/december-2011-reading-list</id>
+    <link href="http://whazzing.com/blog/2011/12/02/december-2011-reading-list/"/>
+    <updated>2011-12-02T00:00:00-06:00</updated>
+    <id>http://whazzing.com/blog/2011/12/02/december-2011-reading-list</id>
     <content type="html"><![CDATA[<p>I thought I&#8217;d jot down my current technical reading list.  I tend not to read technical books straight through, but instead I pick up a few at a time and refresh myself on whatever I&#8217;m interested in at the time.  (Full disclosure: these links include my Amazon affiliate code).</p>
 
 <ul>
@@ -196,9 +196,9 @@ for information on how to interpret each of the error codes.</li>
   
   <entry>
     <title type="html"><![CDATA[Whazzing.com v1.2]]></title>
-    <link href="http://whazzmaster.github.com/blog/2011/10/25/whazzing-com-v1-2/"/>
-    <updated>2011-10-25T00:00:00-07:00</updated>
-    <id>http://whazzmaster.github.com/blog/2011/10/25/whazzing-com-v1-2</id>
+    <link href="http://whazzing.com/blog/2011/10/25/whazzing-com-v1-2/"/>
+    <updated>2011-10-25T00:00:00-05:00</updated>
+    <id>http://whazzing.com/blog/2011/10/25/whazzing-com-v1-2</id>
     <content type="html"><![CDATA[<p>Whazzing.com v1.2 has been deployed to production.  Updates include:</p>
 
 <ul>
@@ -224,9 +224,9 @@ for information on how to interpret each of the error codes.</li>
   
   <entry>
     <title type="html"><![CDATA[Fitgem v0.3.6]]></title>
-    <link href="http://whazzmaster.github.com/blog/2011/10/25/fitgem-v0-3-6/"/>
-    <updated>2011-10-25T00:00:00-07:00</updated>
-    <id>http://whazzmaster.github.com/blog/2011/10/25/fitgem-v0-3-6</id>
+    <link href="http://whazzing.com/blog/2011/10/25/fitgem-v0-3-6/"/>
+    <updated>2011-10-25T00:00:00-05:00</updated>
+    <id>http://whazzing.com/blog/2011/10/25/fitgem-v0-3-6</id>
     <content type="html"><![CDATA[<p>On October 14th Fitbit <a href="http://groups.google.com/group/fitbit-api/msg/069c80e969cf603e">announced the latest version of their API</a>, including support for features of their new Fitbit Ultra tracker hardware.</p>
 
 <p><a href="https://github.com/whazzmaster/fitgem">Source</a> | <a href="http://rubygems.org/gems/fitgem">Gem</a> | <a href="https://github.com/whazzmaster/fitgem/issues">Issues</a> | <a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">Documentation</a></p>
@@ -406,9 +406,9 @@ pp client.find_food("GoLean Raisin Bran Crunch Cereal")
   
   <entry>
     <title type="html"><![CDATA[Searching vs Finding]]></title>
-    <link href="http://whazzmaster.github.com/blog/2011/09/26/searching-vs-finding/"/>
-    <updated>2011-09-26T00:00:00-07:00</updated>
-    <id>http://whazzmaster.github.com/blog/2011/09/26/searching-vs-finding</id>
+    <link href="http://whazzing.com/blog/2011/09/26/searching-vs-finding/"/>
+    <updated>2011-09-26T00:00:00-05:00</updated>
+    <id>http://whazzing.com/blog/2011/09/26/searching-vs-finding</id>
     <content type="html"><![CDATA[<p>I&#8217;ve found that many of the truly interesting and outlook-altering pieces of information I&#8217;ve acquired have come via finding something randomly or pseudo-randomly as opposed to searching it out.</p>
 
 <p>These days the information in question is often a tool, configuration, or piece of code that radically shortcuts an oft-repeated activity.  It has nothing to with luck, or ability to use Google, however.  <strong>The delight in finding the perfect tool or option is often that you never conceived that it could exist in the first place</strong>.</p>
@@ -427,9 +427,9 @@ pp client.find_food("GoLean Raisin Bran Crunch Cereal")
   
   <entry>
     <title type="html"><![CDATA[Paperclip and ImageMagick on Ubuntu]]></title>
-    <link href="http://whazzmaster.github.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/"/>
-    <updated>2011-09-23T00:00:00-07:00</updated>
-    <id>http://whazzmaster.github.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu</id>
+    <link href="http://whazzing.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/"/>
+    <updated>2011-09-23T00:00:00-05:00</updated>
+    <id>http://whazzing.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu</id>
     <content type="html"><![CDATA[<p>In getting the <a href="https://github.com/thoughtbot/paperclip">paperclip gem</a> working on my server for some screenshots I ran into a frustrating problem.  I kept getting an error during model saving: <strong>&#8220;/tmp/1234bduct-123.png is not recognized by the &#8216;identify&#8217; command&#8221;</strong>.  Eventually I solved the problem, so here is my solution, hoping that it helps someone else out there.</p>
 
 <p>After some googling and reading <a href="http://www.stackoverflow.com">Stack Overflow</a> I quickly came across the solution that Paperclips :command_path option wasn&#8217;t being set correctly.  The problem, however, was that it looked like I was correctly setting the ImageMagick path:</p>
@@ -473,9 +473,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[Redesigning Whazzing.com]]></title>
-    <link href="http://whazzmaster.github.com/blog/2011/09/21/redesigning-whazzing-com/"/>
-    <updated>2011-09-21T00:00:00-07:00</updated>
-    <id>http://whazzmaster.github.com/blog/2011/09/21/redesigning-whazzing-com</id>
+    <link href="http://whazzing.com/blog/2011/09/21/redesigning-whazzing-com/"/>
+    <updated>2011-09-21T00:00:00-05:00</updated>
+    <id>http://whazzing.com/blog/2011/09/21/redesigning-whazzing-com</id>
     <content type="html"><![CDATA[<p>For the last month I&#8217;ve been working to create this new development-focused blog and project repository for my work.  I was previously self-hosting a <a href="http://www.wordpress.org">Wordpress</a> blog, but I&#8217;ve developed a desire to own my destiny when it comes to the display of my work.  There were a ton of little features I wanted to develop but didn&#8217;t really want to delve (back) into the PHP world or hack at the Wordpress template framework.</p>
 
 <p>I&#8217;d recently read the excellent <a href="http://www.abookapart.com/products/responsive-web-design">Responsive Web Design</a> and it made me very excited to design a site that effortlessly works on phones, tablets, monitors, and TVs.  Another project I have in mind is primarily aimed at mobile form factors, so I thought a semi-major experiment was in order to ensure I was thinking in the right direction when it came to media queries and mobile design.</p>

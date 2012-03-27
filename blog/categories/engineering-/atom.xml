@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: engineering, | whazzing around]]></title>
-  <link href="http://whazzmaster.github.com/blog/categories/engineering-/atom.xml" rel="self"/>
-  <link href="http://whazzmaster.github.com/"/>
-  <updated>2012-03-21T08:42:16-07:00</updated>
-  <id>http://whazzmaster.github.com/</id>
+  <link href="http://whazzing.com/blog/categories/engineering-/atom.xml" rel="self"/>
+  <link href="http://whazzing.com/"/>
+  <updated>2012-03-27T09:42:52-05:00</updated>
+  <id>http://whazzing.com/</id>
   <author>
     <name><![CDATA[Zachery Moneypenny]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Don't Call Me an Engineer]]></title>
-    <link href="http://whazzmaster.github.com/blog/2012/03/18/dont-call-me-an-engineer/"/>
-    <updated>2012-03-18T11:13:00-07:00</updated>
-    <id>http://whazzmaster.github.com/blog/2012/03/18/dont-call-me-an-engineer</id>
+    <link href="http://whazzing.com/blog/2012/03/18/dont-call-me-an-engineer/"/>
+    <updated>2012-03-18T11:13:00-05:00</updated>
+    <id>http://whazzing.com/blog/2012/03/18/dont-call-me-an-engineer</id>
     <content type="html"><![CDATA[<p>When I go <a href="http://www.wisc.edu">on campus</a> to do university recruiting, or I'm in a non-technical social situation where I must explain what I do for a living, I often take great pains to explain what should be a simple thing.  My title in my company is "Senior Software Engineer" but I always very precisely call myself a "software developer," "programmer," or "software nerd."</p>
 
 <p>I am uncomfortable specifically with the "engineer" label, and that discomfort stems primarily from a panel discussion I attended in conjunction with the <a href="https://ecs.engr.wisc.edu/public/index.php">UW Engineering Career Services</a> group.</p>
