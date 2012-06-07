@@ -1,5 +1,6 @@
 .bundle
 .DS_Store
+*/.DS_Store
 .sass-cache
 .gist-cache
 .pygments-cache
@@ -11,3 +12,4 @@ source/_stash
 source/stylesheets/screen.css
 vendor
 node_modules
+
