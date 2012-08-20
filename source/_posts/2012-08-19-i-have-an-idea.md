@@ -12,7 +12,7 @@ our way across the landscape.
 
 At around 3am one friend drunkenly burst into the hotel room and started
 going on and on about how great he was doing, gambling-wise.  He talked
-at length even as it became obvious that we was winding down like some
+at length even as it became obvious that he was winding down like some
 kind of strange children's toy.  Then he surged out of bed and said, "I
 have an idea!"  Another friend asked what it was and got the classic
 response, "I'll need $300 of your money."
