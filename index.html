@@ -1,0 +1,927 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>whazzing around</title>
+  <meta name="author" content="Zachery Moneypenny">
+
+  
+  <meta name="description" content="Via Hacker News this morning I read Jacques Mattheij&#8217;s The Starter, the Architect, the Debugger and the Finisher. It was a great topic and one &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://whazzmaster.github.com">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="whazzing around" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8888483-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">whazzing around</a></h1>
+  
+    <h2>a thing on the internet</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:whazzmaster.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/presentations">Presentations</a></li>
+  <li><a href="/videos">Videos</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/20/becoming-the-finisher/">Becoming the Finisher</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-20T09:13:00-05:00" pubdate data-updated="true">Mar 20<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/03/20/becoming-the-finisher/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Via <a href="http://news.ycombinator.com/item?id=3728664">Hacker News</a> this morning I read Jacques Mattheij&#8217;s <a href="http://jacquesmattheij.com/The+Starter+the+Architect+the+Debugger+and+the+Finisher">The Starter, the Architect, the Debugger and the Finisher</a>.  It was a great topic and one that I think about often; for me personally <strong>finishing projects smoothly is my biggest challenge</strong>.</p>
+
+<p>For me, starting projects is a great time to be alive.  I love bootstrapping repeatable builds, testing systems, automatic doc generation, etc.  It&#8217;s a reflexive response having seen so many projects that were doomed from the word &#8216;go&#8217; by developers who named folders any old thing.  Even folks that joined the team within the first year were confused as to where code was located and what (if any) naming conventions existed.</p>
+
+<p>Similarly, I&#8217;ve been writing software for millions of users for ten years now and these days I think intensely about architecture when bootstrapping new components or applications.  Making the appropriate trade-offs between short- and long-term design up front will accelerate development while leaving you open to pivoting or scaling when the time is right.</p>
+
+<p>My problem comes to the final touches of a release.  For example, often when I&#8217;m working on a new release of <a href="https://github.com/whazzmaster/fitgem">fitgem</a> I code up the functionality, write new tests, write inline API documentation as I create new methods, etc.  After I think I&#8217;m done I&#8217;ll take the library for a spin in <a href="http://pry.github.com">Pry</a> and start coding against the new API functions.  Things will go well for awhile and then I&#8217;ll hit a snag where I forgot a parameter or had a typo in the code.  Great! My ad-hoc testing revealed something I hadn&#8217;t included in the unit tests. <strong>AND THEN I RELEASE</strong>.  This is not a good thing, but I often spaz out when I get 95% of the way to finishing, hit a snag, and then fix my issue.  I guess I feel exasperated about how long this thing is taking and then just wig out and push it (WE&#8217;LL DO IT LIVE!)</p>
+
+<p>To be a good finisher I need to slow down and restart my release process (as light as it is!) when I hit problems.  I need to suppress the anxiousness when I hit minor problems before pushing live, go back to the top of my checklist, and start it over.  Doing that on small projects like a gem will instill good mental resistance to spazzing for large, important releases.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/18/dont-call-me-an-engineer/">Don&#8217;t Call Me an Engineer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-18T11:13:00-05:00" pubdate data-updated="true">Mar 18<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/03/18/dont-call-me-an-engineer/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When I go <a href="http://www.wisc.edu">on campus</a> to do university recruiting, or I&#8217;m in a non-technical social situation where I must explain what I do for a living, I often take great pains to explain what should be a simple thing.  My title in my company is &#8220;Senior Software Engineer&#8221; but I always very precisely call myself a &#8220;software developer,&#8221; &#8220;programmer,&#8221; or &#8220;software nerd.&#8221;</p>
+
+<p>I am uncomfortable specifically with the &#8220;engineer&#8221; label, and that discomfort stems primarily from a panel discussion I attended in conjunction with the <a href="https://ecs.engr.wisc.edu/public/index.php">UW Engineering Career Services</a> group.</p>
+
+<p>For some background, at the University of Wisconsin-Madison, Computer Science is <em>not</em> part of the School of Engineering, but a department in the School of Letters &amp; Science.  Even so, Computer Science students are given leave to particpate in School of Engineering career fairs and recruiting due to the crossover technical skillset.</p>
+
+<p>As someone who conducts on-campus interviews and attends career fairs for my company at UW I was invited to a panel discussion on &#8220;starting your first engineering job after graduating.&#8221;  It was a fantastic topic for a panel because many seniors are so busy interviewing, wrapping up courses, and thinking about relocation concerns that they often don&#8217;t think much about the actual beginning of a professional career.  Other folks on the panel included chemical engineers, industrial engineers, civil engineers, mechanical engineers and more.</p>
+
+<p>Topics ranged across the board (Do you work a lot of hours? Do you like your boss? Have you been promoted yet?) but one that stuck with me was the question: &#8220;Should I pay/study for my engineer certification? Is it better to do it before interviewing or will my employer fund the cost?&#8221;  Many engineers on the panel had various opinions and it really did vary widely by field, but when it got to me I just shrugged and told the truth: <strong>there is no professional certification to be a software &#8220;engineer&#8221;</strong>.  There are certainly certifications for working with a particular software system, but there is no certification that will allow you to be insured against writing buggy software.<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup></p>
+
+<p>I admire engineers and really only want to drive on bridges and use power tools that were designed by professional engineers.  Software developers
+CAN produce incredible feats of redundant, bug-free software system design and implementation but with the stipulation that time and process are needed to accomplish such things.  There likely do exist folks with the sufficient experience and knowledge to be called software engineers, but I am not one of them and they are few and far between.</p>
+
+<p>In the tech sphere this is really more of an academic conversation- we all speak the same language.  Everyone at your software company has some flavor of &#8220;engineer&#8221; in their title, and no one thinks twice about it.  When thrust into the larger world of engineers, however, the loosey-goosey nature of software development and it&#8217;s similarity to more of a craft than a discipline make strict adherance to standards of proven technical excellence difficult.</p>
+
+<p>What do you think? Does the typical professional software development environment make you think of &#8220;engineering&#8221; in the same way that mechanical or civil engineers practice it?  Does the fact that we do TDD/BDD make up for the fact that software tends not to have perfectly understood natural laws it must follow?</p>
+
+<div class="footnotes">
+    <ol>
+        <li id='fn:1'>This argument has indeed been made <a href="http://www.google.com/search?q=software+development+is+not+engineering">many times before</a>; this post is more my feelings about it. <a href='#fnref:1' rev='footnote'>↩</a></li>
+    </ol>
+</div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/17/whazzing-dot-com-moved-to-github/">Whazzing.com Moved to Github</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-17T23:09:00-05:00" pubdate data-updated="true">Mar 17<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/03/17/whazzing-dot-com-moved-to-github/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Two things forced my hand to move my development blog off of my own Rails-based blogging codebase and onto
+<a href="http://pages.github.com/">Github Pages</a> via <a href="http://octopress.org/">Octopress</a>:</p>
+
+<ol>
+<li>My VPS is becoming severely overcrowded with deployed apps; I use it as a testbed for a lot of ideas as well as my <a href="http://www.whazzmaster.com">main swearing-at-pop-culture blog</a> and I didn&#8217;t want to host yet another heavyweight rails app to chew through limited resources.</li>
+<li>I reaaally like the &#8216;one-file-per-post&#8217; model of Octopress/Jekyll, and keeping my development blog/presentations right next to my open source code is very appealing.</li>
+</ol>
+
+
+<p>Since I wrote my latest blog engine to take markdown input it was easy-as-pie to export the existing posts to files and then use them to bootstrap this Octopress site.  For now I&#8217;ll ride on the default theme and see how it goes.  I hope to spend more time iterating on my presentations and a bunch of C++ code that I&#8217;m working on for a work project, so it&#8217;s also a plus that I don&#8217;t have maintain the platform source tree anymore.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/01/22/fitgem-v0-5-0/">Fitgem v0.5.0</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-22T00:00:00-06:00" pubdate data-updated="true">Jan 22<span>nd</span>, 2012</time>
+        
+         | <a href="/blog/2012/01/22/fitgem-v0-5-0/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/8e8aed16706642d6#">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.5.0.</p>
+
+<p>New features include glucose, blood pressure, and heart rate logging and retrieval methods.   Documentation has also been updated to include new endpoints for the Time Series interface.</p>
+
+<p><a href="https://github.com/whazzmaster/fitgem">Source</a> | <a href="http://rubygems.org/gems/fitgem">Gem</a> | <a href="https://github.com/whazzmaster/fitgem/issues">Issues</a> | <a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">Documentation</a></p>
+
+<h3>v0.5.0 changelog</h3>
+
+<ul>
+<li>Added <tt>Fitgem::Client#heart_rate_on_date</tt> to retrieve heart rate data by date</li>
+<li>Added <tt>Fitgem::Client#log_heart_rate</tt> to log heart rate data</li>
+<li>Added <tt>Fitgem::Client#delete_heart_rate_log</tt> to delete previously logged heart rate data</li>
+<li>Added <tt>Fitgem::Client#blood_pressure_on_date</tt> to retrieve blood pressure data by date</li>
+<li>Added <tt>Fitgem::Client#log_blood_pressure</tt> to log blood pressure data</li>
+<li>Added <tt>Fitgem::Client#delete_blood_pressure_log</tt> to delete previously logged blood pressure data</li>
+<li>Added <tt>Fitgem::Client#glucose_on_date</tt> to retrieve glucose data by date</li>
+<li>Added <tt>Fitgem::Client#log_glucose</tt> to log glucose data</li>
+<li>Added <tt>Fitgem::Client#delete_glucose_log</tt> to delete previously logged glucose data</li>
+<li>Updated README</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/12/08/long-live-markdown/">Long Live Markdown</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-08T00:00:00-06:00" pubdate data-updated="true">Dec 8<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/12/08/long-live-markdown/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been doing a lot of development around <a href="http://daringfireball.net/projects/markdown/syntax">markdown</a> lately and I&#8217;m really starting to love it.  Specifically, <a href="http://github.github.com/github-flavored-markdown/">Github-flavored markdown</a> has grown on me with its ability to do easy fenced code blocks and syntax highlighting.</p>
+
+<pre><code>```ruby
+comments = Comment.all
+```
+</code></pre>
+
+<p>becomes</p>
+
+<pre lang="ruby">
+comments = Comment.all
+</pre>
+
+
+<p>When I rewrote the code for this web site awhile back I decided to support markdown, but didn&#8217;t really think I&#8217;d use it much; maybe to do code blocks but not much else.  Now I find myself writing markdown for all content, and only translating it through various interpreters when I need the HTML.  In retrospect I&#8217;m extremely glad I went through the effort to add markdown support for the site&#8211; I use it all the time now.</p>
+
+<p>There&#8217;s an <strong>incredible</strong> app for writing markdown on the fly: <a href="http://mouapp.com/">Mou</a> is a Mac application that lets you input markdown on the left pane and the HTML is dynamically updated in the right pane.  I&#8217;m literally using it right now to write this post, just to get a preview of what it will look like when I drop it into the &lt;textarea&gt; on the web site.</p>
+
+<p>I basically use it for all markdown content authoring, and then I copy/paste the result into whatever application/content field I will use it in.  It allows me to do edit/revision cycles on content as well as seeing the application of styles.  Highest recommendation.</p>
+
+<p>I also recently forked <a href="https://github.com/sr/git-wiki">git-wiki</a> and started working on improving it for my own use.  It also uses Markdown to write the wiki entries, which gets a little weird if you&#8217;ve ever used <a href="http://www.mediawiki.org/wiki/MediaWiki">MediaWiki</a> or <a href="http://www.wikipedia.com">Wikipedia</a>.  The default way to define <a href="http://twiki.org/cgi-bin/view/TWiki/WikiWord">wikiwords</a> in git-wiki didn&#8217;t really work for me so I updated it and checked everything back into <a href="https://github.com/whazzmaster/git-wiki">my own repo</a>.  I&#8217;ll be updating more about my git-wiki fork once I get it refactored and a little more configurable.</p>
+
+<p>So there you go- markdown is awesome and you should write your content in it; if you&#8217;ve never worked with it then try it out on Github (just make a public repo and create a README.md in the index).</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/12/02/fitgem-v0-4-0/">Fitgem v0.4.0</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-02T00:00:00-06:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+        
+         | <a href="/blog/2011/12/02/fitgem-v0-4-0/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/3144a7299b60fa16">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.4.0.</p>
+
+<p>In addition to the new features, I thoroughly documented the entire library API (<a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">available here</a>), added many more unit tests, refactored the subscriptions methods, and moved the oauth process documentation to the <a href="https://github.com/whazzmaster/fitgem/wiki/The-OAuth-Process">project wiki on github</a>.</p>
+
+<p><a href="https://github.com/whazzmaster/fitgem">Source</a> | <a href="http://rubygems.org/gems/fitgem">Gem</a> | <a href="https://github.com/whazzmaster/fitgem/issues">Issues</a> | <a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">Documentation</a></p>
+
+<h3>v0.4.0 changelog</h3>
+
+<ul>
+<li>Added YARD documentation to thoroughly document code</li>
+<li>DEPRECATED: <tt>Fitgem::Client#log_weight</tt> method, use <tt>Fitgem::Client#log_body_measurements</tt> instead.<br/>
+The new method allows you to log more than weight (bicep size, body fat %, etc.)</li>
+<li>Added <tt>Fitgem::FoodFormType</tt> to be used in calls to <tt>Fitgem::Client#create_food</tt></li>
+<li>Added <tt>Fitgem::Client#log_sleep</tt> to log sleep data to fitbit</li>
+<li>Added <tt>Fitgem::Client#delete_sleep_log</tt> to delete previously logged sleep data</li>
+<li>Added <tt>Fitgem::Client#activities</tt> method to get a list of all activities</li>
+<li>Added <tt>Fitgem::Client#activity_statistics</tt> method to get statistics for all logged activities</li>
+<li>Added to documentation of supported endpoints for <tt>Fitgem::Client#data_by_time_range</tt></li>
+<li>Added unit tests for parameter validation for many methods</li>
+<li>Overhauled notifications methods, including extensive documentation,
+unit tests, refactoring, and a couple of bug fixes.  These methods now
+return both the HTTP status code and the JSON response body.  See https://wiki.fitbit.com/display/API/Subscriptions-API
+for information on how to interpret each of the error codes.</li>
+<li>Added fitgem to travis-ci for continuous integration (http://travis-ci.org/#!/whazzmaster/fitgem)</li>
+<li>Added fitgem to rubydoc.info (http://rubydoc.info/github/whazzmaster/fitgem/master/frames)</li>
+<li>Updated README</li>
+<li>Moved OAuth documentation from the README to the <a href="https://github.com/whazzmaster/fitgem/wiki/The-OAuth-Process">fitgem wiki</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/12/02/december-2011-reading-list/">December 2011 Reading List</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-02T00:00:00-06:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+        
+         | <a href="/blog/2011/12/02/december-2011-reading-list/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I thought I&#8217;d jot down my current technical reading list.  I tend not to read technical books straight through, but instead I pick up a few at a time and refresh myself on whatever I&#8217;m interested in at the time.  (Full disclosure: these links include my Amazon affiliate code).</p>
+
+<ul>
+<li><a href="http://www.amazon.com/gp/product/0596008643/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596008643">Learning Mysql</a><p>Back in 2002 I got my exposure to SQL while doing elemntary PHP programming.  I read a little about MySQL back then, but never really went deep into things such as indexes and optimizations.  Rails obscures a lot of that stuff, but I wanted to be able to optimize efficiently and learn more about the underlying technology. So far this book has been really good at diving down underneath your SELECT, UPDATE, CREATE, and DROP actions.</p></li>
+<li><a href="http://www.amazon.com/gp/product/1934356476/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1934356476">Metaprogramming Ruby</a> <p>This is bar none my favorite Ruby book, and in my opinion is far better than the Pickaxe book for those who are coming to Ruby from another language/ecosystem.  The fellas at <a href="http://www.bendyworks.com">Bendyworks</a> have been doing a bi-weekly book club on this book and I&#8217;ve happily attended as many as I could to talk about it.  This book goes into incredible, understandable detail about the object model and dynamic nature of programming in Ruby.  It gets my highest recommendation.</p></li>
+<li><a href="http://www.amazon.com/gp/product/0393979504/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0393979504">C Programming: A Modern Approach</a> <p>My college computer science curriculum was in C++ and Java.  My job at <a href="http://www.intuit.com">Intuit</a> involves C/C++/C# development, but it tends to fall heavily into the C++/C# side of things.  I respect the hell out of Zed Shaw&#8217;s outlook on programming, and truly believe that a working knowledge of C development will take you far.  To that end, I&#8217;ve been working through <a href="http://c.learncodethehardway.org/">Learn C the Hard Way</a> online while reading this superb book.  I also purchased the original <a href="http://www.amazon.com/gp/product/0131103628/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0131103628">The C Programming Language</a> book, but A Modern Approach is, in my opinion, superior as a reference and primer.</p></li>
+</ul>
+
+
+<p>My technical reading list changes often; I&#8217;ll usually read through three books over the course of several weeks and then pull more off my shelf and refresh myself on a different topic.  It&#8217;s why I also buy books on the periphery of my interests just to have them on my shelf.  I enjoy having the references available, even if I don&#8217;t read them as soon as they arrive.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/25/whazzing-com-v1-2/">Whazzing.com v1.2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-25T00:00:00-05:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/10/25/whazzing-com-v1-2/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Whazzing.com v1.2 has been deployed to production.  Updates include:</p>
+
+<ul>
+<li>Posts can now be attached to projects in order to create news feeds on a per-project basis.</li>
+<li>Added favicon to the site</li>
+<li>Added ranking implementation for posts using <a href="http://redis.io/">Redis</a>.  Not in use yet.</li>
+<li>Added RSS feed for posts.  Available at http://www.whazzing.com/posts.rss</li>
+<li>Updated styles for the post and project pages</li>
+</ul>
+
+
+<p>Upcoming plans include:</p>
+
+<ul>
+<li>Post ranking implemented</li>
+<li>Section on the homepage for ranked posts</li>
+<li>Project RSS feeds</li>
+<li>Twitter integration on projects</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/25/fitgem-v0-3-6/">Fitgem v0.3.6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-25T00:00:00-05:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/10/25/fitgem-v0-3-6/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>On October 14th Fitbit <a href="http://groups.google.com/group/fitbit-api/msg/069c80e969cf603e">announced the latest version of their API</a>, including support for features of their new Fitbit Ultra tracker hardware.</p>
+
+<p><a href="https://github.com/whazzmaster/fitgem">Source</a> | <a href="http://rubygems.org/gems/fitgem">Gem</a> | <a href="https://github.com/whazzmaster/fitgem/issues">Issues</a> | <a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">Documentation</a></p>
+
+<h1>Updates</h1>
+
+<h3>Floors and elevation info from <code>activities_on_date</code></h3>
+
+<pre lang="ruby">
+pp client.activities_on_date("2011-10-24")
+</pre>
+
+
+
+
+<pre lang="javascript">
+{"activities"=>
+  [{"activityId"=>2130,
+    "activityParentId"=>2130,
+    "activityParentName"=>
+     "Weight lifting (free, nautilus or universal-type), light or moderate effort, light workout, general",
+    "calories"=>228,
+    "description"=>"",
+    "duration"=>3600000,
+    "hasStartTime"=>true,
+    "isFavorite"=>true,
+    "logId"=>2136964,
+    "name"=>
+     "Weight lifting (free, nautilus or universal-type), light or moderate effort, light workout, general",
+    "startTime"=>"16:15"}],
+ "goals"=>
+  {"activeScore"=>1000,
+   "caloriesOut"=>2911,
+   "distance"=>5,
+   "floors"=>10,
+   "steps"=>10000},
+ "summary"=>
+  {"activeScore"=>495,
+   "activityCalories"=>927,
+   "caloriesOut"=>2458,
+   "distances"=>
+    [{"activity"=>"total", "distance"=>2.07},
+     {"activity"=>"tracker", "distance"=>2.07},
+     {"activity"=>"loggedActivities", "distance"=>0},
+     {"activity"=>"veryActive", "distance"=>0.3},
+     {"activity"=>"moderatelyActive", "distance"=>0.68},
+     {"activity"=>"lightlyActive", "distance"=>1.09},
+     {"activity"=>"sedentaryActive", "distance"=>0},
+     {"activity"=>
+       "Weight lifting (free, nautilus or universal-type), light or moderate effort, light workout, general",
+      "distance"=>0}],
+   "elevation"=>90,
+   "fairlyActiveMinutes"=>118,
+   "floors"=>9,
+   "lightlyActiveMinutes"=>102,
+   "marginalCalories"=>562,
+   "sedentaryMinutes"=>1210,
+   "steps"=>4590,
+   "veryActiveMinutes"=>10}
+}
+</pre>
+
+
+<h3>Floors and elevation info from <code>data_by_time_range</code></h3>
+
+<pre lang="ruby">
+pp client.data_by_time_range("/activities/log/floors", {:base_date => "2011-10-24", :period => "1d"})
+</pre>
+
+
+
+
+<pre lang="javascript">
+{"activities-log-floors"=>[{"dateTime"=>"2011-10-24", "value"=>"9"}]}
+</pre>
+
+
+<h3>Food Goals now available through the <code>foods_on_date</code> method</h3>
+
+<pre lang="ruby">
+pp client.foods_on_date("2011-10-24")
+</pre>
+
+
+
+
+<pre lang="javascript">
+{"foods"=>[],
+ "goals"=>{"calories"=>2911},
+ "summary"=>
+  {"calories"=>0,
+   "carbs"=>0,
+   "fat"=>0,
+   "fiber"=>0,
+   "protein"=>0,
+   "sodium"=>0,
+   "water"=>0}
+}
+</pre>
+
+
+<h3>Device info now returns lastSyncTime</h3>
+
+<pre lang="ruby">
+pp client.devices
+</pre>
+
+
+
+
+<pre lang="javascript">
+[{"battery"=>"Full",
+  "id"=>*****,
+  "lastSyncTime"=>"2011-10-25T09:54:40.000",
+  "type"=>"TRACKER"}]
+</pre>
+
+
+<h3>Get details on a food with new method <code>food_info</code></h3>
+
+<p>There is a new method that will fetch detailed food information given a food ID.  Food IDs are generally retrieved by searching for a food using <code>find_food</code>.</p>
+
+<pre lang="ruby">
+# Get food info for an apple
+pp client.food_info 20711
+</pre>
+
+
+
+
+<pre lang="javascript">
+{"food"=>
+  {"accessLevel"=>"PUBLIC",
+   "brand"=>"Shoney's",
+   "calories"=>81,
+   "defaultServingSize"=>5,
+   "defaultUnit"=>{"id"=>226, "name"=>"oz", "plural"=>"oz"},
+   "foodId"=>20711,
+   "name"=>"Apple",
+   "units"=>[226, 180, 147, 389]}
+}
+</pre>
+
+
+<h3>Calories now returned in <code>find_food</code> results</h3>
+
+<pre lang="ruby">
+pp client.find_food("GoLean Raisin Bran Crunch Cereal")
+</pre>
+
+
+
+
+<pre lang="javascript">
+{"foods"=>
+  [{"accessLevel"=>"PUBLIC",
+    "brand"=>"Kellogg's",
+    "calories"=>110,
+    "defaultServingSize"=>1,
+    "defaultUnit"=>{"id"=>17, "name"=>"bar", "plural"=>"bars"},
+    "foodId"=>20942,
+    "name"=>"Cereal Bar, Raisin Bran Crunch",
+    "units"=>[17]},
+   {"accessLevel"=>"PUBLIC",
+    "brand"=>"Safeway",
+    "calories"=>230,
+    "defaultServingSize"=>1,
+    "defaultUnit"=>{"id"=>304, "name"=>"serving", "plural"=>"servings"},
+    "foodId"=>79051,
+    "name"=>"Raisin Bran Crunch Cereal",
+    "units"=>[304, 91, 256, 279]}]
+}
+</pre>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/26/searching-vs-finding/">Searching vs Finding</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-26T00:00:00-05:00" pubdate data-updated="true">Sep 26<span>th</span>, 2011</time>
+        
+         | <a href="/blog/2011/09/26/searching-vs-finding/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve found that many of the truly interesting and outlook-altering pieces of information I&#8217;ve acquired have come via finding something randomly or pseudo-randomly as opposed to searching it out.</p>
+
+<p>These days the information in question is often a tool, configuration, or piece of code that radically shortcuts an oft-repeated activity.  It has nothing to with luck, or ability to use Google, however.  <strong>The delight in finding the perfect tool or option is often that you never conceived that it could exist in the first place</strong>.</p>
+
+<p>The most stark example I&#8217;ve had recently is in pursuit of my quest to <a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">learn vim</a>.  In changing over from TextMate to vim many times I would end up pondering really newb questions: how do I cut a line of text? How do I move to the end of a file?  A couple of HI-YAH&#8217;s of Google-Fu later I&#8217;ve got the answer an I&#8217;m trucking along.  Some days, however, I&#8217;ll be reading something unrelated and all of a sudden learn that <strong>dt followed by a character</strong> <em>will delete from the cursor position to the next instance of that character</em>.  It&#8217;s weird, but that was a game-changer for me.  Changing out strings became: <strong>dt&#8221;</strong> and then insert and go.</p>
+
+<p>I could also characterize my use of <a href="https://github.com/guard/guard">guard</a> in this way.  I was at a <a href="http://www.meetup.com/Mad-Railers/">Mad-Railers</a> hack day awhile back and <a href="http://twitter.com/#!/listrophy">Brad</a> happened to be using <a href="https://github.com/guard/guard-rspec">guard for his rspec execution</a> during TDD.  It was a revelation that I could just edit files and tests and it would automatically rerun.  Here&#8217;s where things get interesting, however.  It had previously never occurred to me to even look for a way to speed up my tests or optimize the time spent manually executing them.  It was a problem I didn&#8217;t know I had.  After learning about guard I looked through <a href="https://github.com/guard/guard/wiki/List-of-available-Guards">the list of available guards</a>, however, and found some other interesting ones.  These additional plugins for the guard model were also solving problems I didn&#8217;t even know were bugging me until I found they were solved problems.</p>
+
+<p>This all came to me this morning as I was watching Ryan Bates&#8217; <a href="http://railscasts.com/episodes/285-spork">Railscast on using Spork</a> to speed up test execution further by preloading the Rails framework and keeping it in memory between tests.</p>
+
+<p>When worrying about getting a primary goal completed (say, a feature in an application) you don&#8217;t often think about solutions to one-off problems or annoyances, let alone prioritize solving them.  This is partially why I invest time at the beginning of a project to develop and optimize the code-test-fix cycle, why I obsess over the deployment model when I only have a README, and why I like continuous integration before a test has been written.  Once your process for coding is solid, you can optimize it piecemeal as you <strong>need to</strong> or as you <strong>find unexpected tools or processes</strong> that would increase your productivity drastically.</p>
+
+<p>An example: my tests were already running really well under guard, but 15 minutes or install and configuration of <a href="https://github.com/guard/guard-spork">guard-spork</a> I saw immediate speed gains.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+	<h1>About Me</h1>
+	<p>
+		I&#8217;m <b>Zachery Moneypenny</b>: a developer for <a href="http://payroll.intuit.com/">Intuit QuickBooks Payroll</a>,
+		Rubyist, Coffeescripter, Sasser, etc.  And hey, what&#8217;s this?  Renewed C++ Vigor.
+	</p>
+	<p>
+		<a href="/about/">More&#8230;</a>
+	</p>	
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/20/becoming-the-finisher/">Becoming the Finisher</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/18/dont-call-me-an-engineer/">Don&#8217;t Call Me an Engineer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/17/whazzing-dot-com-moved-to-github/">Whazzing.com Moved to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/22/fitgem-v0-5-0/">Fitgem v0.5.0</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/08/long-live-markdown/">Long Live Markdown</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/whazzmaster">@whazzmaster</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'whazzmaster',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("whazzmaster", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/whazzmaster" class="twitter-follow-button" data-show-count="true">Follow @whazzmaster</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Zachery Moneypenny -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'whazzingcom';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
