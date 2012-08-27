@@ -6,20 +6,13 @@ comments: true
 published: false
 categories: markdown, c#,
 ---
-[Intuit's](http://www.intuit.com) developer culture has a loosey-goosey nature when it comes to documentation.  At least in the
-[QuickBooks](http://quickbooks.intuit.com) code base there has traditionally been no proscribed way to document functionality outside
-of code comments; teams and individuals could choose their documentation methods, which would often vary on a per-project basis.
+[Intuit's](http://www.intuit.com) developer culture has a loosey-goosey nature when it comes to documentation.  At least in the [QuickBooks](http://quickbooks.intuit.com) code base there has traditionally been no proscribed way to document functionality outside of code comments; teams and individuals could choose their documentation methods, which would often vary on a per-project basis.
 
-My goal for the past week has been to __provide a better documentation solution in the QuickBooks codebase__, and it's loosely based
-on the Github model.
+My goal for the past week has been to __provide a better documentation solution in the QuickBooks codebase__, and it's loosely based on the Github model.
 
 ### QuickBooks Documentation
 
-It all started when I wanted to investigate the original design behind the payroll subscription management API, and I couldn't find
-the documentation I knew had to exist somewhere.  I asked around found that there was a Word document somewhere with the original
-API design, but it had been uploaded to a (homegrown) document storage solution that was no longer maintained and in fact had
-been decommissioned.  I'd been thinking for awhile that we needed a better, more durable and accessible form of component/API
-documentation in QuickBooks code but this pushed me over the edge.
+It all started when I wanted to investigate the original design behind the payroll subscription management API, and I couldn't find the documentation I knew had to exist somewhere.  I asked around found that there was a Word document somewhere with the original API design, but it had been uploaded to a (homegrown) document storage solution that was no longer maintained and in fact had been decommissioned.  I'd been thinking for awhile that we needed a better, more durable and accessible form of component/API documentation in QuickBooks code but this pushed me over the edge.
 
 I really, really like the idea of README-driven development and the [Github](http://github.com) model of putting the README front-and-center when you look at the source repository.  It gives you an up-front sense of what is going on with the code in question, and the [Markdown](http://daringfireball.net/projects/markdown/) format has really grown on me in the last year.  With these things in mind I dove into creating a better way to write documentation.
 
@@ -39,7 +32,7 @@ I created a markdown-to-html executable to include in the developer tools collec
 
 I wasn't terribly in the mood to deal with converting makefiles that _maybe_ work on <code>mingw</code> to work with <code>cl</code>, so I set this aside to consider other options.
 
-After a little more googling I came across [MarkdownSharp](http://code.google.com/p/markdownsharp/), a C# library for working with Markdown conversion.  This interested me a little more: if the library was good enough I could write a command-line wrapper around it and still allow for whatever extra features I wanted to include.  I got the source and started hacking around with it.
+After a little more research I came across [MarkdownSharp](http://code.google.com/p/markdownsharp/), a C# library for working with Markdown conversion.  This interested me a little more: if the library was good enough I could write a command-line wrapper around it and still allow for whatever extra features I wanted to include.  I got the source and started hacking around with it.
 
 ### The Result: md2htmlc.exe
 
