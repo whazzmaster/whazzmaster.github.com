@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: ruby, | whazzing around]]></title>
-  <link href="http://whazzing.com/blog/categories/ruby-/atom.xml" rel="self"/>
+  <title><![CDATA[Category: madison | whazzing around]]></title>
+  <link href="http://whazzing.com/blog/categories/madison/atom.xml" rel="self"/>
   <link href="http://whazzing.com/"/>
-  <updated>2012-11-26T20:22:54-06:00</updated>
+  <updated>2012-11-26T20:38:47-06:00</updated>
   <id>http://whazzing.com/</id>
   <author>
     <name><![CDATA[Zachery Moneypenny]]></name>
