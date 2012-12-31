@@ -9,7 +9,7 @@
   <meta name="author" content="Zachery Moneypenny">
 
   
-  <meta name="description" content="I&#8217;m trying really hard to not read Hacker News these days, as the contrarian argument-for-argument&#8217;s-sake nature of the comments tends to &hellip;">
+  <meta name="description" content="It all started with a comment and a pull request. I hadn&#8217;t put time into maintaining my fitbit gem reference app in quite awhile, and when I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,154 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails/">Fitbit Logins via Omniauth in Rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-31T10:54:00-06:00" pubdate data-updated="true">Dec 31<span>st</span>, 2012</time>
+        
+         | <a href="/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails/#disqus_thread" data-disqus-identifier="http://whazzing.com/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It all started with a <a href="http://whazzing.com/blog/2012/03/20/becoming-the-finisher/#comment-743146618">comment</a> and a <a href="https://github.com/whazzmaster/fitgem-client/pull/4">pull request</a>.</p>
+
+<p>I hadn&#8217;t put time into maintaining my <a href="http://github.com/whazzmaster/fitgem">fitbit gem</a> <a href="http://www.fitbitclient.com">reference app</a> in quite awhile, and when I got a pull request to update it to the latest rails version I at first hesitated. After talking with some folks at <a href="http://www.bendyworks.com">my coworking space</a>, however, I decided to use some holiday downtime to pull in the changes and see if I could build on them to improve the quality of the site.</p>
+
+<p>At first I was horrified to learn that I&#8217;d stopped in mid-refactoring, and I realized it was no wonder that Marcel (the submitter) reported he&#8217;d had trouble getting certain tests to run. The first step was to delete whole directories of files and tests that no longer conformed to the current design of the site and ensure that the files that remained all contributed to that current design.</p>
+
+<p>I pulled down Marcel&#8217;s pull request and got to work merging it in, at which point I looked at the login code and got embarrassed again. The truth is, the <a href="http://github.com/whazzmaster/fitgem">fitgem</a> library wasn&#8217;t really built for managing oauth logins; instead it optimized for using a token/secret for a given user to fetch data from the API. Yes, you could use fitgem to facilitate an oauth login process, but it certainly wasn&#8217;t built with rails in mind and you had to roll your own controllers, views, and token and secret management.</p>
+
+<p>We already have a library that does that sort of thing: <a href="https://github.com/intridea/omniauth">OmniAuth</a> is a fantastic library for consuming <a href="https://github.com/intridea/omniauth/wiki/List-of-Strategies">pluggable login strategies</a>. I didn&#8217;t have to search long before I found a <a href="https://github.com/tkgospodinov/omniauth-fitbit">fitbit strategy for omniauth</a>, and I set to work integrating it into the reference app.</p>
+
+<p>Luckily I had been working a lot with OmniAuth lately, as I&#8217;d implemented logins via Facebook and Twitter in another project just the week before. As always I leaned heavily on Ryan Bates&#8217; excellent <a href="http://railscasts.com">Railscasts</a> in getting up to speed on how <a href="http://railscasts.com/episodes/235-devise-and-omniauth-revised">OmniAuth worked with Devise</a>, and specifically with Twitter and <a href="http://railscasts.com/episodes/360-facebook-authentication">Facebook</a>. &lt;small-plus&gt;Railscasts Pro ($9/month) has been totally worth it for me. The Pro episodes go into a lot of depth and I&#8217;ve learned a ton from them.&lt;/small-plug&gt;</p>
+
+<p>Using the omniauth-fitbit gem I was able to delete a lot of now-redundant code for signing into/up for the application. There were, however, a few hiccups along the way that I wanted to note:</p>
+
+<ul>
+<li>Unlike Twitter and Facebook, logging into Fitbit via omniauth-fitbit doesn&#8217;t allow devise to remember you from session to session, so you end having to re-login every time. I haven&#8217;t yet figured out why, but it may be something about how Fitbit conducts OAuth logins or it may be a configuration issue with omniauth-fitbit.</li>
+<li>Logging in via Fitbit is fine and dandy, but if you want to use the token/secret for the logged-in user to fetch data from the API through the fitgem interface you&#8217;ll need to store them. I just added fields to my user object:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>Add Oauth fields to User model </span><a href='https://github.com/whazzmaster/fitgem-client/blob/master/db/migrate/20121225193557_add_oauth_fields_to_users.rb'>_add_oauth_fields_to_users.rb </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">AddOauthFieldsToUsers</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">change</span>
+</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:oauth_token</span><span class="p">,</span> <span class="ss">:string</span>
+</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:oauth_secret</span><span class="p">,</span> <span class="ss">:string</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>I made some, ahem, unorthodox decisions that will have to refactored later. Chief among them was to add the FitbitClient to the User model:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>Access to FitbitClient through User model </span><a href='https://github.com/whazzmaster/fitgem-client/blob/master/app/models/user.rb'>user.rb </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Elided for conciseness</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">linked?</span>
+</span><span class='line'>    <span class="n">oauth_token</span><span class="o">.</span><span class="n">present?</span> <span class="o">&amp;&amp;</span> <span class="n">oauth_secret</span><span class="o">.</span><span class="n">present?</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">fitbit_data</span>
+</span><span class='line'>    <span class="k">raise</span> <span class="s2">&quot;Account is not linked with a Fitbit account&quot;</span> <span class="k">unless</span> <span class="n">linked?</span>
+</span><span class='line'>    <span class="vi">@client</span> <span class="o">||=</span> <span class="no">Fitgem</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span><span class='line'>                <span class="ss">:consumer_key</span> <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;FITBIT_CONSUMER_KEY&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'>                <span class="ss">:consumer_secret</span> <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;FITBIT_CONSUMER_SECRET&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'>                <span class="ss">:token</span> <span class="o">=&gt;</span> <span class="n">oauth_token</span><span class="p">,</span>
+</span><span class='line'>                <span class="ss">:secret</span> <span class="o">=&gt;</span> <span class="n">oauth_secret</span><span class="p">,</span>
+</span><span class='line'>                <span class="ss">:user_id</span> <span class="o">=&gt;</span> <span class="n">uid</span>
+</span><span class='line'>              <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">has_fitbit_data?</span>
+</span><span class='line'>    <span class="o">!</span><span class="vi">@client</span><span class="o">.</span><span class="n">nil?</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Elided for conciseness</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Eventually we should use a better pattern for this, but for now it&#8217;s simplistic and anywhere you have a logged-in user in your application you will be able to call <code>fitbit_data</code> to get access to a configured FitbitClient instance.</p>
+
+<p>And with that we&#8217;re logging in via Fitbit and using the token/secret returned via omniuath-fitbit to fuel data retrieval from the Fitbit API through fitgem.</p>
+
+<h3>List of Resources</h3>
+
+<ul>
+<li><a href="https://github.com/intridea/omniauth">OmniAuth</a>: Base authentication library</li>
+<li><a href="https://github.com/tkgospodinov/omniauth-fitbit">omniauth-fitbit</a>: Fitbit-specific pluggable OmniAuth strategy</li>
+<li><a href="http://github.com/whazzmaster/fitgem">fitgem</a>: Fitbit API library</li>
+<li>Fitgem Reference Application (<a href="http://fitbitclient.com">app</a>|<a href="https://github.com/whazzmaster/fitgem-client">code</a>): An example application using omniauth-fitbit and fitgem</li>
+<li><a href="http://dev.fitbit.com">Fitbit.com Developer Site</a>: Manage your developer keys for use with omniauth-fitbit and fitgem</li>
+<li><a href="http://railscasts.com/episodes/235-devise-and-omniauth-revised">OmniAuth and Devise Railscast</a>: Integrating OmniAuth, Devise, and Twitter</li>
+<li><a href="http://railscasts.com/episodes/360-facebook-authentication">Facebook Authentication with OmniAuth Railscast</a>: Setting up OmniAuth to work with Facebook</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -629,53 +777,6 @@ for information on how to interpret each of the error codes.</li>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/12/02/december-2011-reading-list/">December 2011 Reading List</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-02T00:00:00-06:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
-        
-         | <a href="/blog/2011/12/02/december-2011-reading-list/#disqus_thread" data-disqus-identifier="http://whazzing.com/blog/2011/12/02/december-2011-reading-list/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I thought I&#8217;d jot down my current technical reading list.  I tend not to read technical books straight through, but instead I pick up a few at a time and refresh myself on whatever I&#8217;m interested in at the time.  (Full disclosure: these links include my Amazon affiliate code).</p>
-
-<ul>
-<li><a href="http://www.amazon.com/gp/product/0596008643/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596008643">Learning Mysql</a><p>Back in 2002 I got my exposure to SQL while doing elemntary PHP programming.  I read a little about MySQL back then, but never really went deep into things such as indexes and optimizations.  Rails obscures a lot of that stuff, but I wanted to be able to optimize efficiently and learn more about the underlying technology. So far this book has been really good at diving down underneath your SELECT, UPDATE, CREATE, and DROP actions.</p></li>
-<li><a href="http://www.amazon.com/gp/product/1934356476/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1934356476">Metaprogramming Ruby</a> <p>This is bar none my favorite Ruby book, and in my opinion is far better than the Pickaxe book for those who are coming to Ruby from another language/ecosystem.  The fellas at <a href="http://www.bendyworks.com">Bendyworks</a> have been doing a bi-weekly book club on this book and I&#8217;ve happily attended as many as I could to talk about it.  This book goes into incredible, understandable detail about the object model and dynamic nature of programming in Ruby.  It gets my highest recommendation.</p></li>
-<li><a href="http://www.amazon.com/gp/product/0393979504/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0393979504">C Programming: A Modern Approach</a> <p>My college computer science curriculum was in C++ and Java.  My job at <a href="http://www.intuit.com">Intuit</a> involves C/C++/C# development, but it tends to fall heavily into the C++/C# side of things.  I respect the hell out of Zed Shaw&#8217;s outlook on programming, and truly believe that a working knowledge of C development will take you far.  To that end, I&#8217;ve been working through <a href="http://c.learncodethehardway.org/">Learn C the Hard Way</a> online while reading this superb book.  I also purchased the original <a href="http://www.amazon.com/gp/product/0131103628/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0131103628">The C Programming Language</a> book, but A Modern Approach is, in my opinion, superior as a reference and primer.</p></li>
-</ul>
-
-
-<p>My technical reading list changes often; I&#8217;ll usually read through three books over the course of several weeks and then pull more off my shelf and refresh myself on a different topic.  It&#8217;s why I also buy books on the periphery of my interests just to have them on my shelf.  I enjoy having the references available, even if I don&#8217;t read them as soon as they arrive.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -700,6 +801,10 @@ for information on how to interpret each of the error codes.</li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails/">Fitbit Logins via Omniauth in Rails</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem To Be Getting Along Fine Without Facebook</a>
       </li>
     
@@ -713,10 +818,6 @@ for information on how to interpret each of the error codes.</li>
     
       <li class="post">
         <a href="/blog/2012/03/20/becoming-the-finisher/">Becoming the Finisher</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/03/18/dont-call-me-an-engineer/">Don&#8217;t Call Me an Engineer</a>
       </li>
     
   </ul>

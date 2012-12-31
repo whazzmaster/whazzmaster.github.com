@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: fitgem | whazzing around]]></title>
+  <link href="http://whazzing.com/blog/categories/fitgem/atom.xml" rel="self"/>
+  <link href="http://whazzing.com/"/>
+  <updated>2012-12-31T12:14:16-06:00</updated>
+  <id>http://whazzing.com/</id>
+  <author>
+    <name><![CDATA[Zachery Moneypenny]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fitbit Logins via Omniauth in Rails]]></title>
+    <link href="http://whazzing.com/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails/"/>
+    <updated>2012-12-31T10:54:00-06:00</updated>
+    <id>http://whazzing.com/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails</id>
+    <content type="html"><![CDATA[<p>It all started with a <a href="http://whazzing.com/blog/2012/03/20/becoming-the-finisher/#comment-743146618">comment</a> and a <a href="https://github.com/whazzmaster/fitgem-client/pull/4">pull request</a>.</p>
+
+<p>I hadn't put time into maintaining my <a href="http://github.com/whazzmaster/fitgem">fitbit gem</a> <a href="http://www.fitbitclient.com">reference app</a> in quite awhile, and when I got a pull request to update it to the latest rails version I at first hesitated. After talking with some folks at <a href="http://www.bendyworks.com">my coworking space</a>, however, I decided to use some holiday downtime to pull in the changes and see if I could build on them to improve the quality of the site.</p>
+
+<p>At first I was horrified to learn that I'd stopped in mid-refactoring, and I realized it was no wonder that Marcel (the submitter) reported he'd had trouble getting certain tests to run. The first step was to delete whole directories of files and tests that no longer conformed to the current design of the site and ensure that the files that remained all contributed to that current design.</p>
+
+<p>I pulled down Marcel's pull request and got to work merging it in, at which point I looked at the login code and got embarrassed again. The truth is, the <a href="http://github.com/whazzmaster/fitgem">fitgem</a> library wasn't really built for managing oauth logins; instead it optimized for using a token/secret for a given user to fetch data from the API. Yes, you could use fitgem to facilitate an oauth login process, but it certainly wasn't built with rails in mind and you had to roll your own controllers, views, and token and secret management.</p>
+
+<p>We already have a library that does that sort of thing: <a href="https://github.com/intridea/omniauth">OmniAuth</a> is a fantastic library for consuming <a href="https://github.com/intridea/omniauth/wiki/List-of-Strategies">pluggable login strategies</a>. I didn't have to search long before I found a <a href="https://github.com/tkgospodinov/omniauth-fitbit">fitbit strategy for omniauth</a>, and I set to work integrating it into the reference app.</p>
+
+<p>Luckily I had been working a lot with OmniAuth lately, as I'd implemented logins via Facebook and Twitter in another project just the week before. As always I leaned heavily on Ryan Bates' excellent <a href="http://railscasts.com">Railscasts</a> in getting up to speed on how <a href="http://railscasts.com/episodes/235-devise-and-omniauth-revised">OmniAuth worked with Devise</a>, and specifically with Twitter and <a href="http://railscasts.com/episodes/360-facebook-authentication">Facebook</a>. &lt;small-plus&gt;Railscasts Pro ($9/month) has been totally worth it for me. The Pro episodes go into a lot of depth and I've learned a ton from them.&lt;/small-plug&gt;</p>
+
+<p>Using the omniauth-fitbit gem I was able to delete a lot of now-redundant code for signing into/up for the application. There were, however, a few hiccups along the way that I wanted to note:</p>
+
+<ul>
+<li>Unlike Twitter and Facebook, logging into Fitbit via omniauth-fitbit doesn't allow devise to remember you from session to session, so you end having to re-login every time. I haven't yet figured out why, but it may be something about how Fitbit conducts OAuth logins or it may be a configuration issue with omniauth-fitbit.</li>
+<li>Logging in via Fitbit is fine and dandy, but if you want to use the token/secret for the logged-in user to fetch data from the API through the fitgem interface you'll need to store them. I just added fields to my user object:</li>
+</ul>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Add Oauth fields to User model </span><a href='https://github.com/whazzmaster/fitgem-client/blob/master/db/migrate/20121225193557_add_oauth_fields_to_users.rb'>_add_oauth_fields_to_users.rb </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">AddOauthFieldsToUsers</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">change</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;add_column :users, :oauth_token, :string</span>
+</span><span class='line'><span class="sr">add_column :users, :oauth_secret, :string</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  end</span>
+</span><span class='line'><span class="sr">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<ul>
+<li>I made some, ahem, unorthodox decisions that will have to refactored later. Chief among them was to add the FitbitClient to the User model:</li>
+</ul>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Access to FitbitClient through User model </span><a href='https://github.com/whazzmaster/fitgem-client/blob/master/app/models/user.rb'>user.rb </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  # Elided for conciseness&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">def</span> <span class="nf">linked?</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;oauth_token.present? &amp;amp;&amp;amp; oauth_secret.present?</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  end&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">def</span> <span class="nf">fitbit_data</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;raise &quot;Account is not linked with a Fitbit account&quot; unless linked?</span>
+</span><span class='line'><span class="sr">@client ||= Fitgem::Client.new(</span>
+</span><span class='line'><span class="sr">            :consumer_key =&amp;gt; ENV[&quot;FITBIT_CONSUMER_KEY&quot;],</span>
+</span><span class='line'><span class="sr">            :consumer_secret =&amp;gt; ENV[&quot;FITBIT_CONSUMER_SECRET&quot;],</span>
+</span><span class='line'><span class="sr">            :token =&amp;gt; oauth_token,</span>
+</span><span class='line'><span class="sr">            :secret =&amp;gt; oauth_secret,</span>
+</span><span class='line'><span class="sr">            :user_id =&amp;gt; uid</span>
+</span><span class='line'><span class="sr">          )</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  end&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">def</span> <span class="nf">has_fitbit_data?</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;!@client.nil?</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  end&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Elided for conciseness&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Eventually we should use a better pattern for this, but for now it's simplistic and anywhere you have a logged-in user in your application you will be able to call <code>fitbit_data</code> to get access to a configured FitbitClient instance.</p>
+
+<p>And with that we're logging in via Fitbit and using the token/secret returned via omniuath-fitbit to fuel data retrieval from the Fitbit API through fitgem.</p>
+
+<h3>List of Resources</h3>
+
+<ul>
+<li><a href="https://github.com/intridea/omniauth">OmniAuth</a>: Base authentication library</li>
+<li><a href="https://github.com/tkgospodinov/omniauth-fitbit">omniauth-fitbit</a>: Fitbit-specific pluggable OmniAuth strategy</li>
+<li><a href="http://github.com/whazzmaster/fitgem">fitgem</a>: Fitbit API library</li>
+<li>Fitgem Reference Application (<a href="http://fitbitclient.com">app</a>|<a href="https://github.com/whazzmaster/fitgem-client">code</a>): An example application using omniauth-fitbit and fitgem</li>
+<li><a href="http://dev.fitbit.com">Fitbit.com Developer Site</a>: Manage your developer keys for use with omniauth-fitbit and fitgem</li>
+<li><a href="http://railscasts.com/episodes/235-devise-and-omniauth-revised">OmniAuth and Devise Railscast</a>: Integrating OmniAuth, Devise, and Twitter</li>
+<li><a href="http://railscasts.com/episodes/360-facebook-authentication">Facebook Authentication with OmniAuth Railscast</a>: Setting up OmniAuth to work with Facebook</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

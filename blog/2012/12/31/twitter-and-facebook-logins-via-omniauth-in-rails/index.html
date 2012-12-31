@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Fitbit Logins via Omniauth in Rails - whazzing around</title>
+  <meta name="author" content="Zachery Moneypenny">
+
+  
+  <meta name="description" content="It all started with a comment and a pull request. I hadn&#8217;t put time into maintaining my fitbit gem reference app in quite awhile, and when I &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://whazzing.com/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="whazzing around" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8888483-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">whazzing around</a></h1>
+  
+    <h2>a thing on the internet</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:whazzing.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/presentations">Presentations</a></li>
+  <li><a href="/videos">Videos</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Fitbit Logins via Omniauth in Rails</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-31T10:54:00-06:00" pubdate data-updated="true">Dec 31<span>st</span>, 2012</time>
+        
+         | <a href="#disqus_thread" data-disqus-identifier="http://whazzing.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>It all started with a <a href="http://whazzing.com/blog/2012/03/20/becoming-the-finisher/#comment-743146618">comment</a> and a <a href="https://github.com/whazzmaster/fitgem-client/pull/4">pull request</a>.</p>
+
+<p>I hadn&#8217;t put time into maintaining my <a href="http://github.com/whazzmaster/fitgem">fitbit gem</a> <a href="http://www.fitbitclient.com">reference app</a> in quite awhile, and when I got a pull request to update it to the latest rails version I at first hesitated. After talking with some folks at <a href="http://www.bendyworks.com">my coworking space</a>, however, I decided to use some holiday downtime to pull in the changes and see if I could build on them to improve the quality of the site.</p>
+
+<p>At first I was horrified to learn that I&#8217;d stopped in mid-refactoring, and I realized it was no wonder that Marcel (the submitter) reported he&#8217;d had trouble getting certain tests to run. The first step was to delete whole directories of files and tests that no longer conformed to the current design of the site and ensure that the files that remained all contributed to that current design.</p>
+
+<p>I pulled down Marcel&#8217;s pull request and got to work merging it in, at which point I looked at the login code and got embarrassed again. The truth is, the <a href="http://github.com/whazzmaster/fitgem">fitgem</a> library wasn&#8217;t really built for managing oauth logins; instead it optimized for using a token/secret for a given user to fetch data from the API. Yes, you could use fitgem to facilitate an oauth login process, but it certainly wasn&#8217;t built with rails in mind and you had to roll your own controllers, views, and token and secret management.</p>
+
+<p>We already have a library that does that sort of thing: <a href="https://github.com/intridea/omniauth">OmniAuth</a> is a fantastic library for consuming <a href="https://github.com/intridea/omniauth/wiki/List-of-Strategies">pluggable login strategies</a>. I didn&#8217;t have to search long before I found a <a href="https://github.com/tkgospodinov/omniauth-fitbit">fitbit strategy for omniauth</a>, and I set to work integrating it into the reference app.</p>
+
+<p>Luckily I had been working a lot with OmniAuth lately, as I&#8217;d implemented logins via Facebook and Twitter in another project just the week before. As always I leaned heavily on Ryan Bates&#8217; excellent <a href="http://railscasts.com">Railscasts</a> in getting up to speed on how <a href="http://railscasts.com/episodes/235-devise-and-omniauth-revised">OmniAuth worked with Devise</a>, and specifically with Twitter and <a href="http://railscasts.com/episodes/360-facebook-authentication">Facebook</a>. &lt;small-plus&gt;Railscasts Pro ($9/month) has been totally worth it for me. The Pro episodes go into a lot of depth and I&#8217;ve learned a ton from them.&lt;/small-plug&gt;</p>
+
+<p>Using the omniauth-fitbit gem I was able to delete a lot of now-redundant code for signing into/up for the application. There were, however, a few hiccups along the way that I wanted to note:</p>
+
+<ul>
+<li>Unlike Twitter and Facebook, logging into Fitbit via omniauth-fitbit doesn&#8217;t allow devise to remember you from session to session, so you end having to re-login every time. I haven&#8217;t yet figured out why, but it may be something about how Fitbit conducts OAuth logins or it may be a configuration issue with omniauth-fitbit.</li>
+<li>Logging in via Fitbit is fine and dandy, but if you want to use the token/secret for the logged-in user to fetch data from the API through the fitgem interface you&#8217;ll need to store them. I just added fields to my user object:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>Add Oauth fields to User model </span><a href='https://github.com/whazzmaster/fitgem-client/blob/master/db/migrate/20121225193557_add_oauth_fields_to_users.rb'>_add_oauth_fields_to_users.rb </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">AddOauthFieldsToUsers</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">change</span>
+</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:oauth_token</span><span class="p">,</span> <span class="ss">:string</span>
+</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:oauth_secret</span><span class="p">,</span> <span class="ss">:string</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>I made some, ahem, unorthodox decisions that will have to refactored later. Chief among them was to add the FitbitClient to the User model:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>Access to FitbitClient through User model </span><a href='https://github.com/whazzmaster/fitgem-client/blob/master/app/models/user.rb'>user.rb </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Elided for conciseness</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">linked?</span>
+</span><span class='line'>    <span class="n">oauth_token</span><span class="o">.</span><span class="n">present?</span> <span class="o">&amp;&amp;</span> <span class="n">oauth_secret</span><span class="o">.</span><span class="n">present?</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">fitbit_data</span>
+</span><span class='line'>    <span class="k">raise</span> <span class="s2">&quot;Account is not linked with a Fitbit account&quot;</span> <span class="k">unless</span> <span class="n">linked?</span>
+</span><span class='line'>    <span class="vi">@client</span> <span class="o">||=</span> <span class="no">Fitgem</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span><span class='line'>                <span class="ss">:consumer_key</span> <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;FITBIT_CONSUMER_KEY&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'>                <span class="ss">:consumer_secret</span> <span class="o">=&gt;</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;FITBIT_CONSUMER_SECRET&quot;</span><span class="o">]</span><span class="p">,</span>
+</span><span class='line'>                <span class="ss">:token</span> <span class="o">=&gt;</span> <span class="n">oauth_token</span><span class="p">,</span>
+</span><span class='line'>                <span class="ss">:secret</span> <span class="o">=&gt;</span> <span class="n">oauth_secret</span><span class="p">,</span>
+</span><span class='line'>                <span class="ss">:user_id</span> <span class="o">=&gt;</span> <span class="n">uid</span>
+</span><span class='line'>              <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">has_fitbit_data?</span>
+</span><span class='line'>    <span class="o">!</span><span class="vi">@client</span><span class="o">.</span><span class="n">nil?</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Elided for conciseness</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Eventually we should use a better pattern for this, but for now it&#8217;s simplistic and anywhere you have a logged-in user in your application you will be able to call <code>fitbit_data</code> to get access to a configured FitbitClient instance.</p>
+
+<p>And with that we&#8217;re logging in via Fitbit and using the token/secret returned via omniuath-fitbit to fuel data retrieval from the Fitbit API through fitgem.</p>
+
+<h3>List of Resources</h3>
+
+<ul>
+<li><a href="https://github.com/intridea/omniauth">OmniAuth</a>: Base authentication library</li>
+<li><a href="https://github.com/tkgospodinov/omniauth-fitbit">omniauth-fitbit</a>: Fitbit-specific pluggable OmniAuth strategy</li>
+<li><a href="http://github.com/whazzmaster/fitgem">fitgem</a>: Fitbit API library</li>
+<li>Fitgem Reference Application (<a href="http://fitbitclient.com">app</a>|<a href="https://github.com/whazzmaster/fitgem-client">code</a>): An example application using omniauth-fitbit and fitgem</li>
+<li><a href="http://dev.fitbit.com">Fitbit.com Developer Site</a>: Manage your developer keys for use with omniauth-fitbit and fitgem</li>
+<li><a href="http://railscasts.com/episodes/235-devise-and-omniauth-revised">OmniAuth and Devise Railscast</a>: Integrating OmniAuth, Devise, and Twitter</li>
+<li><a href="http://railscasts.com/episodes/360-facebook-authentication">Facebook Authentication with OmniAuth Railscast</a>: Setting up OmniAuth to work with Facebook</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Zachery Moneypenny</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-31T10:54:00-06:00" pubdate data-updated="true">Dec 31<span>st</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/fitbit/'>fitbit</a>, <a class='category' href='/blog/categories/fitgem/'>fitgem</a>, <a class='category' href='/blog/categories/oauth/'>oauth</a>, <a class='category' href='/blog/categories/omniauth/'>omniauth</a>, <a class='category' href='/blog/categories/omniauth-fitbit/'>omniauth-fitbit</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whazzing.com/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails/" data-via="whazzmaster" data-counturl="http://whazzing.com/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/" title="Previous Post: I Seem To Be Getting Along Fine Without Facebook">&laquo; I Seem To Be Getting Along Fine Without Facebook</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+	<h1>About Me</h1>
+	<p>
+		I'm <b>Zachery Moneypenny</b>: a developer for <a href="http://payroll.intuit.com/">Intuit QuickBooks Payroll</a>,
+		Rubyist, Coffeescripter, Sasser, etc.  And hey, what's this?  Renewed C++ Vigor.
+	</p>
+	<p>
+		<a href="/about/">More...</a>
+	</p>	
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails/">Fitbit Logins via Omniauth in Rails</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem To Be Getting Along Fine Without Facebook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/27/madison-ruby-2012/">Madison Ruby 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/19/i-have-an-idea/">I Have an Idea</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/20/becoming-the-finisher/">Becoming the Finisher</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/whazzmaster">@whazzmaster</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'whazzmaster',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("whazzmaster", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/whazzmaster" class="twitter-follow-button" data-show-count="true">Follow @whazzmaster</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Zachery Moneypenny -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'whazzingcom';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://whazzing.com/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails/';
+        var disqus_url = 'http://whazzing.com/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
