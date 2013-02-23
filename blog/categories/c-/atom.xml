@@ -4,7 +4,7 @@
   <title><![CDATA[Category: c# | whazzing around]]></title>
   <link href="http://whazzing.com/blog/categories/c-/atom.xml" rel="self"/>
   <link href="http://whazzing.com/"/>
-  <updated>2013-02-23T13:34:38-06:00</updated>
+  <updated>2013-02-23T16:59:07-06:00</updated>
   <id>http://whazzing.com/</id>
   <author>
     <name><![CDATA[Zachery Moneypenny]]></name>
@@ -18,7 +18,7 @@
     <link href="http://whazzing.com/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/"/>
     <updated>2013-02-22T21:25:00-06:00</updated>
     <id>http://whazzing.com/blog/2013/02/22/responsive-wpf-applications-with-reactiveui</id>
-    <content type="html"><![CDATA[<p>Learn about my newfound love for the <a href="http://reactiveui.net/">ReactiveUI MVVM framework</a> and the <a href="http://mahapps.com/MahApps.Metro/">MahApps.Metro library</a> for easily creating great Metro UIs.</p>
+    <content type="html"><![CDATA[<p>Learn about my newfound love for the <a href="http://reactiveui.net/">ReactiveUI MVVM framework</a>.</p>
 
 <p>My day job is to wrangle 12 million lines of 20+ year-old C and C++ using a custom Win32-based UI library that was built in the mid-90s and never fundamentally improved. It does what it was designed to do really well (bind transactions to views, zoom between list items, the transactions they compose, and the reports on those transactions) but sometimes I idly wonder what's been going on in bleeding edge Windows app development in the interim.</p>
 
