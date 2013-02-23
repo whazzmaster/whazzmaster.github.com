@@ -10,7 +10,7 @@ categories:
 - c#
 - wpf
 ---
-Learn about my newfound love for the [ReactiveUI MVVM framework](http://reactiveui.net/) and the [MahApps.Metro library](http://mahapps.com/MahApps.Metro/) for easily creating great Metro UIs.
+Learn about my newfound love for the [ReactiveUI MVVM framework](http://reactiveui.net/).
 
 My day job is to wrangle 12 million lines of 20+ year-old C and C++ using a custom Win32-based UI library that was built in the mid-90s and never fundamentally improved. It does what it was designed to do really well (bind transactions to views, zoom between list items, the transactions they compose, and the reports on those transactions) but sometimes I idly wonder what's been going on in bleeding edge Windows app development in the interim.
 
