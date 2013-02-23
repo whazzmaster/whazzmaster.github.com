@@ -9,7 +9,7 @@
   <meta name="author" content="Zachery Moneypenny">
 
   
-  <meta name="description" content="I thought I&#8217;d jot down my current technical reading list. I tend not to read technical books straight through, but instead I pick up a few at a &hellip;">
+  <meta name="description" content="I&#8217;m happy to announce that the latest Fitbit API features have been exposed through the fitgem ruby library and released as v0.4.0. In addition &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,72 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/12/02/fitgem-v0-4-0/">Fitgem v0.4.0</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-02T00:00:00-06:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+        
+         | <a href="/blog/2011/12/02/fitgem-v0-4-0/#disqus_thread" data-disqus-identifier="http://whazzing.com/blog/2011/12/02/fitgem-v0-4-0/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/3144a7299b60fa16">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.4.0.</p>
+
+<p>In addition to the new features, I thoroughly documented the entire library API (<a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">available here</a>), added many more unit tests, refactored the subscriptions methods, and moved the oauth process documentation to the <a href="https://github.com/whazzmaster/fitgem/wiki/The-OAuth-Process">project wiki on github</a>.</p>
+
+<p><a href="https://github.com/whazzmaster/fitgem">Source</a> | <a href="http://rubygems.org/gems/fitgem">Gem</a> | <a href="https://github.com/whazzmaster/fitgem/issues">Issues</a> | <a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">Documentation</a></p>
+
+<h3>v0.4.0 changelog</h3>
+
+<ul>
+<li>Added YARD documentation to thoroughly document code</li>
+<li>DEPRECATED: <tt>Fitgem::Client#log_weight</tt> method, use <tt>Fitgem::Client#log_body_measurements</tt> instead.<br/>
+The new method allows you to log more than weight (bicep size, body fat %, etc.)</li>
+<li>Added <tt>Fitgem::FoodFormType</tt> to be used in calls to <tt>Fitgem::Client#create_food</tt></li>
+<li>Added <tt>Fitgem::Client#log_sleep</tt> to log sleep data to fitbit</li>
+<li>Added <tt>Fitgem::Client#delete_sleep_log</tt> to delete previously logged sleep data</li>
+<li>Added <tt>Fitgem::Client#activities</tt> method to get a list of all activities</li>
+<li>Added <tt>Fitgem::Client#activity_statistics</tt> method to get statistics for all logged activities</li>
+<li>Added to documentation of supported endpoints for <tt>Fitgem::Client#data_by_time_range</tt></li>
+<li>Added unit tests for parameter validation for many methods</li>
+<li>Overhauled notifications methods, including extensive documentation,
+unit tests, refactoring, and a couple of bug fixes.  These methods now
+return both the HTTP status code and the JSON response body.  See https://wiki.fitbit.com/display/API/Subscriptions-API
+for information on how to interpret each of the error codes.</li>
+<li>Added fitgem to travis-ci for continuous integration (http://travis-ci.org/#!/whazzmaster/fitgem)</li>
+<li>Added fitgem to rubydoc.info (http://rubydoc.info/github/whazzmaster/fitgem/master/frames)</li>
+<li>Updated README</li>
+<li>Moved OAuth documentation from the README to the <a href="https://github.com/whazzmaster/fitgem/wiki/The-OAuth-Process">fitgem wiki</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -660,6 +726,10 @@ assets
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF applications with ReactiveUI</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails/">Fitbit Logins via Omniauth in Rails</a>
       </li>
     
@@ -673,10 +743,6 @@ assets
     
       <li class="post">
         <a href="/blog/2012/08/19/i-have-an-idea/">I Have an Idea</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/03/20/becoming-the-finisher/">Becoming the Finisher</a>
       </li>
     
   </ul>
@@ -738,7 +804,7 @@ assets
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Zachery Moneypenny -
+  Copyright &copy; 2013 - Zachery Moneypenny -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

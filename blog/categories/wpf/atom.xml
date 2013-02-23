@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: wpf | whazzing around]]></title>
+  <link href="http://whazzing.com/blog/categories/wpf/atom.xml" rel="self"/>
+  <link href="http://whazzing.com/"/>
+  <updated>2013-02-23T13:34:38-06:00</updated>
+  <id>http://whazzing.com/</id>
+  <author>
+    <name><![CDATA[Zachery Moneypenny]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Responsive WPF applications with ReactiveUI]]></title>
+    <link href="http://whazzing.com/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/"/>
+    <updated>2013-02-22T21:25:00-06:00</updated>
+    <id>http://whazzing.com/blog/2013/02/22/responsive-wpf-applications-with-reactiveui</id>
+    <content type="html"><![CDATA[<p>Learn about my newfound love for the <a href="http://reactiveui.net/">ReactiveUI MVVM framework</a> and the <a href="http://mahapps.com/MahApps.Metro/">MahApps.Metro library</a> for easily creating great Metro UIs.</p>
+
+<p>My day job is to wrangle 12 million lines of 20+ year-old C and C++ using a custom Win32-based UI library that was built in the mid-90s and never fundamentally improved. It does what it was designed to do really well (bind transactions to views, zoom between list items, the transactions they compose, and the reports on those transactions) but sometimes I idly wonder what's been going on in bleeding edge Windows app development in the interim.</p>
+
+<p>Last week I downloaded and played around with <a href="http://windows.github.com/">GitHub's excellent Windows client</a>. I vaguely remembered <a href="https://github.com/blog/1151-designing-github-for-windows">a blog post</a> on the gear underlying the desktop app awhile back, and I was interested to see where it was at these days. You know you're a geek when you read the entire list of licenses in the About view to get a sense of the underlying technology.</p>
+
+<p>After looking around at the various .NET libraries involved, and reading <a href="https://github.com/blog/1127-github-for-windows">some follow-up</a> <a href="https://github.com/blog/1420-github-for-windows-recent-improvements">blog posts</a> I decided to <strong>build a front-end to a developer tool</strong> I whipped up for our developers and QA engineers at work.</p>
+
+<p>Essentially, in debug mode QuickBooks Payroll can talk to a variety of backend environments. Configuring the various endpoints involves editing several config files that are in different places depending on whether you have an installed build or a developer build. To make it easier to configure things I wrote a command-line tool that can tell you what environments you're currently configured to talk to, as well as list available environments and change the current environment. I built the command-line tool on top of a library that implemented all the core logic because I knew that I'd eventually want to build an easier-to-use GUI on top of it.</p>
+
+<p>So as a little weekend project I took inspiration from GitHub for Windows Metro/Modern visual design and a desire to look further into ReactiveUI's take on multi-threaded UI.</p>
+
+<p>Multi-threaded UI development typically has one sticking point; it's easy enough to define a lambda or function and set it up to run on a separate thread but one has to be very careful when moving the result of that lambda back onto the UI thread to display it. <strong>Reactive's</strong> secret sauce is to simplify this dangerous activity and deliver a true 'fire-and-forget' multi-thread solution.</p>
+
+<p>Thus far I've found that it's very easy to chain async commands AND provide a nice responsive user experience. In cases where you have certain application behaviors that are gated upon other actions completing the ReactiveUI framework makes it extremely simple.</p>
+
+<p>An example:</p>
+
+<ul>
+<li>App bootstraps.</li>
+<li>Check for environment definition updates.</li>
+<li>If updates are available; download and install updates.</li>
+<li>When updates are complete, or if no updates are available then validate current saved environment settings.</li>
+<li>If settings are invalid or missing show the special UI telling user to edit the app settings.</li>
+<li>If settings are valid then discover the current environment.</li>
+<li>Once the current environment has been determined; set the properties on the view model that are bound to the UI that describe the current environment.</li>
+</ul>
+
+
+<p>The state machine representing the above workflow was implemented with three View Models bound to one XAML MainWindow. The cleanest one is below, and I've commented how the commands to <strong>check for updates</strong> and <strong>download and install updates</strong> are implemented (I'm still working on tightening up the other two).</p>
+
+<p>I've included the entire file below because I think it's valuable to view the initialization of the commands and observers and their targets in context. This view model encapsulates all of the updater functionality and how the different states of updating are exposed to the UI.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>EnvironmentsUpdaterViewModel.cs </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.ComponentModel</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Reactive.Linq</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">Intuit.Payroll.Tools.SetPayrollEnvironment</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">ReactiveUI</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">ReactiveUI.Xaml</span><span class="p">;&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span><span class="k">namespace</span> <span class="nn">Intuit.Payroll.Tools.PayrollEnvironments</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">public</span> <span class="k">enum</span> <span class="n">UpdateState</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">Uninitialized</span><span class="p">,</span>      <span class="c1">// No action has been taken yet</span>
+</span><span class='line'>    <span class="n">CheckingForUpdates</span><span class="p">,</span> <span class="c1">// Checking the update source for possible updates</span>
+</span><span class='line'>    <span class="n">UpdateAvailable</span><span class="p">,</span>    <span class="c1">// An update is available for download</span>
+</span><span class='line'>    <span class="n">ApplyingUpdates</span><span class="p">,</span>    <span class="c1">// Currently downloading and installing updates</span>
+</span><span class='line'>    <span class="n">Completed</span>           <span class="c1">// Used when updates have completed or when no updates are available</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">EnvironmentsUpdaterViewModel</span> <span class="p">:</span> <span class="n">ReactiveObject</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">private</span> <span class="n">PayrollEnvironmentConfiguration</span> <span class="n">_EnvConfig</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">private</span> <span class="n">QuickBooksInformation</span> <span class="n">_LocalSettings</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="nf">EnvironmentsUpdaterViewModel</span><span class="p">(</span><span class="n">QuickBooksInformation</span> <span class="n">localInfo</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">_LocalSettings</span> <span class="p">=</span> <span class="n">localInfo</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">Status</span> <span class="p">=</span> <span class="n">_LocalSettings</span><span class="p">.</span><span class="n">IsValid</span> <span class="p">?</span> <span class="n">Properties</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">InitialUpdateMsg</span>
+</span><span class='line'>                     <span class="p">:</span> <span class="n">Properties</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">InvalidSettingsUpdaterMsg</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">UpdateState</span> <span class="p">=</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">Uninitialized</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">InitializeConfiguration</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Creating the EnvironmentsFileUpdater implicitly goes out to the update location</span>
+</span><span class='line'>        <span class="c1">// (likely on a local or VPN network share), so we want to make sure it&#39;s async.</span>
+</span><span class='line'>        <span class="n">CheckForUpdates</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveAsyncCommand</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">var</span> <span class="n">updaterFuture</span> <span class="p">=</span> <span class="n">CheckForUpdates</span><span class="p">.</span><span class="n">RegisterAsyncFunction</span><span class="p">(</span><span class="n">_</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="n">UpdateState</span> <span class="p">=</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">CheckingForUpdates</span><span class="p">;</span>
+</span><span class='line'>                <span class="k">return</span> <span class="k">new</span> <span class="nf">EnvironmentsFileUpdater</span><span class="p">(</span><span class="n">_EnvConfig</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">});</span>
+</span><span class='line'>        <span class="n">_Updater</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableAsPropertyHelper</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">EnvironmentsFileUpdater</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="n">updaterFuture</span><span class="p">,</span> <span class="n">_</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">raisePropertyChanged</span><span class="p">(</span><span class="s">&quot;Updater&quot;</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// When the updater has been created, initialized and set then check if any updates</span>
+</span><span class='line'>        <span class="c1">// are available on the update server.</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="n">ObservableForProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">x</span><span class="p">.</span><span class="n">Updater</span><span class="p">).</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="k">if</span> <span class="p">(</span><span class="n">Updater</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span><span class='line'>                <span class="p">{</span>
+</span><span class='line'>                    <span class="n">UpdateState</span> <span class="p">=</span> <span class="n">Updater</span><span class="p">.</span><span class="n">UpdateAvailable</span> <span class="p">?</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">UpdateAvailable</span> <span class="p">:</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">Completed</span><span class="p">;</span>
+</span><span class='line'>                    <span class="n">Status</span> <span class="p">=</span> <span class="n">Updater</span><span class="p">.</span><span class="n">UpdateAvailable</span> <span class="p">?</span> <span class="n">Properties</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">EnvironmentUpdatesAvailableMsg</span>
+</span><span class='line'>                                    <span class="p">:</span> <span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="n">Properties</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">CurrentEnvironmentMessage</span><span class="p">,</span> <span class="n">Updater</span><span class="p">.</span><span class="n">LatestVersion</span><span class="p">);</span>
+</span><span class='line'>                    <span class="c1">// If updates are available; download and install them</span>
+</span><span class='line'>                    <span class="k">if</span> <span class="p">(</span><span class="n">UpdateState</span> <span class="p">==</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">UpdateAvailable</span><span class="p">)</span>
+</span><span class='line'>                    <span class="p">{</span>
+</span><span class='line'>                        <span class="n">UpdateState</span> <span class="p">=</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">ApplyingUpdates</span><span class="p">;</span>
+</span><span class='line'>                        <span class="n">DownloadUpdates</span><span class="p">.</span><span class="n">Execute</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+</span><span class='line'>                    <span class="p">}</span>
+</span><span class='line'>                <span class="p">}</span>
+</span><span class='line'>            <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// After we download and apply updates, update the status and mark the workflow as completed.</span>
+</span><span class='line'>        <span class="n">DownloadUpdates</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveAsyncCommand</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">DownloadUpdates</span><span class="p">.</span><span class="n">RegisterAsyncAction</span><span class="p">(</span><span class="n">_</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="k">if</span> <span class="p">(</span><span class="n">Updater</span><span class="p">.</span><span class="n">UpdateToVersion</span><span class="p">(</span><span class="n">Updater</span><span class="p">.</span><span class="n">LatestVersion</span><span class="p">))</span>
+</span><span class='line'>                <span class="p">{</span>
+</span><span class='line'>                    <span class="n">Status</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="n">Properties</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">CurrentEnvironmentMessage</span><span class="p">,</span> <span class="n">Updater</span><span class="p">.</span><span class="n">LatestVersion</span><span class="p">);</span>
+</span><span class='line'>                <span class="p">}</span>
+</span><span class='line'>                <span class="k">else</span>
+</span><span class='line'>                <span class="p">{</span>
+</span><span class='line'>                    <span class="n">Status</span> <span class="p">=</span> <span class="n">Properties</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">EnvironmentUpdateErrorMsg</span><span class="p">;</span>
+</span><span class='line'>                <span class="p">}</span>
+</span><span class='line'>                <span class="n">UpdateState</span> <span class="p">=</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">Completed</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">});</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">private</span> <span class="k">void</span> <span class="nf">InitializeConfiguration</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">try</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">_EnvConfig</span> <span class="p">=</span> <span class="n">EnvironmentManager</span><span class="p">.</span><span class="n">GetEnvironmentConfiguration</span><span class="p">(</span><span class="n">_LocalSettings</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">_EnvConfig</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PayrollEnvironmentConfiguration</span> <span class="p">{</span> <span class="n">Version</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span>
+</span><span class='line'>                                                               <span class="n">UpdatesLocation</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span> <span class="p">};</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">private</span> <span class="n">ObservableAsPropertyHelper</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">EnvironmentsFileUpdater</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">_Updater</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">private</span> <span class="n">EnvironmentsFileUpdater</span> <span class="n">Updater</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_Updater</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">h1</span><span class="p">&gt;</span><span class="n">pragma</span> <span class="n">warning</span> <span class="n">disable</span> <span class="m">0649</span><span class="p">&lt;/</span><span class="n">h1</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span>    <span class="k">private</span> <span class="n">UpdateState</span> <span class="n">_UpdateState</span><span class="p">;</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">h1</span><span class="p">&gt;</span><span class="n">pragma</span> <span class="n">warning</span> <span class="n">restore</span> <span class="m">0649</span><span class="p">&lt;/</span><span class="n">h1</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span>    <span class="k">public</span> <span class="n">UpdateState</span> <span class="n">UpdateState</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_UpdateState</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>        <span class="k">set</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="n">RaiseAndSetIfChanged</span><span class="p">(</span><span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">h1</span><span class="p">&gt;</span><span class="n">pragma</span> <span class="n">warning</span> <span class="n">disable</span> <span class="m">0649</span><span class="p">&lt;/</span><span class="n">h1</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span>    <span class="k">private</span> <span class="kt">string</span> <span class="n">_Status</span><span class="p">;</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">h1</span><span class="p">&gt;</span><span class="n">pragma</span> <span class="n">warning</span> <span class="n">restore</span> <span class="m">0649</span><span class="p">&lt;/</span><span class="n">h1</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Status</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_Status</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>        <span class="k">set</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="n">RaiseAndSetIfChanged</span><span class="p">(</span><span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="n">ReactiveAsyncCommand</span> <span class="n">CheckForUpdates</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">protected</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">ReactiveAsyncCommand</span> <span class="n">DownloadUpdates</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">protected</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The data that the updater object fetches from is located on an intranet share, and so it was important to check for and apply updates asynchronously (especially if, like me, you're working over the VPN).</p>
+
+<p>I'm unsure at this point if it's ok that I'm updating the <code>UpdateState</code> property from within many of the lambdas. I feel that there's something risky going on there but everything seems to work fine for me as it is.</p>
+
+<p>I'll break down the two main uses of Reactive's async commands below. Note that I'm using the <code>UpdateState</code> property primarily outside of this class; the window binds certain elements' visibility to the state of the updater object, but only when the state has certain values.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Initialize the Check for Updates Command  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">CheckForUpdates</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveAsyncCommand</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+</span><span class='line'><span class="n">var</span> <span class="n">updaterFuture</span> <span class="p">=</span> <span class="n">CheckForUpdates</span><span class="p">.</span><span class="n">RegisterAsyncFunction</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;{</span>
+</span><span class='line'>    <span class="c1">// Set the current state</span>
+</span><span class='line'>    <span class="n">UpdateState</span> <span class="p">=</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">CheckingForUpdates</span><span class="p">;</span>
+</span><span class='line'>    <span class="c1">// The network access occurs in the updater constructor; this line is</span>
+</span><span class='line'>    <span class="c1">// why we want this to be done asynchronously</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">new</span> <span class="nf">EnvironmentsFileUpdater</span><span class="p">(</span><span class="n">_EnvConfig</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span><span class="c1">// Connect the future object to the helper object that backs the Updater property.</span>
+</span><span class='line'><span class="n">_Updater</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableAsPropertyHelper</span><span class="p">&lt;</span><span class="n">EnvironmentsFileUpdater</span><span class="p">&gt;(</span><span class="n">updaterFuture</span><span class="p">,</span> <span class="n">_</span> <span class="p">=&gt;</span> <span class="n">raisePropertyChanged</span><span class="p">(</span><span class="s">&quot;Updater&quot;</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>When the async function returns the new <code>EnvironmentsFileUpdater</code> instance and sets the backing field of the <code>Updater</code> property, I then lean on an Observable. Below you can see that I set it up such that when the <code>Updater</code> field changes we check whether an update is available and then either kick off the <code>DownloadUpdates</code> command or set the overall state to <code>UpdateState.Completed</code> to signal to the external listeners that the update process is complete.</p>
+
+<p>The <code>Status</code> property is the string value that's bound to the UI that updates the user as to what's happening in the update process.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Initialize the Updater Observer  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="c1">// When the updater has been created, initialized and set then check if any updates</span>
+</span><span class='line'><span class="c1">// are available on the update server.</span>
+</span><span class='line'><span class="k">this</span><span class="p">.</span><span class="n">ObservableForProperty</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Updater</span><span class="p">).</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">Updater</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">UpdateState</span> <span class="p">=</span> <span class="n">Updater</span><span class="p">.</span><span class="n">UpdateAvailable</span> <span class="p">?</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">UpdateAvailable</span> <span class="p">:</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">Completed</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">Status</span> <span class="p">=</span> <span class="n">Updater</span><span class="p">.</span><span class="n">UpdateAvailable</span> <span class="p">?</span> <span class="n">Properties</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">EnvironmentUpdatesAvailableMsg</span>
+</span><span class='line'>                        <span class="p">:</span> <span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="n">Properties</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">CurrentEnvironmentMessage</span><span class="p">,</span> <span class="n">Updater</span><span class="p">.</span><span class="n">LatestVersion</span><span class="p">);</span>
+</span><span class='line'>        <span class="c1">// If updates are available; download and install them</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">UpdateState</span> <span class="p">==</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">UpdateAvailable</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">UpdateState</span> <span class="p">=</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">ApplyingUpdates</span><span class="p">;</span>
+</span><span class='line'>            <span class="n">DownloadUpdates</span><span class="p">.</span><span class="n">Execute</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The <code>DownloadUpdates</code> command actually handles the work of downloading the latest environment definitions and installing them to the appropriate local storage mechanism. Again, it must reach out over the intranet and so it's best to make this action asynchronous.  Most of the code you see below is concerned with updating the UI-bound status value; line 5 is the key method.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Initialize the Download Updates Command  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">DownloadUpdates</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveAsyncCommand</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+</span><span class='line'><span class="n">DownloadUpdates</span><span class="p">.</span><span class="n">RegisterAsyncAction</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;{</span>
+</span><span class='line'>    <span class="c1">// Update to the latest version of the environment definitions</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">Updater</span><span class="p">.</span><span class="n">UpdateToVersion</span><span class="p">(</span><span class="n">Updater</span><span class="p">.</span><span class="n">LatestVersion</span><span class="p">))</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Status</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="n">Properties</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">CurrentEnvironmentMessage</span><span class="p">,</span> <span class="n">Updater</span><span class="p">.</span><span class="n">LatestVersion</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Status</span> <span class="p">=</span> <span class="n">Properties</span><span class="p">.</span><span class="n">Resources</span><span class="p">.</span><span class="n">EnvironmentUpdateErrorMsg</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="c1">// Finalize the state of the update process</span>
+</span><span class='line'>    <span class="n">UpdateState</span> <span class="p">=</span> <span class="n">UpdateState</span><span class="p">.</span><span class="n">Completed</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I hope this has been a decent non-trivial example on how to use the ReactiveUI framework to build WPF view models; if it looks interesting have a look at the <a href="http://reactiveui.net/welcome/pdf">great docs</a> that have been synthesized from <a href="http://blog.paulbetts.org/">Paul Betts blog post examples</a> of different usages of the framework.</p>
+]]></content>
+  </entry>
+  
+</feed>
