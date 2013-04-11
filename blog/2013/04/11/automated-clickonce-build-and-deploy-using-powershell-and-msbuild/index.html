@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Automated ClickOnce Build and Deploy using Powershell and MSBuild - whazzing around</title>
+  <meta name="author" content="Zachery Moneypenny">
+
+  
+  <meta name="description" content="As I was nearing completion on the WPF app I described in an earlier post I became focused on how to easily build and deploy it to our developer and &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://whazzing.com/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="whazzing around" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-8888483-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">whazzing around</a></h1>
+  
+    <h2>a thing on the internet</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:whazzing.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/presentations">Presentations</a></li>
+  <li><a href="/videos">Videos</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Automated ClickOnce Build and Deploy Using Powershell and MSBuild</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-11T12:14:00-05:00" pubdate data-updated="true">Apr 11<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread" data-disqus-identifier="http://whazzing.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>As I was nearing completion on the <a href="">WPF app I described in an earlier post</a> I became focused on how to easily build and deploy it to our developer and QA team. I had decided to use <a href="http://en.wikipedia.org/wiki/ClickOnce">ClickOnce</a> to facilitate easy updates, but I wanted to make it dead-simple to build and deploy the installer/updater to the network share so that anyone could easily contribute to the tool development.</p>
+
+<p>At the time I&#8217;d been doing quite a bit of Powershell work and coincidentally I stumbled on the <a href="https://github.com/blog/1271-how-we-ship-github-for-windows">Github post</a> on how they build the <a href="http://windows.github.com/">Github for Windows application</a>. In that post I saw a tantalizing screen capture of their build/deploy script output and knew at once that I must have it.</p>
+
+<p style="text-align:center;"><img src="/images/github-for-windows.png" height="183" width="673"/></p>
+
+
+<p>From that image I reverse engineered the steps my script needed to take, and then I had to figure out how to implement each step. It&#8217;s worth noting that <strong>ClickOnce setting manipulation and deployment is not available via scripting or MSBuild commands</strong>. The code below includes my solution to these issues.</p>
+
+<h2>Build &amp; Deployment Script Output</h2>
+
+<p>Below is the output of my own build and deployment script. A couple of important notes:</p>
+
+<ul>
+<li>My application consisted of one .exe file and one .dll file corresponding to two projects in a single Visual Studio solution. In the example code below I&#8217;ve replaced my .exe project name with <strong>Executable</strong> and my .dll project name with <strong>Library</strong>. The ClickOnce settings are maintained in the Executable project file.</li>
+<li><strong>I should note that a decision I made is that the installer version should always be the same as the executable version.</strong> For a small tool like this it makes things simpler than to version the installer independently of the application it installs.</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>PS C:\dev\tools\Executable> .\Deploy.ps1
+</span><span class='line'> Checking prerequisites...
+</span><span class='line'> Checking out the AssemblyInfo.cs files for version increment...
+</span><span class='line'> Cleaning the build directory...
+</span><span class='line'> Building Executable application...
+</span><span class='line'> Building ClickOnce installer...
+</span><span class='line'> Deploying updates to network server...
+</span><span class='line'> Comitting version increments to Perforce...
+</span><span class='line'>PS C:\dev\tools\Executable></span></code></pre></td></tr></table></div></figure>
+
+
+<p>The script is written to be very silent unless an error occurs, so below is a description in more detail. The script does the following:</p>
+
+<ul>
+<li>Checks to ensure that the current user has prerequisites installed (in this case perforce).</li>
+<li>Checks out the appropriate files needed to increment the version number of the DLL, executable, and ClickOnce installer.</li>
+<li>Cleans the build directory.</li>
+<li>Builds the DLL and executable.</li>
+<li>Retrieves the (file) version of the newly-build executable.</li>
+<li>Forces (hacks) the executable version into the executable&#8217;s .csproj definition of the ClickOnce settings.</li>
+<li>Builds the installer with the new version and the just-built binaries.</li>
+<li>Copies all of the installer files to the appropriate network fileserver.</li>
+<li>Commit the changes to the AssemblyInfo and csproj files (i.e., the version changes).</li>
+</ul>
+
+
+<h2>Build &amp; Deployment Script</h2>
+
+<p><strong>Please note</strong> that I&#8217;ve changed a few things about the script below:</p>
+
+<ul>
+<li>Perforce repository paths</li>
+<li>Network deployment paths</li>
+<li>Binary names</li>
+</ul>
+
+
+<p>I&#8217;ve included the entire (sanitized) script below, and after it describe in greater detail the interesting parts.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Write-Host "Tool Build/Deployment Script"
+</span><span class='line'>
+</span><span class='line'>$outputPrefix = " "
+</span><span class='line'>$msbuild = "C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.EXE"
+</span><span class='line'>
+</span><span class='line'>Write-Host $outputPrefix"Checking prerequisites..."
+</span><span class='line'>
+</span><span class='line'>$p4Output = p4
+</span><span class='line'>if($p4Output -match "'p4' is not recognized as an internal or external command")
+</span><span class='line'>{
+</span><span class='line'>  Write-Error "Cannot find p4.exe in your PATH."
+</span><span class='line'>  Exit
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>Write-Host $outputPrefix"Checking out the AssemblyInfo.cs files for version increment..."
+</span><span class='line'>p4 edit //my/project/tool/path/Library/Properties/AssemblyInfo.cs | Out-Null
+</span><span class='line'>p4 edit //my/project/tool/path/Executable/Properties/AssemblyInfo.cs | Out-Null
+</span><span class='line'>p4 edit //my/project/tool/path/Executable/Executable.csproj | Out-Null
+</span><span class='line'>
+</span><span class='line'>Write-Host $outputPrefix"Cleaning the build directory..."
+</span><span class='line'>Invoke-Expression "$msbuild Executable\Executable.csproj /p:Configuration=Release /p:Platform=AnyCPU /t:clean /v:quiet /nologo"
+</span><span class='line'>
+</span><span class='line'>Write-Host $outputPrefix"Building Executable application..."
+</span><span class='line'>Invoke-Expression "$msbuild Executable\Executable.csproj /p:Configuration=Release /p:Platform=AnyCPU /t:build /v:quiet /nologo"
+</span><span class='line'>
+</span><span class='line'>$newExeVersion = Get-ChildItem .\Executable\bin\Release\Executable.exe | Select-Object -ExpandProperty VersionInfo | % { $_.FileVersion }
+</span><span class='line'>$newLibVersion = Get-ChildItem .\Executable\bin\Release\Library.dll | Select-Object -ExpandProperty VersionInfo | % { $_.FileVersion }
+</span><span class='line'>
+</span><span class='line'>Write-Host $outputPrefix"Building ClickOnce installer..."
+</span><span class='line'>#
+</span><span class='line'># Because the ClickOnce target doesn't automatically update or sync the application version
+</span><span class='line'># with the assembly version of the EXE, we need to grab the version off of the built assembly
+</span><span class='line'># and update the Executable.csproj file with the new application version.
+</span><span class='line'>#
+</span><span class='line'>$ProjectXml = [xml](Get-Content Executable\Executable.csproj)
+</span><span class='line'>$ns = new-object Xml.XmlNamespaceManager $ProjectXml.NameTable
+</span><span class='line'>$ns.AddNamespace('msb', 'http://schemas.microsoft.com/developer/msbuild/2003')
+</span><span class='line'>$AppVersion = $ProjectXml.SelectSingleNode("//msb:Project/msb:PropertyGroup/msb:ApplicationVersion", $ns)
+</span><span class='line'>$AppVersion.InnerText = $newExeVersion
+</span><span class='line'>$TargetPath = Resolve-Path "Executable\Executable.csproj"
+</span><span class='line'>$ProjectXml.Save($TargetPath)
+</span><span class='line'>
+</span><span class='line'>Invoke-Expression "$msbuild Executable\Executable.csproj /p:Configuration=Release /p:Platform=AnyCPU /t:publish /v:quiet /nologo"
+</span><span class='line'>
+</span><span class='line'>Write-Host $outputPrefix"Deploying updates to network server..."
+</span><span class='line'>$LocalInstallerPath = (Resolve-Path "Executable\bin\Release\app.publish").ToString() + "\*"
+</span><span class='line'>$RemoteInstallerPath = "\\network\path\Executable\DesktopClient\"
+</span><span class='line'>Copy-Item $LocalInstallerPath $RemoteInstallerPath -Recurse -Force
+</span><span class='line'>
+</span><span class='line'>Write-Host $outputPrefix"Committing version increments to Perforce..."
+</span><span class='line'>p4 submit -d "Updating Executable ClickOnce Installer to version $newExeVersion" //my/project/tool/path/Executable/Executable.csproj | Out-Null
+</span><span class='line'>p4 submit -d "Updating Library to version $newLibVersion" //my/project/tool/path/Library/Properties/AssemblyInfo.cs | Out-Null
+</span><span class='line'>p4 submit -d "Updating Executable to version $newExeVersion" //my/project/tool/path/Executable/Properties/AssemblyInfo.cs | Out-Null</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Automated Version Increment</h3>
+
+<p>You may have noticed that I don&#8217;t take any specific action to manage the version numbers of Executable.exe and Library.dll even though I explicitly check out the AssemblyInfo.cs files.</p>
+
+<p>The <a href="http://msbuildextensionpack.codeplex.com/">MSBuild Extension Pack</a> is an open-source collection of MSBuild targets that make things like version management much easier. After adding the extensions to a relative path to my projects I just needed to add the following near the bottom of <code>Executable.csproj</code>.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;PropertyGroup&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;ExtensionTasksPath&gt;</span>..\contrib\ExtensionPack\4.0.6.0\<span class="nt">&lt;/ExtensionTasksPath&gt;</span>
+</span><span class='line'><span class="nt">&lt;/PropertyGroup&gt;</span>
+</span><span class='line'><span class="nt">&lt;Import</span> <span class="na">Project=</span><span class="s">&quot;$(ExtensionTasksPath)MSBuild.ExtensionPack.VersionNumber.targets&quot;</span>
+</span><span class='line'>  <span class="na">Condition=</span><span class="s">&quot; &#39;$(BuildingInsideVisualStudio)&#39;!=&#39;true&#39; &quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;PropertyGroup</span> <span class="na">Condition=</span><span class="s">&quot; &#39;$(BuildingInsideVisualStudio)&#39;!=&#39;true&#39; &quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;AssemblyMajorVersion&gt;</span>1<span class="nt">&lt;/AssemblyMajorVersion&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;AssemblyMinorVersion&gt;</span>3<span class="nt">&lt;/AssemblyMinorVersion&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;AssemblyFileMajorVersion&gt;</span>1<span class="nt">&lt;/AssemblyFileMajorVersion&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;AssemblyFileMinorVersion&gt;</span>3<span class="nt">&lt;/AssemblyFileMinorVersion&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;AssemblyInfoSpec&gt;</span>Properties\AssemblyInfo.cs<span class="nt">&lt;/AssemblyInfoSpec&gt;</span>
+</span><span class='line'><span class="nt">&lt;/PropertyGroup&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A couple things to note here:</p>
+
+<ul>
+<li>The <code>Condition</code> attributes on lines 5 &amp; 6 ensure that the version increments only occur when I run the <code>Deploy.ps1</code> script, as opposed to every time I build through the Visual Studio IDE.</li>
+<li>I am holding the Major and Minor versions fixed via lines 7-10, so that only the Build and Revision numbers are auto-incremented.</li>
+</ul>
+
+
+<p>The above code is used <strong>both</strong> in <code>Executable.csproj</code> and <code>Library.csproj</code>, so that both the executable and the library have their version numbers managed. In doing this I can also change the major/minor versions of the executable and library independently.</p>
+
+<h3>Propagate Exe Version to ClickOnce Installer</h3>
+
+<p>As I mentioned earlier, I wanted to keep the installer version the same as the executable version. The problem was that there&#8217;s no way to manage the ClickOnce settings via MSBuild or other API. Lines 35-41 of the script are the, ahem, workaround that I devised.</p>
+
+<p>Since we want to set the ClickOnce installer version to the same as the executable, we must first fetch the executable version:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$newExeVersion = Get-ChildItem .\Executable\bin\Release\Executable.exe | Select-Object -ExpandProperty VersionInfo | % { $_.FileVersion }</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This line uses the <a href="http://technet.microsoft.com/en-us/library/ee176927.aspx">powerful object piping capabilities in Powershell</a> to fetch the FileVersion property from the assembly itself.</p>
+
+<p>Once we have the executable version, we must then somehow insert it into <code>Executable.csproj</code> where the ClickOnce settings are defined. For reference, the associated XML from the csproj file is:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;PropertyGroup&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;ApplicationVersion&gt;</span>1.3.0407.01<span class="nt">&lt;/ApplicationVersion&gt;</span>
+</span><span class='line'><span class="nt">&lt;/PropertyGroup&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lines 35-41 read in the csproj file as XML and extracts the <code>ApplicationVersion</code> node. It then replaces the contents of that node with the assembly version we read from the executable and saves the entire XML structure back to the csproj file.</p>
+
+<h2>Summary</h2>
+
+<p>Through automating the build and deployment process I&#8217;ve learned a lot about Powershell and MSBuild and I&#8217;ll definitely be improving this in the future. The great thing about this particular combination of tools is that Powershell provides the glue that holds together the powerful build automation (and logging) that MSBuild offers.</p>
+
+<p>While it&#8217;s unfortunate that ClickOnce has so many manual aspects to it (and I think I know why) the ease of XML manipulation and file processing from Powershell make it easy to work around ClickOnce&#8217;s lack of automation.</p>
+
+<p>In the future I may look at moving the install/upgrade process to the <a href="http://www.wixtoolset.org/">WiX Toolset</a> as it&#8217;s much more configurable and automatable. ClickOnce was really a stop-gap solution because it&#8217;s for an internal tool and simple enough for my bootstrapping needs.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Zachery Moneypenny</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-11T12:14:00-05:00" pubdate data-updated="true">Apr 11<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/automation/'>automation</a>, <a class='category' href='/blog/categories/build/'>build</a>, <a class='category' href='/blog/categories/c-/'>c#</a>, <a class='category' href='/blog/categories/deployment/'>deployment</a>, <a class='category' href='/blog/categories/msbuild/'>msbuild</a>, <a class='category' href='/blog/categories/powershell/'>powershell</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whazzing.com/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/" data-via="whazzmaster" data-counturl="http://whazzing.com/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/" title="Previous Post: Responsive WPF applications with ReactiveUI">&laquo; Responsive WPF applications with ReactiveUI</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+	<h1>About Me</h1>
+	<p>
+		I'm <b>Zachery Moneypenny</b>: a developer for <a href="http://payroll.intuit.com/">Intuit QuickBooks Payroll</a>,
+		Rubyist, Coffeescripter, Sasser, etc.  And hey, what's this?  Renewed C++ Vigor.
+	</p>
+	<p>
+		<a href="/about/">More...</a>
+	</p>	
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy using Powershell and MSBuild</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF applications with ReactiveUI</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails/">Fitbit Logins via Omniauth in Rails</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem To Be Getting Along Fine Without Facebook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/27/madison-ruby-2012/">Madison Ruby 2012</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/whazzmaster">@whazzmaster</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'whazzmaster',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("whazzmaster", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/whazzmaster" class="twitter-follow-button" data-show-count="true">Follow @whazzmaster</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Zachery Moneypenny -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'whazzingcom';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://whazzing.com/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/';
+        var disqus_url = 'http://whazzing.com/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
