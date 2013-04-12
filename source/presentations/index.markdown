@@ -6,11 +6,42 @@ comments: false
 sharing: true
 footer: true
 ---
-### Backbone.js, Rails 3.2 and Handlebars
 
-You've written many Todo apps in your days of learning various Javascript frameworks, but what happens when you select a framework, sit down, and start implementing your masterpiece App of the Future? You very quickly run into things that aren't covered in the Todo App tutorial.
+<div class="presentation">
+  <h2 class="presentation-title">
+    <a href="backbonejs-rails32-and-handlebars.html">Backbone.js, Rails 3.2, and Handlebars</a>
+    <span class="presentation-metadata">
+      Presented at:
+      <ul>
+        <li>
+          <a href="http://www.meetup.com/Mad-Railers/">Mad-Railers Meetup</a> - March, 2012
+        </li>
+        <li>
+          <a href="http://www.meetup.com/MadisonJS/">MadJS Meetup</a> - 12 March, 2012
+        </li>
+      </ul>
+    </span>
+  </h2>
+  This talk introduces some solutions to challenges that surface when you start digging
+  just beneath the surface of Todo applications using Backbone.js and Rails.  I discuss some
+  gems and javascript libraries that make bootstrapping apps easier, help with model
+  relationships, and end with some tips on getting started with Backbone.
+</div>
 
-This talk focuses on getting from the tutorial to a working application. It includes tips on rubygems and javascript libraries you can use, as well as tips on designing your application from scratch. It also has a very special appearance by the Handlebars template library.
-
-<script src="http://speakerdeck.com/embed/4f503a11ef3df4001f006dfb.js"></script>
+<div class="presentation">
+  <h2 class="presentation-title">
+    <a href="environmental-studies-101.html">Environmental Studies 101</a>
+    <span class="presentation-metadata">
+      Presented at:
+      <ul>
+        <li><a href="http://www.meetup.com/Mad-Railers/">Mad-Railers Meetup</a>  - 25 Feb, 2013</li>
+      </ul>
+    </span>
+  </h2>
+  This talk discusses some Rails-related gems and tools I was using in Winter 2013
+  that I felt were huge productivity boosts. The slides discuss a variety of different
+  developer-focused enhancements that make debugging and logging easier, along with
+  a UI enhancement library thrown in for good measure because I loved how configurable
+  it was.
+</div>
 
