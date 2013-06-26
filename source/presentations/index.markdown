@@ -9,23 +9,15 @@ footer: true
 
 <div class="presentation">
   <h2 class="presentation-title">
-    <a href="backbonejs-rails32-and-handlebars.html">Backbone.js, Rails 3.2, and Handlebars</a>
+    <a href="oauth-and-rails.html">OAuth and Rails</a>
     <span class="presentation-metadata">
       Presented at:
       <ul>
-        <li>
-          <a href="http://www.meetup.com/Mad-Railers/">Mad-Railers Meetup</a> - March, 2012
-        </li>
-        <li>
-          <a href="http://www.meetup.com/MadisonJS/">MadJS Meetup</a> - 12 March, 2012
-        </li>
+        <li><a href="http://www.meetup.com/Mad-Railers/">Mad-Railers Meetup</a>  - 24 Jun, 2013</li>
       </ul>
     </span>
   </h2>
-  This talk introduces some solutions to challenges that surface when you start digging
-  just beneath the surface of Todo applications using Backbone.js and Rails.  I discuss some
-  gems and javascript libraries that make bootstrapping apps easier, help with model
-  relationships, and end with some tips on getting started with Backbone.
+  Starting with a Rails 3.2 application with <a href="https://github.com/plataformatec/devise">Devise</a> installed and configured, learn how easy it is to add OAuth login support using the <a href="https://github.com/intridea/omniauth">omniauth</a> gem ecosystem. Includes sample code to use as a sandbox.
 </div>
 
 <div class="presentation">
@@ -45,3 +37,23 @@ footer: true
   it was.
 </div>
 
+<div class="presentation">
+  <h2 class="presentation-title">
+    <a href="backbonejs-rails32-and-handlebars.html">Backbone.js, Rails 3.2, and Handlebars</a>
+    <span class="presentation-metadata">
+      Presented at:
+      <ul>
+        <li>
+          <a href="http://www.meetup.com/Mad-Railers/">Mad-Railers Meetup</a> - March, 2012
+        </li>
+        <li>
+          <a href="http://www.meetup.com/MadisonJS/">MadJS Meetup</a> - 12 March, 2012
+        </li>
+      </ul>
+    </span>
+  </h2>
+  This talk introduces some solutions to challenges that surface when you start digging
+  just beneath the surface of Todo applications using Backbone.js and Rails.  I discuss some
+  gems and javascript libraries that make bootstrapping apps easier, help with model
+  relationships, and end with some tips on getting started with Backbone.
+</div>
