@@ -49,6 +49,14 @@
         <lastmod>2012-11-26T20:15:04-06:00</lastmod>
     </url>
     <url>
+        <loc>http://whazzing.com/blog/2012/03/31/markdown-with-net/</loc>
+        <lastmod>2012-11-26T20:15:04-06:00</lastmod>
+    </url>
+    <url>
+        <loc>http://whazzing.com/blog/2012/05/12/when-i-close-my-fist/</loc>
+        <lastmod>2012-11-26T20:15:04-06:00</lastmod>
+    </url>
+    <url>
         <loc>http://whazzing.com/blog/2012/08/19/i-have-an-idea/</loc>
         <lastmod>2012-11-26T20:15:04-06:00</lastmod>
     </url>
@@ -102,7 +110,11 @@
     </url>
     <url>
         <loc>http://whazzing.com/presentations/</loc>
-        <lastmod>2013-04-12T16:48:43-05:00</lastmod>
+        <lastmod>2013-06-26T10:34:05-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://whazzing.com/presentations/oauth-and-rails.html</loc>
+        <lastmod>2013-06-26T10:31:25-05:00</lastmod>
     </url>
     <url>
         <loc>http://whazzing.com/videos/be-yourself.html</loc>
