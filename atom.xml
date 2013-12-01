@@ -4,7 +4,7 @@
   <title><![CDATA[whazzing around]]></title>
   <link href="http://whazzing.com/atom.xml" rel="self"/>
   <link href="http://whazzing.com/"/>
-  <updated>2013-06-26T10:36:57-05:00</updated>
+  <updated>2013-12-01T17:11:12-06:00</updated>
   <id>http://whazzing.com/</id>
   <author>
     <name><![CDATA[Zachery Moneypenny]]></name>
@@ -14,25 +14,148 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Automated ClickOnce Build and Deploy using Powershell and MSBuild]]></title>
+    <title type="html"><![CDATA[Catching Up]]></title>
+    <link href="http://whazzing.com/blog/2013/12/01/catching-up/"/>
+    <updated>2013-12-01T08:45:00-06:00</updated>
+    <id>http://whazzing.com/blog/2013/12/01/catching-up</id>
+    <content type="html"><![CDATA[<p>Since this summer I&rsquo;ve been quite busy both at work and on local projects and
+figured it was time to reflect and look towards the upcoming year.</p>
+
+<h2>2013: The Year in Review</h2>
+
+<p>Let&rsquo;s talk about work stuff and home stuff.</p>
+
+<h3>@Work</h3>
+
+<p>At work, I started 2013 as primarily a <strong>C/C++ developer</strong> working on connecting
+our flagship accounting application to connected services.
+It was extremely interesting, if sometimes frustrating, to enhance a 15-year-old
+code base to talk to a new generation of more nimble web services. Throughout
+the summer we stamped out bugs and responded to early feedback from testers, as
+well as worked on merges out to all the major versions of the code base. At the
+same time we started prepping documentation and transition materials to ease the
+difficulty in transferring knowledge of a 20+ year-old
+code base to a new team.</p>
+
+<p>Starting in August I began splitting my time between my desktop development
+tasks and my new group. I&rsquo;m now working on
+<a href="http://paychecks.intuit.com">ViewMyPaycheck</a>, which is built on
+<a href="http://backbonejs.org">Backbone.js</a>/HTML5/<a href="http://sass-lang.com">SCSS</a> for
+the front-end and Java Web Services on the backend. It&rsquo;s really my first time
+developing in Java, and so I&rsquo;m learning new things every day.</p>
+
+<p>Luckily, due to my extensive tours of different Javascript frameworks in my
+Rails projects at home I was able to come strong out of the gate in working
+on the Backbone code. My experience with Sass allowed me to not only pick
+up our styles quickly, but re-architect them to ease the evolution and
+concurrent development by multiple engineers.</p>
+
+<p>There was some tech debt wrapped up in the new code base but my excellent team
+has thus far done a great job of prioritizing refactoring and
+build/infrastructure improvements against the race to be feature-complete for
+the 2013 tax season.</p>
+
+<h3>@Home</h3>
+
+<p>The holiday season of 2012 was quite a disaster in my family&rsquo;s annual gift
+exchange. Each adult had to submit a list of things they wanted to my mom, and
+then she drew the names for <strong>two</strong> different exchanges: one for our immediate
+family and one for our extended family. When Xmas Morning arrived we found a
+ridiculous outcome: <em>since most everyone had gone for the &lsquo;easy&rsquo; thing on their
+target&rsquo;s gift list, most people received two of one thing on their list</em>.</p>
+
+<p>It spoke to an age-old problem of holiday gift-giving where, when grandparents,
+aunts, uncles, etc. all clamor for a list of things a kid wants, they have no
+way of ensuring that someone else didn&rsquo;t already buy something on the list.
+So in the ensuing winter, when I just so happened to have a lot of time on my
+hands due to the birth of my son, I set out to create a web app to solve the
+problem.</p>
+
+<p>I finished a pre-alpha version of <a href="http://giftr.us">giftr.us</a> in the spring and
+my family used it for birthdays throughout the spring and summer. It&rsquo;s in a
+pretty good spot right now, but I wasn&rsquo;t able to finish the formal <strong>Gift
+Exchange</strong> functionality for the 2013 Holidays.</p>
+
+<p>This year I also began a journey to help out the
+<a href="http://madrailers.org">MadRailers Meetup</a> which culminated in me taking over
+the organization in the fall. I&rsquo;ve been a member of the meetup since roundabouts
+shortly after I moved back from California, and it&rsquo;s enabled me to meet a ton
+of great folks in the Madison tech community. I started out volunteering for
+talks in the spring, and in the summer I started suggesting other topics or
+speakers.  By the time of the
+<a href="http://madisonruby.com">Madison Ruby conference</a> we&rsquo;d laid out a great schedule
+of speakers throughout the end of the year, and I&rsquo;m really pleased with where
+the group is headed and our new space: the newly-renovated
+<a href="http://mynewlibrary.org/">Madison Public Library</a>!</p>
+
+<h2>2014: The Year to Come</h2>
+
+<h3>@Work</h3>
+
+<p>I&rsquo;m incredibly excited to continue the modernization our Backbone app. A short
+list of the changes and/or improvements I&rsquo;m planning:</p>
+
+<ul>
+<li>Move to using DevOps-provided <a href="http://www.vagrantup.com/">Vagrant</a> images on
+developer machines to more closely align development and deployment
+environments.</li>
+<li>Move our static site code (HTML/CSS/JS/Images) to a CDN to improve load times.</li>
+<li>Move from <a href="http://ant.apache.org/">Ant</a> to <a href="http://gruntjs.com">Grunt</a> to
+build the site (transpile SCSS, run JS tests, etc.)</li>
+<li>Move from base Backbone.js to <a href="http://marionettejs.com/">Marionette.js</a> to
+get better support for composing layouts, regions, and views.</li>
+<li>Router changes to better control the fetching of data.</li>
+</ul>
+
+
+<p>These are all technical in nature; we&rsquo;re obviously going to parallelize these
+more architectural and platform-ish changes alongside the improvements to the
+user workflow and enhancements based on user feedback. My ultimate goal is to
+get the app into a continuously deployable build process. We&rsquo;re a ways off right
+now but it&rsquo;s definitely doable.</p>
+
+<h3>@Home</h3>
+
+<p>I&rsquo;m going to continue to develop Giftr&rsquo;s gift exchange functionality, and I may
+explore either turning it into a single-page app via Ember.js or similar, or
+I may dip my toe into mobile native development. I&rsquo;m incredibly interested
+in learning more about <a href="http://xamarin.com/">Xamarin</a> for doing cross-platform
+mobile development.</p>
+
+<p>I&rsquo;m also going to continue to develop more programming for MadRailers. In 2014
+we&rsquo;d love to explore joint-sponsored meetups with other local tech groups,
+as well as move towards more diversity in our speaker lineups and membership.
+We&rsquo;ll be sponsoring more Newbie Nights as well as itermittent Hack Days.</p>
+
+<h2>And Sooooo&hellip;</h2>
+
+<p>It&rsquo;s been a pretty good year! I was somehow able to maintain <em>some</em> level of
+progress on my own development projects even with the birth of the first kid,
+and I&rsquo;m getting out of my comfort zone in my professional development which
+is refreshing. Here&rsquo;s to continuing to learn and improve in 2014!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Automated ClickOnce Build and Deploy Using Powershell and MSBuild]]></title>
     <link href="http://whazzing.com/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/"/>
     <updated>2013-04-11T12:14:00-05:00</updated>
     <id>http://whazzing.com/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild</id>
     <content type="html"><![CDATA[<p>As I was nearing completion on the <a href="">WPF app I described in an earlier post</a> I became focused on how to easily build and deploy it to our developer and QA team. I had decided to use <a href="http://en.wikipedia.org/wiki/ClickOnce">ClickOnce</a> to facilitate easy updates, but I wanted to make it dead-simple to build and deploy the installer/updater to the network share so that anyone could easily contribute to the tool development.</p>
 
-<p>At the time I&#8217;d been doing quite a bit of Powershell work and coincidentally I stumbled on the <a href="https://github.com/blog/1271-how-we-ship-github-for-windows">Github post</a> on how they build the <a href="http://windows.github.com/">Github for Windows application</a>. In that post I saw a tantalizing screen capture of their build/deploy script output and knew at once that I must have it.</p>
+<p>At the time I&rsquo;d been doing quite a bit of Powershell work and coincidentally I stumbled on the <a href="https://github.com/blog/1271-how-we-ship-github-for-windows">Github post</a> on how they build the <a href="http://windows.github.com/">Github for Windows application</a>. In that post I saw a tantalizing screen capture of their build/deploy script output and knew at once that I must have it.</p>
 
 <p style="text-align:center;"><img src="http://whazzing.com/images/github-for-windows.png" height="183" width="673"/></p>
 
 
-<p>From that image I reverse engineered the steps my script needed to take, and then I had to figure out how to implement each step. It&#8217;s worth noting that <strong>ClickOnce setting manipulation and deployment is not available via scripting or MSBuild commands</strong>. The code below includes my solution to these issues.</p>
+<p>From that image I reverse engineered the steps my script needed to take, and then I had to figure out how to implement each step. It&rsquo;s worth noting that <strong>ClickOnce setting manipulation and deployment is not available via scripting or MSBuild commands</strong>. The code below includes my solution to these issues.</p>
 
 <h2>Build &amp; Deployment Script Output</h2>
 
 <p>Below is the output of my own build and deployment script. A couple of important notes:</p>
 
 <ul>
-<li>My application consisted of one .exe file and one .dll file corresponding to two projects in a single Visual Studio solution. In the example code below I&#8217;ve replaced my .exe project name with <strong>Executable</strong> and my .dll project name with <strong>Library</strong>. The ClickOnce settings are maintained in the Executable project file.</li>
+<li>My application consisted of one .exe file and one .dll file corresponding to two projects in a single Visual Studio solution. In the example code below I&rsquo;ve replaced my .exe project name with <strong>Executable</strong> and my .dll project name with <strong>Library</strong>. The ClickOnce settings are maintained in the Executable project file.</li>
 <li><strong>I should note that a decision I made is that the installer version should always be the same as the executable version.</strong> For a small tool like this it makes things simpler than to version the installer independently of the application it installs.</li>
 </ul>
 
@@ -65,7 +188,7 @@
 <li>Cleans the build directory.</li>
 <li>Builds the DLL and executable.</li>
 <li>Retrieves the (file) version of the newly-build executable.</li>
-<li>Forces (hacks) the executable version into the executable&#8217;s .csproj definition of the ClickOnce settings.</li>
+<li>Forces (hacks) the executable version into the executable&rsquo;s .csproj definition of the ClickOnce settings.</li>
 <li>Builds the installer with the new version and the just-built binaries.</li>
 <li>Copies all of the installer files to the appropriate network fileserver.</li>
 <li>Commit the changes to the AssemblyInfo and csproj files (i.e., the version changes).</li>
@@ -74,7 +197,7 @@
 
 <h2>Build &amp; Deployment Script</h2>
 
-<p><strong>Please note</strong> that I&#8217;ve changed a few things about the script below:</p>
+<p><strong>Please note</strong> that I&rsquo;ve changed a few things about the script below:</p>
 
 <ul>
 <li>Perforce repository paths</li>
@@ -83,7 +206,7 @@
 </ul>
 
 
-<p>I&#8217;ve included the entire (sanitized) script below, and after it describe in greater detail the interesting parts.</p>
+<p>I&rsquo;ve included the entire (sanitized) script below, and after it describe in greater detail the interesting parts.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -195,11 +318,11 @@
 
 <h3>Automated Version Increment</h3>
 
-<p>You may have noticed that I don&#8217;t take any specific action to manage the version numbers of Executable.exe and Library.dll even though I explicitly check out the AssemblyInfo.cs files.</p>
+<p>You may have noticed that I don&rsquo;t take any specific action to manage the version numbers of Executable.exe and Library.dll even though I explicitly check out the AssemblyInfo.cs files.</p>
 
 <p>The <a href="http://msbuildextensionpack.codeplex.com/">MSBuild Extension Pack</a> is an open-source collection of MSBuild targets that make things like version management much easier. After adding the extensions to a relative path to my projects I just needed to add the following near the bottom of <code>Executable.csproj</code>.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -238,7 +361,7 @@
 
 <h3>Propagate Exe Version to ClickOnce Installer</h3>
 
-<p>As I mentioned earlier, I wanted to keep the installer version the same as the executable version. The problem was that there&#8217;s no way to manage the ClickOnce settings via MSBuild or other API. Lines 35-41 of the script are the, ahem, workaround that I devised.</p>
+<p>As I mentioned earlier, I wanted to keep the installer version the same as the executable version. The problem was that there&rsquo;s no way to manage the ClickOnce settings via MSBuild or other API. Lines 35-41 of the script are the, ahem, workaround that I devised.</p>
 
 <p>Since we want to set the ClickOnce installer version to the same as the executable, we must first fetch the executable version:</p>
 
@@ -250,7 +373,7 @@
 
 <p>Once we have the executable version, we must then somehow insert it into <code>Executable.csproj</code> where the ClickOnce settings are defined. For reference, the associated XML from the csproj file is:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;PropertyGroup&gt;</span>
@@ -263,34 +386,34 @@
 
 <h2>Summary</h2>
 
-<p>Through automating the build and deployment process I&#8217;ve learned a lot about Powershell and MSBuild and I&#8217;ll definitely be improving this in the future. The great thing about this particular combination of tools is that Powershell provides the glue that holds together the powerful build automation (and logging) that MSBuild offers.</p>
+<p>Through automating the build and deployment process I&rsquo;ve learned a lot about Powershell and MSBuild and I&rsquo;ll definitely be improving this in the future. The great thing about this particular combination of tools is that Powershell provides the glue that holds together the powerful build automation (and logging) that MSBuild offers.</p>
 
-<p>While it&#8217;s unfortunate that ClickOnce has so many manual aspects to it (and I think I know why) the ease of XML manipulation and file processing from Powershell make it easy to work around ClickOnce&#8217;s lack of automation.</p>
+<p>While it&rsquo;s unfortunate that ClickOnce has so many manual aspects to it (and I think I know why) the ease of XML manipulation and file processing from Powershell make it easy to work around ClickOnce&rsquo;s lack of automation.</p>
 
-<p>In the future I may look at moving the install/upgrade process to the <a href="http://www.wixtoolset.org/">WiX Toolset</a> as it&#8217;s much more configurable and automatable. ClickOnce was really a stop-gap solution because it&#8217;s for an internal tool and simple enough for my bootstrapping needs.</p>
+<p>In the future I may look at moving the install/upgrade process to the <a href="http://www.wixtoolset.org/">WiX Toolset</a> as it&rsquo;s much more configurable and automatable. ClickOnce was really a stop-gap solution because it&rsquo;s for an internal tool and simple enough for my bootstrapping needs.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Responsive WPF applications with ReactiveUI]]></title>
+    <title type="html"><![CDATA[Responsive WPF Applications With ReactiveUI]]></title>
     <link href="http://whazzing.com/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/"/>
     <updated>2013-02-22T21:25:00-06:00</updated>
     <id>http://whazzing.com/blog/2013/02/22/responsive-wpf-applications-with-reactiveui</id>
     <content type="html"><![CDATA[<p>Learn about my newfound love for the <a href="http://reactiveui.net/">ReactiveUI MVVM framework</a>.</p>
 
-<p>My day job is to wrangle 12 million lines of 20+ year-old C and C++ using a custom Win32-based UI library that was built in the mid-90s and never fundamentally improved. It does what it was designed to do really well (bind transactions to views, zoom between list items, the transactions they compose, and the reports on those transactions) but sometimes I idly wonder what&#8217;s been going on in bleeding edge Windows app development in the interim.</p>
+<p>My day job is to wrangle 12 million lines of 20+ year-old C and C++ using a custom Win32-based UI library that was built in the mid-90s and never fundamentally improved. It does what it was designed to do really well (bind transactions to views, zoom between list items, the transactions they compose, and the reports on those transactions) but sometimes I idly wonder what&rsquo;s been going on in bleeding edge Windows app development in the interim.</p>
 
-<p>Last week I downloaded and played around with <a href="http://windows.github.com/">GitHub&#8217;s excellent Windows client</a>. I vaguely remembered <a href="https://github.com/blog/1151-designing-github-for-windows">a blog post</a> on the gear underlying the desktop app awhile back, and I was interested to see where it was at these days. You know you&#8217;re a geek when you read the entire list of licenses in the About view to get a sense of the underlying technology.</p>
+<p>Last week I downloaded and played around with <a href="http://windows.github.com/">GitHub&rsquo;s excellent Windows client</a>. I vaguely remembered <a href="https://github.com/blog/1151-designing-github-for-windows">a blog post</a> on the gear underlying the desktop app awhile back, and I was interested to see where it was at these days. You know you&rsquo;re a geek when you read the entire list of licenses in the About view to get a sense of the underlying technology.</p>
 
 <p>After looking around at the various .NET libraries involved, and reading <a href="https://github.com/blog/1127-github-for-windows">some follow-up</a> <a href="https://github.com/blog/1420-github-for-windows-recent-improvements">blog posts</a> I decided to <strong>build a front-end to a developer tool</strong> I whipped up for our developers and QA engineers at work.</p>
 
-<p>Essentially, in debug mode QuickBooks Payroll can talk to a variety of backend environments. Configuring the various endpoints involves editing several config files that are in different places depending on whether you have an installed build or a developer build. To make it easier to configure things I wrote a command-line tool that can tell you what environments you&#8217;re currently configured to talk to, as well as list available environments and change the current environment. I built the command-line tool on top of a library that implemented all the core logic because I knew that I&#8217;d eventually want to build an easier-to-use GUI on top of it.</p>
+<p>Essentially, in debug mode QuickBooks Payroll can talk to a variety of backend environments. Configuring the various endpoints involves editing several config files that are in different places depending on whether you have an installed build or a developer build. To make it easier to configure things I wrote a command-line tool that can tell you what environments you&rsquo;re currently configured to talk to, as well as list available environments and change the current environment. I built the command-line tool on top of a library that implemented all the core logic because I knew that I&rsquo;d eventually want to build an easier-to-use GUI on top of it.</p>
 
-<p>So as a little weekend project I took inspiration from GitHub for Windows Metro/Modern visual design and a desire to look further into ReactiveUI&#8217;s take on multi-threaded UI.</p>
+<p>So as a little weekend project I took inspiration from GitHub for Windows Metro/Modern visual design and a desire to look further into ReactiveUI&rsquo;s take on multi-threaded UI.</p>
 
-<p>Multi-threaded UI development typically has one sticking point; it&#8217;s easy enough to define a lambda or function and set it up to run on a separate thread but one has to be very careful when moving the result of that lambda back onto the UI thread to display it. <strong>Reactive&#8217;s</strong> secret sauce is to simplify this dangerous activity and deliver a true &#8216;fire-and-forget&#8217; multi-thread solution.</p>
+<p>Multi-threaded UI development typically has one sticking point; it&rsquo;s easy enough to define a lambda or function and set it up to run on a separate thread but one has to be very careful when moving the result of that lambda back onto the UI thread to display it. <strong>Reactive&rsquo;s</strong> secret sauce is to simplify this dangerous activity and deliver a true &lsquo;fire-and-forget&rsquo; multi-thread solution.</p>
 
-<p>Thus far I&#8217;ve found that it&#8217;s very easy to chain async commands AND provide a nice responsive user experience. In cases where you have certain application behaviors that are gated upon other actions completing the ReactiveUI framework makes it extremely simple.</p>
+<p>Thus far I&rsquo;ve found that it&rsquo;s very easy to chain async commands AND provide a nice responsive user experience. In cases where you have certain application behaviors that are gated upon other actions completing the ReactiveUI framework makes it extremely simple.</p>
 
 <p>An example:</p>
 
@@ -305,12 +428,12 @@
 </ul>
 
 
-<p>The state machine representing the above workflow was implemented with three View Models bound to one XAML MainWindow. The cleanest one is below, and I&#8217;ve commented how the commands to <strong>check for updates</strong> and <strong>download and install updates</strong> are implemented (I&#8217;m still working on tightening up the other two).</p>
+<p>The state machine representing the above workflow was implemented with three View Models bound to one XAML MainWindow. The cleanest one is below, and I&rsquo;ve commented how the commands to <strong>check for updates</strong> and <strong>download and install updates</strong> are implemented (I&rsquo;m still working on tightening up the other two).</p>
 
-<p>I&#8217;ve included the entire file below because I think it&#8217;s valuable to view the initialization of the commands and observers and their targets in context. This view model encapsulates all of the updater functionality and how the different states of updating are exposed to the UI.</p>
+<p>I&rsquo;ve included the entire file below because I think it&rsquo;s valuable to view the initialization of the commands and observers and their targets in context. This view model encapsulates all of the updater functionality and how the different states of updating are exposed to the UI.</p>
 
 <figure class='code'><figcaption><span>EnvironmentsUpdaterViewModel.cs </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -557,14 +680,14 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The data that the updater object fetches from is located on an intranet share, and so it was important to check for and apply updates asynchronously (especially if, like me, you&#8217;re working over the VPN).</p>
+<p>The data that the updater object fetches from is located on an intranet share, and so it was important to check for and apply updates asynchronously (especially if, like me, you&rsquo;re working over the VPN).</p>
 
-<p>I&#8217;m unsure at this point if it&#8217;s ok that I&#8217;m updating the <code>UpdateState</code> property from within many of the lambdas. I feel that there&#8217;s something risky going on there but everything seems to work fine for me as it is.</p>
+<p>I&rsquo;m unsure at this point if it&rsquo;s ok that I&rsquo;m updating the <code>UpdateState</code> property from within many of the lambdas. I feel that there&rsquo;s something risky going on there but everything seems to work fine for me as it is.</p>
 
-<p>I&#8217;ll break down the two main uses of Reactive&#8217;s async commands below. Note that I&#8217;m using the <code>UpdateState</code> property primarily outside of this class; the window binds certain elements&#8217; visibility to the state of the updater object, but only when the state has certain values.</p>
+<p>I&rsquo;ll break down the two main uses of Reactive&rsquo;s async commands below. Note that I&rsquo;m using the <code>UpdateState</code> property primarily outside of this class; the window binds certain elements&#8217; visibility to the state of the updater object, but only when the state has certain values.</p>
 
-<figure class='code'><figcaption><span>Initialize the Check for Updates Command  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Initialize the Check for Updates Command </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -591,10 +714,10 @@
 
 <p>When the async function returns the new <code>EnvironmentsFileUpdater</code> instance and sets the backing field of the <code>Updater</code> property, I then lean on an Observable. Below you can see that I set it up such that when the <code>Updater</code> field changes we check whether an update is available and then either kick off the <code>DownloadUpdates</code> command or set the overall state to <code>UpdateState.Completed</code> to signal to the external listeners that the update process is complete.</p>
 
-<p>The <code>Status</code> property is the string value that&#8217;s bound to the UI that updates the user as to what&#8217;s happening in the update process.</p>
+<p>The <code>Status</code> property is the string value that&rsquo;s bound to the UI that updates the user as to what&rsquo;s happening in the update process.</p>
 
-<figure class='code'><figcaption><span>Initialize the Updater Observer  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Initialize the Updater Observer </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -631,10 +754,10 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The <code>DownloadUpdates</code> command actually handles the work of downloading the latest environment definitions and installing them to the appropriate local storage mechanism. Again, it must reach out over the intranet and so it&#8217;s best to make this action asynchronous.  Most of the code you see below is concerned with updating the UI-bound status value; line 5 is the key method.</p>
+<p>The <code>DownloadUpdates</code> command actually handles the work of downloading the latest environment definitions and installing them to the appropriate local storage mechanism. Again, it must reach out over the intranet and so it&rsquo;s best to make this action asynchronous.  Most of the code you see below is concerned with updating the UI-bound status value; line 5 is the key method.</p>
 
-<figure class='code'><figcaption><span>Initialize the Download Updates Command  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Initialize the Download Updates Command </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -678,25 +801,25 @@
     <id>http://whazzing.com/blog/2012/12/31/twitter-and-facebook-logins-via-omniauth-in-rails</id>
     <content type="html"><![CDATA[<p>It all started with a <a href="http://whazzing.com/blog/2012/03/20/becoming-the-finisher/#comment-743146618">comment</a> and a <a href="https://github.com/whazzmaster/fitgem-client/pull/4">pull request</a>.</p>
 
-<p>I hadn&#8217;t put time into maintaining my <a href="http://github.com/whazzmaster/fitgem">fitbit gem</a> <a href="http://www.fitbitclient.com">reference app</a> in quite awhile, and when I got a pull request to update it to the latest rails version I at first hesitated. After talking with some folks at <a href="http://www.bendyworks.com">my coworking space</a>, however, I decided to use some holiday downtime to pull in the changes and see if I could build on them to improve the quality of the site.</p>
+<p>I hadn&rsquo;t put time into maintaining my <a href="http://github.com/whazzmaster/fitgem">fitbit gem</a> <a href="http://www.fitbitclient.com">reference app</a> in quite awhile, and when I got a pull request to update it to the latest rails version I at first hesitated. After talking with some folks at <a href="http://www.bendyworks.com">my coworking space</a>, however, I decided to use some holiday downtime to pull in the changes and see if I could build on them to improve the quality of the site.</p>
 
-<p>At first I was horrified to learn that I&#8217;d stopped in mid-refactoring and I realized it was no wonder that Marcel (the submitter) reported he&#8217;d had trouble getting tests to run. The first step was to delete whole directories of files and tests that no longer conformed to the current design of the site and ensure that the files that remained all contributed to that design.</p>
+<p>At first I was horrified to learn that I&rsquo;d stopped in mid-refactoring and I realized it was no wonder that Marcel (the submitter) reported he&rsquo;d had trouble getting tests to run. The first step was to delete whole directories of files and tests that no longer conformed to the current design of the site and ensure that the files that remained all contributed to that design.</p>
 
-<p>I grabbed Marcel&#8217;s pull request and got to work merging it in, at which point I looked at the login code and got embarrassed again. The truth is, the <a href="http://github.com/whazzmaster/fitgem">fitgem</a> library wasn&#8217;t really built for managing oauth logins; instead it is optimized for using a token/secret for a given user to fetch data from the API. Yes, you could use fitgem to facilitate an oauth login process, but it certainly wasn&#8217;t built with rails in mind and you had to roll your own controllers, views, and token and secret management.</p>
+<p>I grabbed Marcel&rsquo;s pull request and got to work merging it in, at which point I looked at the login code and got embarrassed again. The truth is, the <a href="http://github.com/whazzmaster/fitgem">fitgem</a> library wasn&rsquo;t really built for managing oauth logins; instead it is optimized for using a token/secret for a given user to fetch data from the API. Yes, you could use fitgem to facilitate an oauth login process, but it certainly wasn&rsquo;t built with rails in mind and you had to roll your own controllers, views, and token and secret management.</p>
 
-<p>The thing is, we already have a library that does that sort of thing: <a href="https://github.com/intridea/omniauth">OmniAuth</a> is a fantastic library for consuming <a href="https://github.com/intridea/omniauth/wiki/List-of-Strategies">pluggable login strategies</a>. I didn&#8217;t have to search long before I found a <a href="https://github.com/tkgospodinov/omniauth-fitbit">fitbit strategy for omniauth</a>, and I set to work integrating it into the reference app.</p>
+<p>The thing is, we already have a library that does that sort of thing: <a href="https://github.com/intridea/omniauth">OmniAuth</a> is a fantastic library for consuming <a href="https://github.com/intridea/omniauth/wiki/List-of-Strategies">pluggable login strategies</a>. I didn&rsquo;t have to search long before I found a <a href="https://github.com/tkgospodinov/omniauth-fitbit">fitbit strategy for omniauth</a>, and I set to work integrating it into the reference app.</p>
 
-<p>Luckily I had been working a lot with OmniAuth lately, as I&#8217;d implemented logins via Facebook and Twitter in another project just the week before. As always I leaned heavily on Ryan Bates&#8217; excellent <a href="http://railscasts.com">Railscasts</a> in getting up to speed on how <a href="http://railscasts.com/episodes/235-devise-and-omniauth-revised">OmniAuth worked with Devise</a>, and specifically with Twitter and <a href="http://railscasts.com/episodes/360-facebook-authentication">Facebook</a>. &lt;small-plug&gt;Railscasts Pro ($9/month) has been totally worth it for me. The Pro episodes go into a lot of depth and I&#8217;ve learned a ton from them.&lt;/small-plug&gt;</p>
+<p>Luckily I had been working a lot with OmniAuth lately, as I&rsquo;d implemented logins via Facebook and Twitter in another project just the week before. As always I leaned heavily on Ryan Bates&#8217; excellent <a href="http://railscasts.com">Railscasts</a> in getting up to speed on how <a href="http://railscasts.com/episodes/235-devise-and-omniauth-revised">OmniAuth worked with Devise</a>, and specifically with Twitter and <a href="http://railscasts.com/episodes/360-facebook-authentication">Facebook</a>. &lt;small-plug&gt;Railscasts Pro ($9/month) has been totally worth it for me. The Pro episodes go into a lot of depth and I&rsquo;ve learned a ton from them.&lt;/small-plug&gt;</p>
 
 <p>Using the omniauth-fitbit gem I was able to delete a lot of now-redundant code for signing into/up for the application. There were, however, a few hiccups along the way that I wanted to note:</p>
 
 <ul>
-<li>Unlike Twitter and Facebook, logging into Fitbit via omniauth-fitbit doesn&#8217;t allow devise to remember you from session to session, so you end having to re-login every time. I haven&#8217;t yet figured out why but it may be something about how Fitbit conducts OAuth logins or it may be a configuration issue with omniauth-fitbit.</li>
-<li>Logging in via Fitbit is fine and dandy, but if you want to use the token/secret for the logged-in user to fetch data from the API through the fitgem interface you&#8217;ll need to store them. I just added fields to my user object:</li>
+<li>Unlike Twitter and Facebook, logging into Fitbit via omniauth-fitbit doesn&rsquo;t allow devise to remember you from session to session, so you end having to re-login every time. I haven&rsquo;t yet figured out why but it may be something about how Fitbit conducts OAuth logins or it may be a configuration issue with omniauth-fitbit.</li>
+<li>Logging in via Fitbit is fine and dandy, but if you want to use the token/secret for the logged-in user to fetch data from the API through the fitgem interface you&rsquo;ll need to store them. I just added fields to my user object:</li>
 </ul>
 
 
-<figure class='code'><figcaption><span>Add Oauth fields to User model </span><a href='https://github.com/whazzmaster/fitgem-client/blob/master/db/migrate/20121225193557_add_oauth_fields_to_users.rb'>_add_oauth_fields_to_users.rb </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Add Oauth fields to User model</span><a href='https://github.com/whazzmaster/fitgem-client/blob/master/db/migrate/20121225193557_add_oauth_fields_to_users.rb'>_add_oauth_fields_to_users.rb </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -716,7 +839,7 @@
 </ul>
 
 
-<figure class='code'><figcaption><span>Access to FitbitClient through User model </span><a href='https://github.com/whazzmaster/fitgem-client/blob/master/app/models/user.rb'>user.rb </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Access to FitbitClient through User model</span><a href='https://github.com/whazzmaster/fitgem-client/blob/master/app/models/user.rb'>user.rb </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -771,9 +894,9 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Eventually I should use a better pattern for this, but for now it&#8217;s simplistic and anywhere you have a logged-in user in your application you will be able to call <code>fitbit_data</code> to get access to a configured FitbitClient instance.</p>
+<p>Eventually I should use a better pattern for this, but for now it&rsquo;s simplistic and anywhere you have a logged-in user in your application you will be able to call <code>fitbit_data</code> to get access to a configured FitbitClient instance.</p>
 
-<p>And with that we&#8217;re logging in via Fitbit and using the token/secret returned via omniuath-fitbit to fuel data retrieval from the Fitbit API through fitgem.</p>
+<p>And with that we&rsquo;re logging in via Fitbit and using the token/secret returned via omniuath-fitbit to fuel data retrieval from the Fitbit API through fitgem.</p>
 
 <h3>List of Resources</h3>
 
@@ -791,17 +914,17 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[I Seem To Be Getting Along Fine Without Facebook]]></title>
+    <title type="html"><![CDATA[I Seem to Be Getting Along Fine Without Facebook]]></title>
     <link href="http://whazzing.com/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/"/>
     <updated>2012-11-26T20:24:00-06:00</updated>
     <id>http://whazzing.com/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook</id>
-    <content type="html"><![CDATA[<p>I&#8217;m trying <strong>really</strong> hard to not read Hacker News these days, as the contrarian argument-for-argument&#8217;s-sake nature of the comments tends to enrage me, but one of the more mystifying memes that seems to persist down in the Comments Dungeon is that the social contract of the United States of America requires you to be on Facebook.</p>
+    <content type="html"><![CDATA[<p>I&rsquo;m trying <strong>really</strong> hard to not read Hacker News these days, as the contrarian argument-for-argument&rsquo;s-sake nature of the comments tends to enrage me, but one of the more mystifying memes that seems to persist down in the Comments Dungeon is that the social contract of the United States of America requires you to be on Facebook.</p>
 
-<p>In each thread where the topic appears there&#8217;s someone that says &#8220;I wish I didn&#8217;t have to have a Facebook account but unfortunately it&#8217;s required.&#8221;  Someone responds and notes that no, <strong>it&#8217;s not required</strong>, and all they have to do is delete their account.  That (sensible) response is then responded to a million times with the now-ubiquitous oath: to be a fully-fledged member of a social group in 2012 requires one to be on Facebook.  And to that I restate the obvious: no, it really isn&#8217;t.</p>
+<p>In each thread where the topic appears there&rsquo;s someone that says &ldquo;I wish I didn&rsquo;t have to have a Facebook account but unfortunately it&rsquo;s required.&rdquo;  Someone responds and notes that no, <strong>it&rsquo;s not required</strong>, and all they have to do is delete their account.  That (sensible) response is then responded to a million times with the now-ubiquitous oath: to be a fully-fledged member of a social group in 2012 requires one to be on Facebook.  And to that I restate the obvious: no, it really isn&rsquo;t.</p>
 
-<p>How many devices do you use on a daily basis? Phones, laptops, tablets, desktops, kiosks, and more.  There exists a whole world outside of Facebook and all you have to do is grasp it.  I prefer phone calls or coffee with friends over email but it&#8217;ll do in a pinch.  I share my photos through Flickr and Twitter (depending on whether they came from my DSLR or iPhone).  I blog at a skrillion different venues.  People know where to find me online and IRL, and I&#8217;m confident that within my social circle I won&#8217;t be left off some invite just because I&#8217;m not on Facebook.  My friends are my friends&#8211; we enjoy each others&#8217; company!  What I found when I deleted my Facebook account was that none of my friends really used it for anything meaningful.  My wall was eternally filled with high school people I hadn&#8217;t seen/talked to/cared about in a decade, and extended family that I didn&#8217;t talk to much anyways.</p>
+<p>How many devices do you use on a daily basis? Phones, laptops, tablets, desktops, kiosks, and more.  There exists a whole world outside of Facebook and all you have to do is grasp it.  I prefer phone calls or coffee with friends over email but it&rsquo;ll do in a pinch.  I share my photos through Flickr and Twitter (depending on whether they came from my DSLR or iPhone).  I blog at a skrillion different venues.  People know where to find me online and IRL, and I&rsquo;m confident that within my social circle I won&rsquo;t be left off some invite just because I&rsquo;m not on Facebook.  My friends are my friends&mdash; we enjoy each others&#8217; company!  What I found when I deleted my Facebook account was that none of my friends really used it for anything meaningful.  My wall was eternally filled with high school people I hadn&rsquo;t seen/talked to/cared about in a decade, and extended family that I didn&rsquo;t talk to much anyways.</p>
 
-<p>In the last 5 years I&#8217;ve taken two significant (though very First-World-Problemy) steps: I got rid of my car, and I deleted my Facebook account.  Interestingly enough <strong>at the time I did each of these things</strong> I was much more uncomfortable and worried about having no car than that I would miss some crucial social interaction by leaving Facebook.</p>
+<p>In the last 5 years I&rsquo;ve taken two significant (though very First-World-Problemy) steps: I got rid of my car, and I deleted my Facebook account.  Interestingly enough <strong>at the time I did each of these things</strong> I was much more uncomfortable and worried about having no car than that I would miss some crucial social interaction by leaving Facebook.</p>
 
 <p>When I left Facebook there was much more a sense of relief than anything else; <strong>I suggest you try it</strong>.</p>
 ]]></content>
@@ -816,8 +939,8 @@
 
 <p><a href="http://www.flickr.com/photos/whazzmaster/7869056820/"><img class="right" src="http://farm9.staticflickr.com/8282/7869056820_aacfe79e4b_n.jpg" width="320" height="213" title="Greg Tarnoff at Madison Ruby 2012" ></a></p>
 
-<p>I&#8217;m working off the conference hangover. Email catchup, priotizing
-tasks, etc. took up my time this morning, but I couldn&#8217;t let Madison&#8217;s
+<p>I&rsquo;m working off the conference hangover. Email catchup, priotizing
+tasks, etc. took up my time this morning, but I couldn&rsquo;t let Madison&rsquo;s
 premier software conference fade without writing down some thoughts.</p>
 
 <p>Firstly: much love to Jim and Jen Remsik as well as all the volunteers,
@@ -829,24 +952,24 @@ of inspiration and the finer points of immigration law, the organizers
 found a way to communicate technical content while advancing the
 community in other areas as well.</p>
 
-<p>First up was the <a href="http://madisonruby2012.sched.org/event/45828a0ad9ccd45642acbeeefabd9aa1">Design Eye for the Dev Guy or Gal</a> workshop on Thursday.  I misunderstood the focus, which is mostly because I signed up for it before a comprehensive description had been published.  <a href="https://twitter.com/pengwynn">Wynn Netherland</a> did a great job laying out the finer points of HTML5, Sass, Compass, and more.  I had expected the workshop to range more towards the philosophy of web design, rather than a technical how-to around using the tools.  Even so, however, I learned a lot about Compass.  My previous aversion stemmed from when compass and blueprint were sold as a boxed set, but I&#8217;m definitely going to check it out on the next major project.</p>
+<p>First up was the <a href="http://madisonruby2012.sched.org/event/45828a0ad9ccd45642acbeeefabd9aa1">Design Eye for the Dev Guy or Gal</a> workshop on Thursday.  I misunderstood the focus, which is mostly because I signed up for it before a comprehensive description had been published.  <a href="https://twitter.com/pengwynn">Wynn Netherland</a> did a great job laying out the finer points of HTML5, Sass, Compass, and more.  I had expected the workshop to range more towards the philosophy of web design, rather than a technical how-to around using the tools.  Even so, however, I learned a lot about Compass.  My previous aversion stemmed from when compass and blueprint were sold as a boxed set, but I&rsquo;m definitely going to check it out on the next major project.</p>
 
 <p>Highlight: In a discussion about the ubiquity of Twitter Bootstrap Wynn
 asked how many folks were using Octopress for their dev blog, and then
-added, &#8220;You know, you don&#8217;t HAVE to use the default style&#8230; you can add
-some color in there.&#8221; <em>sheepish grin</em></p>
+added, &ldquo;You know, you don&rsquo;t HAVE to use the default style&hellip; you can add
+some color in there.&rdquo; <em>sheepish grin</em></p>
 
 <p>I may have had a little too much fun at the Github-sponsored drinkup on
 Thursday evening; waking up and riding my bike downtown at 7am was a
 monumental task.</p>
 
-<p>Friday&#8217;s talks were very interesting, especially the <a href="http://madisonruby2012.sched.org/event/b50ba5ffa1585b870253b928b153d74f"><strong>Anti-Opression 101</strong></a>
+<p>Friday&rsquo;s talks were very interesting, especially the <a href="http://madisonruby2012.sched.org/event/b50ba5ffa1585b870253b928b153d74f"><strong>Anti-Opression 101</strong></a>
 talk by Lindsey Bieda and Steve Klabnik.  Though I had seen it a
-previous <a href="http://www.meetup.com/Mad-Railers/">Mad-Railers meetup</a> I also enjoyed <a href="https://twitter.com/rathboma">Matthew Rathbone</a>&#8217;s talk
+previous <a href="http://www.meetup.com/Mad-Railers/">Mad-Railers meetup</a> I also enjoyed <a href="https://twitter.com/rathboma">Matthew Rathbone</a>&rsquo;s talk
 about how <a href="http://foursquare.com">Foursquare</a> uses <a href="http://hadoop.apache.org/">Hadoop</a> for its various data processing needs. Unfortunately, I had to take off early on Friday and missed some of the afternoon talks, including what I heard was a <a href="https://twitter.com/#!/search/?q=clyde+%23madisonruby&amp;src=typd">fantastic 45 minutes</a> with <a href="http://en.wikipedia.org/wiki/Clyde_Stubblefield">Clyde Stubblefield</a>.</p>
 
-<p>Saturday I was feeling a lot better, and hit the Farmer&#8217;s Market early
-for coffee and pastries.  I&#8217;m embarassed to say that I hadn&#8217;t looked
+<p>Saturday I was feeling a lot better, and hit the Farmer&rsquo;s Market early
+for coffee and pastries.  I&rsquo;m embarassed to say that I hadn&rsquo;t looked
 at the schedule closely enough and so it was an extremely pleasant surprise
 that the first talk was by Paolo Perrotta,  author of the best Ruby book
 in existence: <a href="http://pragprog.com/book/ppmetr/metaprogramming-ruby">Metaprogramming Ruby</a>.
@@ -855,30 +978,30 @@ potential problems one will encounter when using the metaprogramming
 aspect of the Ruby language.</p>
 
 <p>Later in the day were several successive talks that excited the hell out
-of me, but none moreso than <a href="https://twitter.com/rubybuddha">Leon Gersing</a>&#8217;s talk
-on the Weird in programming.  Difficult to describe so I&#8217;ll just say
-that if he&#8217;s speaking at a conference make sure you get your ass to that
+of me, but none moreso than <a href="https://twitter.com/rubybuddha">Leon Gersing</a>&rsquo;s talk
+on the Weird in programming.  Difficult to describe so I&rsquo;ll just say
+that if he&rsquo;s speaking at a conference make sure you get your ass to that
 talk and be prepared to enjoy it.</p>
 
 <p>The <strong>Teaching Rails</strong> panel discussion late in the day on Saturday was
-interesting.  I almost didn&#8217;t attend because I thought it was going to
+interesting.  I almost didn&rsquo;t attend because I thought it was going to
 be about how best to teach Rails to new folks.  Instead it was more
 about the <em>business</em> of teaching Rails and how each of the four
 panelists approached it.  Ultimately the panel dovetailed into a talk
 about certification, payscales, and other highly interesting topics to
-any software developer.  I felt that <a href="https://twitter.com/j3">Jeff Casimir</a>&#8217;s innocent
+any software developer.  I felt that <a href="https://twitter.com/j3">Jeff Casimir</a>&rsquo;s innocent
 suggestion of some kind of certification was not considered for a single
 second before being shouted down by everyone else on the panel and in
 attendance.  In particular, I think his idea has merit but the operational reality is
-bad, which is why everyone just said &#8220;NO CERTIFICATION&#8221; when I think
+bad, which is why everyone just said &ldquo;NO CERTIFICATION&rdquo; when I think
 what is needed is a
 discussion about what certification is trying to accomplish and how it
 can be done without turning into a paradise for grifters and dummies.</p>
 
 <p>This was just a taste of the goings-on at Madison Ruby 2012. Others will
 likely have a fuller rundown of the events so I just hit what were, to
-me, the highlights.  If you&#8217;re down on the Ruby tip I highly suggest you
-try to get to Madison for next year&#8217;s conference.  You can already hit
+me, the highlights.  If you&rsquo;re down on the Ruby tip I highly suggest you
+try to get to Madison for next year&rsquo;s conference.  You can already hit
 the <a href="http://2013.madisonruby.org/">Very Early Bird registration page</a> and get a ticket for the low,
 low price of $199.  Do it, and come hang out with me next year!</p>
 ]]></content>
@@ -897,11 +1020,11 @@ our way across the landscape.</p>
 <p>At around 3am one friend drunkenly burst into the hotel room and started
 going on and on about how great he was doing, gambling-wise.  He talked
 at length even as it became obvious that he was winding down like some
-kind of strange children&#8217;s toy.  Then he surged out of bed and said, &#8220;I
-have an idea!&#8221;  Another friend asked what it was and got the classic
-response, &#8220;I&#8217;ll need $300 of your money.&#8221;</p>
+kind of strange children&rsquo;s toy.  Then he surged out of bed and said, &ldquo;I
+have an idea!&rdquo;  Another friend asked what it was and got the classic
+response, &ldquo;I&rsquo;ll need $300 of your money.&rdquo;</p>
 
-<p>&#8220;And then what?&#8221; asked the friend, genuinely intrigued.</p>
+<p>&ldquo;And then what?&rdquo; asked the friend, genuinely intrigued.</p>
 
 <p>Alas, friend one was already passed out.  When asked the next morning
 what the great $300 was he had no idea what we were talking about.</p>
@@ -911,7 +1034,7 @@ ill-conceived <a href="http://www.kickstarter.com">Kickstarter campaign</a> that
 will ultimately result in a fugue state where everyone wonders what
 happened to their money in the morning.</p>
 
-<p>(Note: this is not a jab at Kickstarter itself; I think there&#8217;s some
+<p>(Note: this is not a jab at Kickstarter itself; I think there&rsquo;s some
 great stuff going on there.)</p>
 ]]></content>
   </entry>
@@ -921,13 +1044,13 @@ great stuff going on there.)</p>
     <link href="http://whazzing.com/blog/2012/03/20/becoming-the-finisher/"/>
     <updated>2012-03-20T09:13:00-05:00</updated>
     <id>http://whazzing.com/blog/2012/03/20/becoming-the-finisher</id>
-    <content type="html"><![CDATA[<p>Via <a href="http://news.ycombinator.com/item?id=3728664">Hacker News</a> this morning I read Jacques Mattheij&#8217;s <a href="http://jacquesmattheij.com/The+Starter+the+Architect+the+Debugger+and+the+Finisher">The Starter, the Architect, the Debugger and the Finisher</a>.  It was a great topic and one that I think about often; for me personally <strong>finishing projects smoothly is my biggest challenge</strong>.</p>
+    <content type="html"><![CDATA[<p>Via <a href="http://news.ycombinator.com/item?id=3728664">Hacker News</a> this morning I read Jacques Mattheij&rsquo;s <a href="http://jacquesmattheij.com/The+Starter+the+Architect+the+Debugger+and+the+Finisher">The Starter, the Architect, the Debugger and the Finisher</a>.  It was a great topic and one that I think about often; for me personally <strong>finishing projects smoothly is my biggest challenge</strong>.</p>
 
-<p>For me, starting projects is a great time to be alive.  I love bootstrapping repeatable builds, testing systems, automatic doc generation, etc.  It&#8217;s a reflexive response having seen so many projects that were doomed from the word &#8216;go&#8217; by developers who named folders any old thing.  Even folks that joined the team within the first year were confused as to where code was located and what (if any) naming conventions existed.</p>
+<p>For me, starting projects is a great time to be alive.  I love bootstrapping repeatable builds, testing systems, automatic doc generation, etc.  It&rsquo;s a reflexive response having seen so many projects that were doomed from the word &lsquo;go&rsquo; by developers who named folders any old thing.  Even folks that joined the team within the first year were confused as to where code was located and what (if any) naming conventions existed.</p>
 
-<p>Similarly, I&#8217;ve been writing software for millions of users for ten years now and these days I think intensely about architecture when bootstrapping new components or applications.  Making the appropriate trade-offs between short- and long-term design up front will accelerate development while leaving you open to pivoting or scaling when the time is right.</p>
+<p>Similarly, I&rsquo;ve been writing software for millions of users for ten years now and these days I think intensely about architecture when bootstrapping new components or applications.  Making the appropriate trade-offs between short- and long-term design up front will accelerate development while leaving you open to pivoting or scaling when the time is right.</p>
 
-<p>My problem comes to the final touches of a release.  For example, often when I&#8217;m working on a new release of <a href="https://github.com/whazzmaster/fitgem">fitgem</a> I code up the functionality, write new tests, write inline API documentation as I create new methods, etc.  After I think I&#8217;m done I&#8217;ll take the library for a spin in <a href="http://pry.github.com">Pry</a> and start coding against the new API functions.  Things will go well for awhile and then I&#8217;ll hit a snag where I forgot a parameter or had a typo in the code.  Great! My ad-hoc testing revealed something I hadn&#8217;t included in the unit tests. <strong>AND THEN I RELEASE</strong>.  This is not a good thing, but I often spaz out when I get 95% of the way to finishing, hit a snag, and then fix my issue.  I guess I feel exasperated about how long this thing is taking and then just wig out and push it (WE&#8217;LL DO IT LIVE!)</p>
+<p>My problem comes to the final touches of a release.  For example, often when I&rsquo;m working on a new release of <a href="https://github.com/whazzmaster/fitgem">fitgem</a> I code up the functionality, write new tests, write inline API documentation as I create new methods, etc.  After I think I&rsquo;m done I&rsquo;ll take the library for a spin in <a href="http://pry.github.com">Pry</a> and start coding against the new API functions.  Things will go well for awhile and then I&rsquo;ll hit a snag where I forgot a parameter or had a typo in the code.  Great! My ad-hoc testing revealed something I hadn&rsquo;t included in the unit tests. <strong>AND THEN I RELEASE</strong>.  This is not a good thing, but I often spaz out when I get 95% of the way to finishing, hit a snag, and then fix my issue.  I guess I feel exasperated about how long this thing is taking and then just wig out and push it (WE&rsquo;LL DO IT LIVE!)</p>
 
 <p>To be a good finisher I need to slow down and restart my release process (as light as it is!) when I hit problems.  I need to suppress the anxiousness when I hit minor problems before pushing live, go back to the top of my checklist, and start it over.  Doing that on small projects like a gem will instill good mental resistance to spazzing for large, important releases.</p>
 ]]></content>
@@ -938,22 +1061,22 @@ great stuff going on there.)</p>
     <link href="http://whazzing.com/blog/2012/03/18/dont-call-me-an-engineer/"/>
     <updated>2012-03-18T11:13:00-05:00</updated>
     <id>http://whazzing.com/blog/2012/03/18/dont-call-me-an-engineer</id>
-    <content type="html"><![CDATA[<p>When I go <a href="http://www.wisc.edu">on campus</a> to do university recruiting, or I&#8217;m in a non-technical social situation where I must explain what I do for a living, I often take great pains to explain what should be a simple thing.  My title in my company is &#8220;Senior Software Engineer&#8221; but I always very precisely call myself a &#8220;software developer,&#8221; &#8220;programmer,&#8221; or &#8220;software nerd.&#8221;</p>
+    <content type="html"><![CDATA[<p>When I go <a href="http://www.wisc.edu">on campus</a> to do university recruiting, or I&rsquo;m in a non-technical social situation where I must explain what I do for a living, I often take great pains to explain what should be a simple thing.  My title in my company is &ldquo;Senior Software Engineer&rdquo; but I always very precisely call myself a &ldquo;software developer,&rdquo; &ldquo;programmer,&rdquo; or &ldquo;software nerd.&rdquo;</p>
 
-<p>I am uncomfortable specifically with the &#8220;engineer&#8221; label, and that discomfort stems primarily from a panel discussion I attended in conjunction with the <a href="https://ecs.engr.wisc.edu/public/index.php">UW Engineering Career Services</a> group.</p>
+<p>I am uncomfortable specifically with the &ldquo;engineer&rdquo; label, and that discomfort stems primarily from a panel discussion I attended in conjunction with the <a href="https://ecs.engr.wisc.edu/public/index.php">UW Engineering Career Services</a> group.</p>
 
 <p>For some background, at the University of Wisconsin-Madison, Computer Science is <em>not</em> part of the School of Engineering, but a department in the School of Letters &amp; Science.  Even so, Computer Science students are given leave to particpate in School of Engineering career fairs and recruiting due to the crossover technical skillset.</p>
 
-<p>As someone who conducts on-campus interviews and attends career fairs for my company at UW I was invited to a panel discussion on &#8220;starting your first engineering job after graduating.&#8221;  It was a fantastic topic for a panel because many seniors are so busy interviewing, wrapping up courses, and thinking about relocation concerns that they often don&#8217;t think much about the actual beginning of a professional career.  Other folks on the panel included chemical engineers, industrial engineers, civil engineers, mechanical engineers and more.</p>
+<p>As someone who conducts on-campus interviews and attends career fairs for my company at UW I was invited to a panel discussion on &ldquo;starting your first engineering job after graduating.&rdquo;  It was a fantastic topic for a panel because many seniors are so busy interviewing, wrapping up courses, and thinking about relocation concerns that they often don&rsquo;t think much about the actual beginning of a professional career.  Other folks on the panel included chemical engineers, industrial engineers, civil engineers, mechanical engineers and more.</p>
 
-<p>Topics ranged across the board (Do you work a lot of hours? Do you like your boss? Have you been promoted yet?) but one that stuck with me was the question: &#8220;Should I pay/study for my engineer certification? Is it better to do it before interviewing or will my employer fund the cost?&#8221;  Many engineers on the panel had various opinions and it really did vary widely by field, but when it got to me I just shrugged and told the truth: <strong>there is no professional certification to be a software &#8220;engineer&#8221;</strong>.  There are certainly certifications for working with a particular software system, but there is no certification that will allow you to be insured against writing buggy software.<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup></p>
+<p>Topics ranged across the board (Do you work a lot of hours? Do you like your boss? Have you been promoted yet?) but one that stuck with me was the question: &ldquo;Should I pay/study for my engineer certification? Is it better to do it before interviewing or will my employer fund the cost?&rdquo;  Many engineers on the panel had various opinions and it really did vary widely by field, but when it got to me I just shrugged and told the truth: <strong>there is no professional certification to be a software &ldquo;engineer&rdquo;</strong>.  There are certainly certifications for working with a particular software system, but there is no certification that will allow you to be insured against writing buggy software.<sup id='fnref:1'><a href='#fn:1' rel='footnote'>1</a></sup></p>
 
 <p>I admire engineers and really only want to drive on bridges and use power tools that were designed by professional engineers.  Software developers
 CAN produce incredible feats of redundant, bug-free software system design and implementation but with the stipulation that time and process are needed to accomplish such things.  There likely do exist folks with the sufficient experience and knowledge to be called software engineers, but I am not one of them and they are few and far between.</p>
 
-<p>In the tech sphere this is really more of an academic conversation- we all speak the same language.  Everyone at your software company has some flavor of &#8220;engineer&#8221; in their title, and no one thinks twice about it.  When thrust into the larger world of engineers, however, the loosey-goosey nature of software development and it&#8217;s similarity to more of a craft than a discipline make strict adherance to standards of proven technical excellence difficult.</p>
+<p>In the tech sphere this is really more of an academic conversation- we all speak the same language.  Everyone at your software company has some flavor of &ldquo;engineer&rdquo; in their title, and no one thinks twice about it.  When thrust into the larger world of engineers, however, the loosey-goosey nature of software development and it&rsquo;s similarity to more of a craft than a discipline make strict adherance to standards of proven technical excellence difficult.</p>
 
-<p>What do you think? Does the typical professional software development environment make you think of &#8220;engineering&#8221; in the same way that mechanical or civil engineers practice it?  Does the fact that we do TDD/BDD make up for the fact that software tends not to have perfectly understood natural laws it must follow?</p>
+<p>What do you think? Does the typical professional software development environment make you think of &ldquo;engineering&rdquo; in the same way that mechanical or civil engineers practice it?  Does the fact that we do TDD/BDD make up for the fact that software tends not to have perfectly understood natural laws it must follow?</p>
 
 <div class="footnotes">
     <ol>
@@ -973,12 +1096,12 @@ CAN produce incredible feats of redundant, bug-free software system design and i
 <a href="http://pages.github.com/">Github Pages</a> via <a href="http://octopress.org/">Octopress</a>:</p>
 
 <ol>
-<li>My VPS is becoming severely overcrowded with deployed apps; I use it as a testbed for a lot of ideas as well as my <a href="http://www.whazzmaster.com">main swearing-at-pop-culture blog</a> and I didn&#8217;t want to host yet another heavyweight rails app to chew through limited resources.</li>
-<li>I reaaally like the &#8216;one-file-per-post&#8217; model of Octopress/Jekyll, and keeping my development blog/presentations right next to my open source code is very appealing.</li>
+<li>My VPS is becoming severely overcrowded with deployed apps; I use it as a testbed for a lot of ideas as well as my <a href="http://www.whazzmaster.com">main swearing-at-pop-culture blog</a> and I didn&rsquo;t want to host yet another heavyweight rails app to chew through limited resources.</li>
+<li>I reaaally like the &lsquo;one-file-per-post&rsquo; model of Octopress/Jekyll, and keeping my development blog/presentations right next to my open source code is very appealing.</li>
 </ol>
 
 
-<p>Since I wrote my latest blog engine to take markdown input it was easy-as-pie to export the existing posts to files and then use them to bootstrap this Octopress site.  For now I&#8217;ll ride on the default theme and see how it goes.  I hope to spend more time iterating on my presentations and a bunch of C++ code that I&#8217;m working on for a work project, so it&#8217;s also a plus that I don&#8217;t have maintain the platform source tree anymore.</p>
+<p>Since I wrote my latest blog engine to take markdown input it was easy-as-pie to export the existing posts to files and then use them to bootstrap this Octopress site.  For now I&rsquo;ll ride on the default theme and see how it goes.  I hope to spend more time iterating on my presentations and a bunch of C++ code that I&rsquo;m working on for a work project, so it&rsquo;s also a plus that I don&rsquo;t have maintain the platform source tree anymore.</p>
 ]]></content>
   </entry>
   
@@ -987,7 +1110,7 @@ CAN produce incredible feats of redundant, bug-free software system design and i
     <link href="http://whazzing.com/blog/2012/01/22/fitgem-v0-5-0/"/>
     <updated>2012-01-22T00:00:00-06:00</updated>
     <id>http://whazzing.com/blog/2012/01/22/fitgem-v0-5-0</id>
-    <content type="html"><![CDATA[<p>I&#8217;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/8e8aed16706642d6#">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.5.0.</p>
+    <content type="html"><![CDATA[<p>I&rsquo;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/8e8aed16706642d6#">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.5.0.</p>
 
 <p>New features include glucose, blood pressure, and heart rate logging and retrieval methods.   Documentation has also been updated to include new endpoints for the Time Series interface.</p>
 
@@ -1016,7 +1139,7 @@ CAN produce incredible feats of redundant, bug-free software system design and i
     <link href="http://whazzing.com/blog/2011/12/08/long-live-markdown/"/>
     <updated>2011-12-08T00:00:00-06:00</updated>
     <id>http://whazzing.com/blog/2011/12/08/long-live-markdown</id>
-    <content type="html"><![CDATA[<p>I&#8217;ve been doing a lot of development around <a href="http://daringfireball.net/projects/markdown/syntax">markdown</a> lately and I&#8217;m really starting to love it.  Specifically, <a href="http://github.github.com/github-flavored-markdown/">Github-flavored markdown</a> has grown on me with its ability to do easy fenced code blocks and syntax highlighting.</p>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been doing a lot of development around <a href="http://daringfireball.net/projects/markdown/syntax">markdown</a> lately and I&rsquo;m really starting to love it.  Specifically, <a href="http://github.github.com/github-flavored-markdown/">Github-flavored markdown</a> has grown on me with its ability to do easy fenced code blocks and syntax highlighting.</p>
 
 <pre><code>```ruby
 comments = Comment.all
@@ -1030,15 +1153,15 @@ comments = Comment.all
 </pre>
 
 
-<p>When I rewrote the code for this web site awhile back I decided to support markdown, but didn&#8217;t really think I&#8217;d use it much; maybe to do code blocks but not much else.  Now I find myself writing markdown for all content, and only translating it through various interpreters when I need the HTML.  In retrospect I&#8217;m extremely glad I went through the effort to add markdown support for the site&#8211; I use it all the time now.</p>
+<p>When I rewrote the code for this web site awhile back I decided to support markdown, but didn&rsquo;t really think I&rsquo;d use it much; maybe to do code blocks but not much else.  Now I find myself writing markdown for all content, and only translating it through various interpreters when I need the HTML.  In retrospect I&rsquo;m extremely glad I went through the effort to add markdown support for the site&mdash; I use it all the time now.</p>
 
-<p>There&#8217;s an <strong>incredible</strong> app for writing markdown on the fly: <a href="http://mouapp.com/">Mou</a> is a Mac application that lets you input markdown on the left pane and the HTML is dynamically updated in the right pane.  I&#8217;m literally using it right now to write this post, just to get a preview of what it will look like when I drop it into the &lt;textarea&gt; on the web site.</p>
+<p>There&rsquo;s an <strong>incredible</strong> app for writing markdown on the fly: <a href="http://mouapp.com/">Mou</a> is a Mac application that lets you input markdown on the left pane and the HTML is dynamically updated in the right pane.  I&rsquo;m literally using it right now to write this post, just to get a preview of what it will look like when I drop it into the &lt;textarea&gt; on the web site.</p>
 
 <p>I basically use it for all markdown content authoring, and then I copy/paste the result into whatever application/content field I will use it in.  It allows me to do edit/revision cycles on content as well as seeing the application of styles.  Highest recommendation.</p>
 
-<p>I also recently forked <a href="https://github.com/sr/git-wiki">git-wiki</a> and started working on improving it for my own use.  It also uses Markdown to write the wiki entries, which gets a little weird if you&#8217;ve ever used <a href="http://www.mediawiki.org/wiki/MediaWiki">MediaWiki</a> or <a href="http://www.wikipedia.com">Wikipedia</a>.  The default way to define <a href="http://twiki.org/cgi-bin/view/TWiki/WikiWord">wikiwords</a> in git-wiki didn&#8217;t really work for me so I updated it and checked everything back into <a href="https://github.com/whazzmaster/git-wiki">my own repo</a>.  I&#8217;ll be updating more about my git-wiki fork once I get it refactored and a little more configurable.</p>
+<p>I also recently forked <a href="https://github.com/sr/git-wiki">git-wiki</a> and started working on improving it for my own use.  It also uses Markdown to write the wiki entries, which gets a little weird if you&rsquo;ve ever used <a href="http://www.mediawiki.org/wiki/MediaWiki">MediaWiki</a> or <a href="http://www.wikipedia.com">Wikipedia</a>.  The default way to define <a href="http://twiki.org/cgi-bin/view/TWiki/WikiWord">wikiwords</a> in git-wiki didn&rsquo;t really work for me so I updated it and checked everything back into <a href="https://github.com/whazzmaster/git-wiki">my own repo</a>.  I&rsquo;ll be updating more about my git-wiki fork once I get it refactored and a little more configurable.</p>
 
-<p>So there you go- markdown is awesome and you should write your content in it; if you&#8217;ve never worked with it then try it out on Github (just make a public repo and create a README.md in the index).</p>
+<p>So there you go- markdown is awesome and you should write your content in it; if you&rsquo;ve never worked with it then try it out on Github (just make a public repo and create a README.md in the index).</p>
 ]]></content>
   </entry>
   
@@ -1047,7 +1170,7 @@ comments = Comment.all
     <link href="http://whazzing.com/blog/2011/12/02/fitgem-v0-4-0/"/>
     <updated>2011-12-02T00:00:00-06:00</updated>
     <id>http://whazzing.com/blog/2011/12/02/fitgem-v0-4-0</id>
-    <content type="html"><![CDATA[<p>I&#8217;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/3144a7299b60fa16">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.4.0.</p>
+    <content type="html"><![CDATA[<p>I&rsquo;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/3144a7299b60fa16">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.4.0.</p>
 
 <p>In addition to the new features, I thoroughly documented the entire library API (<a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">available here</a>), added many more unit tests, refactored the subscriptions methods, and moved the oauth process documentation to the <a href="https://github.com/whazzmaster/fitgem/wiki/The-OAuth-Process">project wiki on github</a>.</p>
 
@@ -1068,10 +1191,10 @@ The new method allows you to log more than weight (bicep size, body fat %, etc.)
 <li>Added unit tests for parameter validation for many methods</li>
 <li>Overhauled notifications methods, including extensive documentation,
 unit tests, refactoring, and a couple of bug fixes.  These methods now
-return both the HTTP status code and the JSON response body.  See https://wiki.fitbit.com/display/API/Subscriptions-API
+return both the HTTP status code and the JSON response body.  See <a href="https://wiki.fitbit.com/display/API/Subscriptions-API">https://wiki.fitbit.com/display/API/Subscriptions-API</a>
 for information on how to interpret each of the error codes.</li>
-<li>Added fitgem to travis-ci for continuous integration (http://travis-ci.org/#!/whazzmaster/fitgem)</li>
-<li>Added fitgem to rubydoc.info (http://rubydoc.info/github/whazzmaster/fitgem/master/frames)</li>
+<li>Added fitgem to travis-ci for continuous integration (<a href="http://travis-ci.org/#!/whazzmaster/fitgem">http://travis-ci.org/#!/whazzmaster/fitgem</a>)</li>
+<li>Added fitgem to rubydoc.info (<a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">http://rubydoc.info/github/whazzmaster/fitgem/master/frames</a>)</li>
 <li>Updated README</li>
 <li>Moved OAuth documentation from the README to the <a href="https://github.com/whazzmaster/fitgem/wiki/The-OAuth-Process">fitgem wiki</a></li>
 </ul>
@@ -1084,16 +1207,16 @@ for information on how to interpret each of the error codes.</li>
     <link href="http://whazzing.com/blog/2011/12/02/december-2011-reading-list/"/>
     <updated>2011-12-02T00:00:00-06:00</updated>
     <id>http://whazzing.com/blog/2011/12/02/december-2011-reading-list</id>
-    <content type="html"><![CDATA[<p>I thought I&#8217;d jot down my current technical reading list.  I tend not to read technical books straight through, but instead I pick up a few at a time and refresh myself on whatever I&#8217;m interested in at the time.  (Full disclosure: these links include my Amazon affiliate code).</p>
+    <content type="html"><![CDATA[<p>I thought I&rsquo;d jot down my current technical reading list.  I tend not to read technical books straight through, but instead I pick up a few at a time and refresh myself on whatever I&rsquo;m interested in at the time.  (Full disclosure: these links include my Amazon affiliate code).</p>
 
 <ul>
 <li><a href="http://www.amazon.com/gp/product/0596008643/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596008643">Learning Mysql</a><p>Back in 2002 I got my exposure to SQL while doing elemntary PHP programming.  I read a little about MySQL back then, but never really went deep into things such as indexes and optimizations.  Rails obscures a lot of that stuff, but I wanted to be able to optimize efficiently and learn more about the underlying technology. So far this book has been really good at diving down underneath your SELECT, UPDATE, CREATE, and DROP actions.</p></li>
-<li><a href="http://www.amazon.com/gp/product/1934356476/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1934356476">Metaprogramming Ruby</a> <p>This is bar none my favorite Ruby book, and in my opinion is far better than the Pickaxe book for those who are coming to Ruby from another language/ecosystem.  The fellas at <a href="http://www.bendyworks.com">Bendyworks</a> have been doing a bi-weekly book club on this book and I&#8217;ve happily attended as many as I could to talk about it.  This book goes into incredible, understandable detail about the object model and dynamic nature of programming in Ruby.  It gets my highest recommendation.</p></li>
-<li><a href="http://www.amazon.com/gp/product/0393979504/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0393979504">C Programming: A Modern Approach</a> <p>My college computer science curriculum was in C++ and Java.  My job at <a href="http://www.intuit.com">Intuit</a> involves C/C++/C# development, but it tends to fall heavily into the C++/C# side of things.  I respect the hell out of Zed Shaw&#8217;s outlook on programming, and truly believe that a working knowledge of C development will take you far.  To that end, I&#8217;ve been working through <a href="http://c.learncodethehardway.org/">Learn C the Hard Way</a> online while reading this superb book.  I also purchased the original <a href="http://www.amazon.com/gp/product/0131103628/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0131103628">The C Programming Language</a> book, but A Modern Approach is, in my opinion, superior as a reference and primer.</p></li>
+<li><a href="http://www.amazon.com/gp/product/1934356476/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1934356476">Metaprogramming Ruby</a> <p>This is bar none my favorite Ruby book, and in my opinion is far better than the Pickaxe book for those who are coming to Ruby from another language/ecosystem.  The fellas at <a href="http://www.bendyworks.com">Bendyworks</a> have been doing a bi-weekly book club on this book and I&rsquo;ve happily attended as many as I could to talk about it.  This book goes into incredible, understandable detail about the object model and dynamic nature of programming in Ruby.  It gets my highest recommendation.</p></li>
+<li><a href="http://www.amazon.com/gp/product/0393979504/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0393979504">C Programming: A Modern Approach</a> <p>My college computer science curriculum was in C++ and Java.  My job at <a href="http://www.intuit.com">Intuit</a> involves C/C++/C# development, but it tends to fall heavily into the C++/C# side of things.  I respect the hell out of Zed Shaw&rsquo;s outlook on programming, and truly believe that a working knowledge of C development will take you far.  To that end, I&rsquo;ve been working through <a href="http://c.learncodethehardway.org/">Learn C the Hard Way</a> online while reading this superb book.  I also purchased the original <a href="http://www.amazon.com/gp/product/0131103628/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0131103628">The C Programming Language</a> book, but A Modern Approach is, in my opinion, superior as a reference and primer.</p></li>
 </ul>
 
 
-<p>My technical reading list changes often; I&#8217;ll usually read through three books over the course of several weeks and then pull more off my shelf and refresh myself on a different topic.  It&#8217;s why I also buy books on the periphery of my interests just to have them on my shelf.  I enjoy having the references available, even if I don&#8217;t read them as soon as they arrive.</p>
+<p>My technical reading list changes often; I&rsquo;ll usually read through three books over the course of several weeks and then pull more off my shelf and refresh myself on a different topic.  It&rsquo;s why I also buy books on the periphery of my interests just to have them on my shelf.  I enjoy having the references available, even if I don&rsquo;t read them as soon as they arrive.</p>
 ]]></content>
   </entry>
   
@@ -1108,7 +1231,7 @@ for information on how to interpret each of the error codes.</li>
 <li>Posts can now be attached to projects in order to create news feeds on a per-project basis.</li>
 <li>Added favicon to the site</li>
 <li>Added ranking implementation for posts using <a href="http://redis.io/">Redis</a>.  Not in use yet.</li>
-<li>Added RSS feed for posts.  Available at http://www.whazzing.com/posts.rss</li>
+<li>Added RSS feed for posts.  Available at <a href="http://www.whazzing.com/posts.rss">http://www.whazzing.com/posts.rss</a></li>
 <li>Updated styles for the post and project pages</li>
 </ul>
 
@@ -1312,17 +1435,17 @@ pp client.find_food("GoLean Raisin Bran Crunch Cereal")
     <link href="http://whazzing.com/blog/2011/09/26/searching-vs-finding/"/>
     <updated>2011-09-26T00:00:00-05:00</updated>
     <id>http://whazzing.com/blog/2011/09/26/searching-vs-finding</id>
-    <content type="html"><![CDATA[<p>I&#8217;ve found that many of the truly interesting and outlook-altering pieces of information I&#8217;ve acquired have come via finding something randomly or pseudo-randomly as opposed to searching it out.</p>
+    <content type="html"><![CDATA[<p>I&rsquo;ve found that many of the truly interesting and outlook-altering pieces of information I&rsquo;ve acquired have come via finding something randomly or pseudo-randomly as opposed to searching it out.</p>
 
 <p>These days the information in question is often a tool, configuration, or piece of code that radically shortcuts an oft-repeated activity.  It has nothing to with luck, or ability to use Google, however.  <strong>The delight in finding the perfect tool or option is often that you never conceived that it could exist in the first place</strong>.</p>
 
-<p>The most stark example I&#8217;ve had recently is in pursuit of my quest to <a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">learn vim</a>.  In changing over from TextMate to vim many times I would end up pondering really newb questions: how do I cut a line of text? How do I move to the end of a file?  A couple of HI-YAH&#8217;s of Google-Fu later I&#8217;ve got the answer an I&#8217;m trucking along.  Some days, however, I&#8217;ll be reading something unrelated and all of a sudden learn that <strong>dt followed by a character</strong> <em>will delete from the cursor position to the next instance of that character</em>.  It&#8217;s weird, but that was a game-changer for me.  Changing out strings became: <strong>dt&#8221;</strong> and then insert and go.</p>
+<p>The most stark example I&rsquo;ve had recently is in pursuit of my quest to <a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">learn vim</a>.  In changing over from TextMate to vim many times I would end up pondering really newb questions: how do I cut a line of text? How do I move to the end of a file?  A couple of HI-YAH&rsquo;s of Google-Fu later I&rsquo;ve got the answer an I&rsquo;m trucking along.  Some days, however, I&rsquo;ll be reading something unrelated and all of a sudden learn that <strong>dt followed by a character</strong> <em>will delete from the cursor position to the next instance of that character</em>.  It&rsquo;s weird, but that was a game-changer for me.  Changing out strings became: <strong>dt&#8221;</strong> and then insert and go.</p>
 
-<p>I could also characterize my use of <a href="https://github.com/guard/guard">guard</a> in this way.  I was at a <a href="http://www.meetup.com/Mad-Railers/">Mad-Railers</a> hack day awhile back and <a href="http://twitter.com/#!/listrophy">Brad</a> happened to be using <a href="https://github.com/guard/guard-rspec">guard for his rspec execution</a> during TDD.  It was a revelation that I could just edit files and tests and it would automatically rerun.  Here&#8217;s where things get interesting, however.  It had previously never occurred to me to even look for a way to speed up my tests or optimize the time spent manually executing them.  It was a problem I didn&#8217;t know I had.  After learning about guard I looked through <a href="https://github.com/guard/guard/wiki/List-of-available-Guards">the list of available guards</a>, however, and found some other interesting ones.  These additional plugins for the guard model were also solving problems I didn&#8217;t even know were bugging me until I found they were solved problems.</p>
+<p>I could also characterize my use of <a href="https://github.com/guard/guard">guard</a> in this way.  I was at a <a href="http://www.meetup.com/Mad-Railers/">Mad-Railers</a> hack day awhile back and <a href="http://twitter.com/#!/listrophy">Brad</a> happened to be using <a href="https://github.com/guard/guard-rspec">guard for his rspec execution</a> during TDD.  It was a revelation that I could just edit files and tests and it would automatically rerun.  Here&rsquo;s where things get interesting, however.  It had previously never occurred to me to even look for a way to speed up my tests or optimize the time spent manually executing them.  It was a problem I didn&rsquo;t know I had.  After learning about guard I looked through <a href="https://github.com/guard/guard/wiki/List-of-available-Guards">the list of available guards</a>, however, and found some other interesting ones.  These additional plugins for the guard model were also solving problems I didn&rsquo;t even know were bugging me until I found they were solved problems.</p>
 
 <p>This all came to me this morning as I was watching Ryan Bates&#8217; <a href="http://railscasts.com/episodes/285-spork">Railscast on using Spork</a> to speed up test execution further by preloading the Rails framework and keeping it in memory between tests.</p>
 
-<p>When worrying about getting a primary goal completed (say, a feature in an application) you don&#8217;t often think about solutions to one-off problems or annoyances, let alone prioritize solving them.  This is partially why I invest time at the beginning of a project to develop and optimize the code-test-fix cycle, why I obsess over the deployment model when I only have a README, and why I like continuous integration before a test has been written.  Once your process for coding is solid, you can optimize it piecemeal as you <strong>need to</strong> or as you <strong>find unexpected tools or processes</strong> that would increase your productivity drastically.</p>
+<p>When worrying about getting a primary goal completed (say, a feature in an application) you don&rsquo;t often think about solutions to one-off problems or annoyances, let alone prioritize solving them.  This is partially why I invest time at the beginning of a project to develop and optimize the code-test-fix cycle, why I obsess over the deployment model when I only have a README, and why I like continuous integration before a test has been written.  Once your process for coding is solid, you can optimize it piecemeal as you <strong>need to</strong> or as you <strong>find unexpected tools or processes</strong> that would increase your productivity drastically.</p>
 
 <p>An example: my tests were already running really well under guard, but 15 minutes or install and configuration of <a href="https://github.com/guard/guard-spork">guard-spork</a> I saw immediate speed gains.</p>
 ]]></content>
@@ -1333,9 +1456,9 @@ pp client.find_food("GoLean Raisin Bran Crunch Cereal")
     <link href="http://whazzing.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/"/>
     <updated>2011-09-23T00:00:00-05:00</updated>
     <id>http://whazzing.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu</id>
-    <content type="html"><![CDATA[<p>In getting the <a href="https://github.com/thoughtbot/paperclip">paperclip gem</a> working on my server for some screenshots I ran into a frustrating problem.  I kept getting an error during model saving: <strong>&#8220;/tmp/1234bduct-123.png is not recognized by the &#8216;identify&#8217; command&#8221;</strong>.  Eventually I solved the problem, so here is my solution, hoping that it helps someone else out there.</p>
+    <content type="html"><![CDATA[<p>In getting the <a href="https://github.com/thoughtbot/paperclip">paperclip gem</a> working on my server for some screenshots I ran into a frustrating problem.  I kept getting an error during model saving: <strong>&ldquo;/tmp/1234bduct-123.png is not recognized by the &lsquo;identify&rsquo; command&rdquo;</strong>.  Eventually I solved the problem, so here is my solution, hoping that it helps someone else out there.</p>
 
-<p>After some googling and reading <a href="http://www.stackoverflow.com">Stack Overflow</a> I quickly came across the solution that Paperclips :command_path option wasn&#8217;t being set correctly.  The problem, however, was that it looked like I was correctly setting the ImageMagick path:</p>
+<p>After some googling and reading <a href="http://www.stackoverflow.com">Stack Overflow</a> I quickly came across the solution that Paperclips :command_path option wasn&rsquo;t being set correctly.  The problem, however, was that it looked like I was correctly setting the ImageMagick path:</p>
 
 <pre lang="bash">
 $ which identify
@@ -1353,14 +1476,14 @@ end
 </pre>
 
 
-<p>That seemed to be correct, but I still kept getting the same error.  Eventually I came across an <a href="http://blog.e-thang.net/2009/12/30/paperclipimagemagickrmagick-error-is-not-recognized-by-the-identify-command/comment-page-1/#comment-1067">excellent suggestion</a> that perhaps my installed version of ImageMagick was incomplete, corrupt, or missing libs or dependencies.  First I reran the ImageMagick apt-get install&#8230;</p>
+<p>That seemed to be correct, but I still kept getting the same error.  Eventually I came across an <a href="http://blog.e-thang.net/2009/12/30/paperclipimagemagickrmagick-error-is-not-recognized-by-the-identify-command/comment-page-1/#comment-1067">excellent suggestion</a> that perhaps my installed version of ImageMagick was incomplete, corrupt, or missing libs or dependencies.  First I reran the ImageMagick apt-get install&hellip;</p>
 
 <pre lang="bash">
 $ sudo apt-get install imagemagick --fix-missing
 </pre>
 
 
-<p>&#8230;which installed identify to <strong>/usr/bin</strong> rather than the existing version in <strong>/usr/local/bin</strong>.  I then updated my environment file to the following&#8230;</p>
+<p>&hellip;which installed identify to <strong>/usr/bin</strong> rather than the existing version in <strong>/usr/local/bin</strong>.  I then updated my environment file to the following&hellip;</p>
 
 <pre lang="ruby">
 WhazzingCom::Application.configure do
@@ -1370,7 +1493,7 @@ end
 </pre>
 
 
-<p>&#8230;and refreshed the page and everthing worked as expected!</p>
+<p>&hellip;and refreshed the page and everthing worked as expected!</p>
 ]]></content>
   </entry>
   
@@ -1379,15 +1502,15 @@ end
     <link href="http://whazzing.com/blog/2011/09/21/redesigning-whazzing-com/"/>
     <updated>2011-09-21T00:00:00-05:00</updated>
     <id>http://whazzing.com/blog/2011/09/21/redesigning-whazzing-com</id>
-    <content type="html"><![CDATA[<p>For the last month I&#8217;ve been working to create this new development-focused blog and project repository for my work.  I was previously self-hosting a <a href="http://www.wordpress.org">Wordpress</a> blog, but I&#8217;ve developed a desire to own my destiny when it comes to the display of my work.  There were a ton of little features I wanted to develop but didn&#8217;t really want to delve (back) into the PHP world or hack at the Wordpress template framework.</p>
+    <content type="html"><![CDATA[<p>For the last month I&rsquo;ve been working to create this new development-focused blog and project repository for my work.  I was previously self-hosting a <a href="http://www.wordpress.org">Wordpress</a> blog, but I&rsquo;ve developed a desire to own my destiny when it comes to the display of my work.  There were a ton of little features I wanted to develop but didn&rsquo;t really want to delve (back) into the PHP world or hack at the Wordpress template framework.</p>
 
-<p>I&#8217;d recently read the excellent <a href="http://www.abookapart.com/products/responsive-web-design">Responsive Web Design</a> and it made me very excited to design a site that effortlessly works on phones, tablets, monitors, and TVs.  Another project I have in mind is primarily aimed at mobile form factors, so I thought a semi-major experiment was in order to ensure I was thinking in the right direction when it came to media queries and mobile design.</p>
+<p>I&rsquo;d recently read the excellent <a href="http://www.abookapart.com/products/responsive-web-design">Responsive Web Design</a> and it made me very excited to design a site that effortlessly works on phones, tablets, monitors, and TVs.  Another project I have in mind is primarily aimed at mobile form factors, so I thought a semi-major experiment was in order to ensure I was thinking in the right direction when it came to media queries and mobile design.</p>
 
 <h2>Technology</h2>
 
 <p>I built <a href="http://whazzing.com">whazzing.com</a> with ruby 1.9.2, rails 3.1, mysql, and various gems.  My first commit was August 19th, 2011 and I deployed version 1.0 to production on September 20th, 2011.</p>
 
-<p>As I started coding this site, Rails 3.1 was entering it&#8217;s final release candidate testing phase so I decided to start fresh on it.  The asset pipeline is just a terrific addition to the framework, and combining it with the style organization I&#8217;ve been developing off of Dale Sande&#8217;s incredible <a href="http://axle.dalesande.com">Axle framework</a> provided for a <strong>very smooth visual design experience</strong>.  I added a little bit to Dale&#8217;s CSS organization to support the media queries I wanted to support.</p>
+<p>As I started coding this site, Rails 3.1 was entering it&rsquo;s final release candidate testing phase so I decided to start fresh on it.  The asset pipeline is just a terrific addition to the framework, and combining it with the style organization I&rsquo;ve been developing off of Dale Sande&rsquo;s incredible <a href="http://axle.dalesande.com">Axle framework</a> provided for a <strong>very smooth visual design experience</strong>.  I added a little bit to Dale&rsquo;s CSS organization to support the media queries I wanted to support.</p>
 
 <pre>
 assets
@@ -1410,17 +1533,17 @@ assets
 </pre>
 
 
-<p>One of the interesting takeways from the excellent testing panel at <a href="http://madisonruby.org/schedule">Madison Ruby</a> was that people are divided about the usefulness of <a href="http://cukes.info/">cucumber</a>.  I had always stumbled in wrangling cucumber to be really useful for the applications I was writing and so I decided to eschew its usage this time. I focused instead on getting good coverage via my <a href="https://www.relishapp.com/rspec">RSpec</a> controller and model tests.  I found that leaving cucumber aside really streamlined the process and didn&#8217;t leave me eternally feeling like I was losing focus on the functionality I wanted due to the the myriad tests that were demanded by all the tools I was using.</p>
+<p>One of the interesting takeways from the excellent testing panel at <a href="http://madisonruby.org/schedule">Madison Ruby</a> was that people are divided about the usefulness of <a href="http://cukes.info/">cucumber</a>.  I had always stumbled in wrangling cucumber to be really useful for the applications I was writing and so I decided to eschew its usage this time. I focused instead on getting good coverage via my <a href="https://www.relishapp.com/rspec">RSpec</a> controller and model tests.  I found that leaving cucumber aside really streamlined the process and didn&rsquo;t leave me eternally feeling like I was losing focus on the functionality I wanted due to the the myriad tests that were demanded by all the tools I was using.</p>
 
-<p>Madison Ruby was a fantastic source of information on how to write better ruby code and rails applications.  In particular, <a href="http://twitter.com/#!/j3">Jeff Casimir&#8217;s</a> talk on using view-models and decorators as opposed to helpers in rails was food for thought.  Halfway through implementation on this site I switched over to using <a href="https://github.com/jcasimir/draper">draper</a> for my presentation logic and I <strong>love it</strong>.</p>
+<p>Madison Ruby was a fantastic source of information on how to write better ruby code and rails applications.  In particular, <a href="http://twitter.com/#!/j3">Jeff Casimir&rsquo;s</a> talk on using view-models and decorators as opposed to helpers in rails was food for thought.  Halfway through implementation on this site I switched over to using <a href="https://github.com/jcasimir/draper">draper</a> for my presentation logic and I <strong>love it</strong>.</p>
 
-<p>Another tool I wanted to test out for this project was <a href="https://github.com/nvie/gitflow">git-flow</a>.  At <a href="http://scottchacon.com/">Scott Chacon&#8217;s</a> eye-opening Git workshop I increased my git knowledge 10 times, easily.  Going through the underlying structures of git taught me a lot about what&#8217;s really going on during commits, push, and branching, and I wanted to try to formalize the release process of this project a bit more using git-flow&#8217;s branching model.  The result: I loved the structure of the branches, even if this was a one-man project, and will definitely use it on more projects in the future.</p>
+<p>Another tool I wanted to test out for this project was <a href="https://github.com/nvie/gitflow">git-flow</a>.  At <a href="http://scottchacon.com/">Scott Chacon&rsquo;s</a> eye-opening Git workshop I increased my git knowledge 10 times, easily.  Going through the underlying structures of git taught me a lot about what&rsquo;s really going on during commits, push, and branching, and I wanted to try to formalize the release process of this project a bit more using git-flow&rsquo;s branching model.  The result: I loved the structure of the branches, even if this was a one-man project, and will definitely use it on more projects in the future.</p>
 
-<p>Finally, I&#8217;ve been more and more intrigued by <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> since Github and many other sites support it these days.  Instead of pouring time into creating a WYSIWYG editor or trying to drop one in, I instead grabbed the <a href="https://github.com/blog/832-rolling-out-the-redcarpet">Redcarpet</a> gem and simply use markdown to create the posts and project descriptions.  I also use <a href="https://github.com/github/albino">albino</a> and <a href="http://pygments.org/">pygments</a> for code highlighting.</p>
+<p>Finally, I&rsquo;ve been more and more intrigued by <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> since Github and many other sites support it these days.  Instead of pouring time into creating a WYSIWYG editor or trying to drop one in, I instead grabbed the <a href="https://github.com/blog/832-rolling-out-the-redcarpet">Redcarpet</a> gem and simply use markdown to create the posts and project descriptions.  I also use <a href="https://github.com/github/albino">albino</a> and <a href="http://pygments.org/">pygments</a> for code highlighting.</p>
 
 <h2>Methodology &amp; Features</h2>
 
-<p>The problem I had to overcome this time (and every time I jumpstart a project) is that too often I get bogged down on tangents.  I&#8217;ll get fixated on one unimportant feature or line of code, I&#8217;ll get frustrated that I can&#8217;t get it the way I want, and eventually I won&#8217;t even want to open the text editor due to feelings of dread.  This time I was determined to mercilessly cut features until I had something simple I could get coded and deployed, and then iterate from there.  A few times I almost got bogged down, but forced myself to leave features on the table for future releases so that I could get my high priority functionality into production.</p>
+<p>The problem I had to overcome this time (and every time I jumpstart a project) is that too often I get bogged down on tangents.  I&rsquo;ll get fixated on one unimportant feature or line of code, I&rsquo;ll get frustrated that I can&rsquo;t get it the way I want, and eventually I won&rsquo;t even want to open the text editor due to feelings of dread.  This time I was determined to mercilessly cut features until I had something simple I could get coded and deployed, and then iterate from there.  A few times I almost got bogged down, but forced myself to leave features on the table for future releases so that I could get my high priority functionality into production.</p>
 
 <p>I settled on <strong>four</strong> main features for the first release:</p>
 
@@ -1442,21 +1565,21 @@ assets
 </ul>
 
 
-<p>I&#8217;ll also, of course, be correcting anything that shakes out while using it.</p>
+<p>I&rsquo;ll also, of course, be correcting anything that shakes out while using it.</p>
 
-<h2>What&#8217;s Next</h2>
+<h2>What&rsquo;s Next</h2>
 
-<p>I&#8217;m looking forward to extending this project, while using it as a platform to document the other things I&#8217;m working on.  I would really like to use <a href="http://redis.io/">redis</a> for some analytics/tracking ideas I have, and I&#8217;m interested in how to tie in <a href="http://akismet.com/">akismet</a> spam-blocking for comments.</p>
+<p>I&rsquo;m looking forward to extending this project, while using it as a platform to document the other things I&rsquo;m working on.  I would really like to use <a href="http://redis.io/">redis</a> for some analytics/tracking ideas I have, and I&rsquo;m interested in how to tie in <a href="http://akismet.com/">akismet</a> spam-blocking for comments.</p>
 
-<p>The images along the left side don&#8217;t scan well on mobile devices, so I&#8217;m going to look into replacing them in the next release as well.  I like the structure of the site, but the specific details could be tightened a little.</p>
+<p>The images along the left side don&rsquo;t scan well on mobile devices, so I&rsquo;m going to look into replacing them in the next release as well.  I like the structure of the site, but the specific details could be tightened a little.</p>
 
-<p>I&#8217;d like to get a styleguide up and running so that my CSS can be standardized a little.  I tried as much as possible to be OO in my CSS but failed in a few places that I&#8217;d like to clean up.</p>
+<p>I&rsquo;d like to get a styleguide up and running so that my CSS can be standardized a little.  I tried as much as possible to be OO in my CSS but failed in a few places that I&rsquo;d like to clean up.</p>
 
 <h2>Thanks</h2>
 
 <p>Many, many thanks to <a href="http://begriffsschrift.com/">Joe Nelson</a>, from whom I shamelessly stole the idea for the micro-resume.  Thanks so much for the idea- it jump-started what became the new site, blog, etc.</p>
 
-<p>Also, thanks to <a href="http://kev.inburke.com/">Kevin Burke</a>. I read his blog post on <a href="http://kev.inburke.com/kevin/site-redesign/">designing your personal site</a> and was inspired to go beyond the usual &#8220;reverse chronological order of posts&#8221; home page.  Instead I tried to create a homepage that advertises all the things I&#8217;m working on, blog posts being only one of the pieces.</p>
+<p>Also, thanks to <a href="http://kev.inburke.com/">Kevin Burke</a>. I read his blog post on <a href="http://kev.inburke.com/kevin/site-redesign/">designing your personal site</a> and was inspired to go beyond the usual &ldquo;reverse chronological order of posts&rdquo; home page.  Instead I tried to create a homepage that advertises all the things I&rsquo;m working on, blog posts being only one of the pieces.</p>
 
 <p>Thanks to <a href="http://www.dalesande.com/">Dale Sande</a>, who helped me step up my CSS game with his excellent <a href="http://axle.dalesande.com">Axle framework</a> and thoughts on OOCSS (object-oriented CSS).  If you ever get a chance to attend his OOCSS talk definitely do it; as a primarily backend dude I found it immensely helpful for structuring my CSS and semantic markup.</p>
 ]]></content>

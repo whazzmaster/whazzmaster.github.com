@@ -9,7 +9,7 @@
   <meta name="author" content="Zachery Moneypenny">
 
   
-  <meta name="description" content="Via Hacker News this morning I read Jacques Mattheij&#8217;s The Starter, the Architect, the Debugger and the Finisher. It was a great topic and one &hellip;">
+  <meta name="description" content="Via Hacker News this morning I read Jacques Mattheij&rsquo;s The Starter, the Architect, the Debugger and the Finisher. It was a great topic and one &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,10 +21,11 @@
   <link rel="canonical" href="http://whazzing.com/blog/2012/03/20/becoming-the-finisher">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="whazzing around" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -99,20 +100,21 @@
 
 <time datetime="2012-03-20T09:13:00-05:00" pubdate data-updated="true">Mar 20<span>th</span>, 2012</time>
         
-         | <a href="#disqus_thread" data-disqus-identifier="http://whazzing.com">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://whazzing.com">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Via <a href="http://news.ycombinator.com/item?id=3728664">Hacker News</a> this morning I read Jacques Mattheij&#8217;s <a href="http://jacquesmattheij.com/The+Starter+the+Architect+the+Debugger+and+the+Finisher">The Starter, the Architect, the Debugger and the Finisher</a>.  It was a great topic and one that I think about often; for me personally <strong>finishing projects smoothly is my biggest challenge</strong>.</p>
+<div class="entry-content"><p>Via <a href="http://news.ycombinator.com/item?id=3728664">Hacker News</a> this morning I read Jacques Mattheij&rsquo;s <a href="http://jacquesmattheij.com/The+Starter+the+Architect+the+Debugger+and+the+Finisher">The Starter, the Architect, the Debugger and the Finisher</a>.  It was a great topic and one that I think about often; for me personally <strong>finishing projects smoothly is my biggest challenge</strong>.</p>
 
-<p>For me, starting projects is a great time to be alive.  I love bootstrapping repeatable builds, testing systems, automatic doc generation, etc.  It&#8217;s a reflexive response having seen so many projects that were doomed from the word &#8216;go&#8217; by developers who named folders any old thing.  Even folks that joined the team within the first year were confused as to where code was located and what (if any) naming conventions existed.</p>
+<p>For me, starting projects is a great time to be alive.  I love bootstrapping repeatable builds, testing systems, automatic doc generation, etc.  It&rsquo;s a reflexive response having seen so many projects that were doomed from the word &lsquo;go&rsquo; by developers who named folders any old thing.  Even folks that joined the team within the first year were confused as to where code was located and what (if any) naming conventions existed.</p>
 
-<p>Similarly, I&#8217;ve been writing software for millions of users for ten years now and these days I think intensely about architecture when bootstrapping new components or applications.  Making the appropriate trade-offs between short- and long-term design up front will accelerate development while leaving you open to pivoting or scaling when the time is right.</p>
+<p>Similarly, I&rsquo;ve been writing software for millions of users for ten years now and these days I think intensely about architecture when bootstrapping new components or applications.  Making the appropriate trade-offs between short- and long-term design up front will accelerate development while leaving you open to pivoting or scaling when the time is right.</p>
 
-<p>My problem comes to the final touches of a release.  For example, often when I&#8217;m working on a new release of <a href="https://github.com/whazzmaster/fitgem">fitgem</a> I code up the functionality, write new tests, write inline API documentation as I create new methods, etc.  After I think I&#8217;m done I&#8217;ll take the library for a spin in <a href="http://pry.github.com">Pry</a> and start coding against the new API functions.  Things will go well for awhile and then I&#8217;ll hit a snag where I forgot a parameter or had a typo in the code.  Great! My ad-hoc testing revealed something I hadn&#8217;t included in the unit tests. <strong>AND THEN I RELEASE</strong>.  This is not a good thing, but I often spaz out when I get 95% of the way to finishing, hit a snag, and then fix my issue.  I guess I feel exasperated about how long this thing is taking and then just wig out and push it (WE&#8217;LL DO IT LIVE!)</p>
+<p>My problem comes to the final touches of a release.  For example, often when I&rsquo;m working on a new release of <a href="https://github.com/whazzmaster/fitgem">fitgem</a> I code up the functionality, write new tests, write inline API documentation as I create new methods, etc.  After I think I&rsquo;m done I&rsquo;ll take the library for a spin in <a href="http://pry.github.com">Pry</a> and start coding against the new API functions.  Things will go well for awhile and then I&rsquo;ll hit a snag where I forgot a parameter or had a typo in the code.  Great! My ad-hoc testing revealed something I hadn&rsquo;t included in the unit tests. <strong>AND THEN I RELEASE</strong>.  This is not a good thing, but I often spaz out when I get 95% of the way to finishing, hit a snag, and then fix my issue.  I guess I feel exasperated about how long this thing is taking and then just wig out and push it (WE&rsquo;LL DO IT LIVE!)</p>
 
 <p>To be a good finisher I need to slow down and restart my release process (as light as it is!) when I hit problems.  I need to suppress the anxiousness when I hit minor problems before pushing live, go back to the top of my checklist, and start it over.  Doing that on small projects like a gem will instill good mental resistance to spazzing for large, important releases.</p>
 </div>
@@ -142,7 +144,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/discipline/'>discipline</a>, <a class='category' href='/blog/categories/hacker-news-/'>hacker-news,</a>
+    <a class='category' href='/blog/categories/discipline/'>discipline</a>, <a class='category' href='/blog/categories/hacker-news/'>hacker-news,</a>
   
 </span>
 
@@ -151,7 +153,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whazzing.com/blog/2012/03/20/becoming-the-finisher/" data-via="whazzmaster" data-counturl="http://whazzing.com/blog/2012/03/20/becoming-the-finisher/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://whazzing.com/blog/2012/03/20/becoming-the-finisher/" data-via="whazzmaster" data-counturl="http://whazzing.com/blog/2012/03/20/becoming-the-finisher/" >Tweet</a>
   
   
   
@@ -193,11 +195,15 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy using Powershell and MSBuild</a>
+        <a href="/blog/2013/12/01/catching-up/">Catching Up</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF applications with ReactiveUI</a>
+        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy Using Powershell and MSBuild</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF Applications With ReactiveUI</a>
       </li>
     
       <li class="post">
@@ -205,11 +211,7 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem To Be Getting Along Fine Without Facebook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/27/madison-ruby-2012/">Madison Ruby 2012</a>
+        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem to Be Getting Along Fine Without Facebook</a>
       </li>
     
   </ul>
@@ -224,7 +226,7 @@
   <a href="https://github.com/whazzmaster">@whazzmaster</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -290,7 +292,7 @@
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -306,7 +308,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

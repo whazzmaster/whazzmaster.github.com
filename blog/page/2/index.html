@@ -9,7 +9,7 @@
   <meta name="author" content="Zachery Moneypenny">
 
   
-  <meta name="description" content="I&#8217;ve been doing a lot of development around markdown lately and I&#8217;m really starting to love it. Specifically, Github-flavored markdown &hellip;">
+  <meta name="description" content="I&rsquo;m happy to announce that the latest Fitbit API features have been exposed through the fitgem ruby library and released as v0.5.0. New &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,10 +21,11 @@
   <link rel="canonical" href="http://whazzing.com/blog/page/2">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="whazzing around" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -84,6 +85,65 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/01/22/fitgem-v0-5-0/">Fitgem v0.5.0</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-22T00:00:00-06:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2012/01/22/fitgem-v0-5-0/#disqus_thread"
+             data-disqus-identifier="http://whazzing.com/blog/2012/01/22/fitgem-v0-5-0/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/8e8aed16706642d6#">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.5.0.</p>
+
+<p>New features include glucose, blood pressure, and heart rate logging and retrieval methods.   Documentation has also been updated to include new endpoints for the Time Series interface.</p>
+
+<p><a href="https://github.com/whazzmaster/fitgem">Source</a> | <a href="http://rubygems.org/gems/fitgem">Gem</a> | <a href="https://github.com/whazzmaster/fitgem/issues">Issues</a> | <a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">Documentation</a></p>
+
+<h3>v0.5.0 changelog</h3>
+
+<ul>
+<li>Added <tt>Fitgem::Client#heart_rate_on_date</tt> to retrieve heart rate data by date</li>
+<li>Added <tt>Fitgem::Client#log_heart_rate</tt> to log heart rate data</li>
+<li>Added <tt>Fitgem::Client#delete_heart_rate_log</tt> to delete previously logged heart rate data</li>
+<li>Added <tt>Fitgem::Client#blood_pressure_on_date</tt> to retrieve blood pressure data by date</li>
+<li>Added <tt>Fitgem::Client#log_blood_pressure</tt> to log blood pressure data</li>
+<li>Added <tt>Fitgem::Client#delete_blood_pressure_log</tt> to delete previously logged blood pressure data</li>
+<li>Added <tt>Fitgem::Client#glucose_on_date</tt> to retrieve glucose data by date</li>
+<li>Added <tt>Fitgem::Client#log_glucose</tt> to log glucose data</li>
+<li>Added <tt>Fitgem::Client#delete_glucose_log</tt> to delete previously logged glucose data</li>
+<li>Updated README</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2011/12/08/long-live-markdown/">Long Live Markdown</a></h1>
     
     
@@ -100,16 +160,17 @@
   
 
 
-<time datetime="2011-12-08T00:00:00-06:00" pubdate data-updated="true">Dec 8<span>th</span>, 2011</time>
+<time datetime="2011-12-08T00:00:00-06:00" pubdate data-updated="true"></time>
         
-         | <a href="/blog/2011/12/08/long-live-markdown/#disqus_thread" data-disqus-identifier="http://whazzing.com/blog/2011/12/08/long-live-markdown/">Comments</a>
+           | <a href="/blog/2011/12/08/long-live-markdown/#disqus_thread"
+             data-disqus-identifier="http://whazzing.com/blog/2011/12/08/long-live-markdown/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;ve been doing a lot of development around <a href="http://daringfireball.net/projects/markdown/syntax">markdown</a> lately and I&#8217;m really starting to love it.  Specifically, <a href="http://github.github.com/github-flavored-markdown/">Github-flavored markdown</a> has grown on me with its ability to do easy fenced code blocks and syntax highlighting.</p>
+  <div class="entry-content"><p>I&rsquo;ve been doing a lot of development around <a href="http://daringfireball.net/projects/markdown/syntax">markdown</a> lately and I&rsquo;m really starting to love it.  Specifically, <a href="http://github.github.com/github-flavored-markdown/">Github-flavored markdown</a> has grown on me with its ability to do easy fenced code blocks and syntax highlighting.</p>
 
 <pre><code>```ruby
 comments = Comment.all
@@ -123,15 +184,15 @@ comments = Comment.all
 </pre>
 
 
-<p>When I rewrote the code for this web site awhile back I decided to support markdown, but didn&#8217;t really think I&#8217;d use it much; maybe to do code blocks but not much else.  Now I find myself writing markdown for all content, and only translating it through various interpreters when I need the HTML.  In retrospect I&#8217;m extremely glad I went through the effort to add markdown support for the site&#8211; I use it all the time now.</p>
+<p>When I rewrote the code for this web site awhile back I decided to support markdown, but didn&rsquo;t really think I&rsquo;d use it much; maybe to do code blocks but not much else.  Now I find myself writing markdown for all content, and only translating it through various interpreters when I need the HTML.  In retrospect I&rsquo;m extremely glad I went through the effort to add markdown support for the site&mdash; I use it all the time now.</p>
 
-<p>There&#8217;s an <strong>incredible</strong> app for writing markdown on the fly: <a href="http://mouapp.com/">Mou</a> is a Mac application that lets you input markdown on the left pane and the HTML is dynamically updated in the right pane.  I&#8217;m literally using it right now to write this post, just to get a preview of what it will look like when I drop it into the &lt;textarea&gt; on the web site.</p>
+<p>There&rsquo;s an <strong>incredible</strong> app for writing markdown on the fly: <a href="http://mouapp.com/">Mou</a> is a Mac application that lets you input markdown on the left pane and the HTML is dynamically updated in the right pane.  I&rsquo;m literally using it right now to write this post, just to get a preview of what it will look like when I drop it into the &lt;textarea&gt; on the web site.</p>
 
 <p>I basically use it for all markdown content authoring, and then I copy/paste the result into whatever application/content field I will use it in.  It allows me to do edit/revision cycles on content as well as seeing the application of styles.  Highest recommendation.</p>
 
-<p>I also recently forked <a href="https://github.com/sr/git-wiki">git-wiki</a> and started working on improving it for my own use.  It also uses Markdown to write the wiki entries, which gets a little weird if you&#8217;ve ever used <a href="http://www.mediawiki.org/wiki/MediaWiki">MediaWiki</a> or <a href="http://www.wikipedia.com">Wikipedia</a>.  The default way to define <a href="http://twiki.org/cgi-bin/view/TWiki/WikiWord">wikiwords</a> in git-wiki didn&#8217;t really work for me so I updated it and checked everything back into <a href="https://github.com/whazzmaster/git-wiki">my own repo</a>.  I&#8217;ll be updating more about my git-wiki fork once I get it refactored and a little more configurable.</p>
+<p>I also recently forked <a href="https://github.com/sr/git-wiki">git-wiki</a> and started working on improving it for my own use.  It also uses Markdown to write the wiki entries, which gets a little weird if you&rsquo;ve ever used <a href="http://www.mediawiki.org/wiki/MediaWiki">MediaWiki</a> or <a href="http://www.wikipedia.com">Wikipedia</a>.  The default way to define <a href="http://twiki.org/cgi-bin/view/TWiki/WikiWord">wikiwords</a> in git-wiki didn&rsquo;t really work for me so I updated it and checked everything back into <a href="https://github.com/whazzmaster/git-wiki">my own repo</a>.  I&rsquo;ll be updating more about my git-wiki fork once I get it refactored and a little more configurable.</p>
 
-<p>So there you go- markdown is awesome and you should write your content in it; if you&#8217;ve never worked with it then try it out on Github (just make a public repo and create a README.md in the index).</p>
+<p>So there you go- markdown is awesome and you should write your content in it; if you&rsquo;ve never worked with it then try it out on Github (just make a public repo and create a README.md in the index).</p>
 </div>
   
   
@@ -160,16 +221,17 @@ comments = Comment.all
   
 
 
-<time datetime="2011-12-02T00:00:00-06:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+<time datetime="2011-12-02T00:00:00-06:00" pubdate data-updated="true"></time>
         
-         | <a href="/blog/2011/12/02/fitgem-v0-4-0/#disqus_thread" data-disqus-identifier="http://whazzing.com/blog/2011/12/02/fitgem-v0-4-0/">Comments</a>
+           | <a href="/blog/2011/12/02/fitgem-v0-4-0/#disqus_thread"
+             data-disqus-identifier="http://whazzing.com/blog/2011/12/02/fitgem-v0-4-0/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/3144a7299b60fa16">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.4.0.</p>
+  <div class="entry-content"><p>I&rsquo;m happy to announce that the <a href="http://groups.google.com/group/fitbit-api/browse_thread/thread/3144a7299b60fa16">latest Fitbit API features</a> have been exposed through the fitgem ruby library and released as v0.4.0.</p>
 
 <p>In addition to the new features, I thoroughly documented the entire library API (<a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">available here</a>), added many more unit tests, refactored the subscriptions methods, and moved the oauth process documentation to the <a href="https://github.com/whazzmaster/fitgem/wiki/The-OAuth-Process">project wiki on github</a>.</p>
 
@@ -190,10 +252,10 @@ The new method allows you to log more than weight (bicep size, body fat %, etc.)
 <li>Added unit tests for parameter validation for many methods</li>
 <li>Overhauled notifications methods, including extensive documentation,
 unit tests, refactoring, and a couple of bug fixes.  These methods now
-return both the HTTP status code and the JSON response body.  See https://wiki.fitbit.com/display/API/Subscriptions-API
+return both the HTTP status code and the JSON response body.  See <a href="https://wiki.fitbit.com/display/API/Subscriptions-API">https://wiki.fitbit.com/display/API/Subscriptions-API</a>
 for information on how to interpret each of the error codes.</li>
-<li>Added fitgem to travis-ci for continuous integration (http://travis-ci.org/#!/whazzmaster/fitgem)</li>
-<li>Added fitgem to rubydoc.info (http://rubydoc.info/github/whazzmaster/fitgem/master/frames)</li>
+<li>Added fitgem to travis-ci for continuous integration (<a href="http://travis-ci.org/#!/whazzmaster/fitgem">http://travis-ci.org/#!/whazzmaster/fitgem</a>)</li>
+<li>Added fitgem to rubydoc.info (<a href="http://rubydoc.info/github/whazzmaster/fitgem/master/frames">http://rubydoc.info/github/whazzmaster/fitgem/master/frames</a>)</li>
 <li>Updated README</li>
 <li>Moved OAuth documentation from the README to the <a href="https://github.com/whazzmaster/fitgem/wiki/The-OAuth-Process">fitgem wiki</a></li>
 </ul>
@@ -226,25 +288,26 @@ for information on how to interpret each of the error codes.</li>
   
 
 
-<time datetime="2011-12-02T00:00:00-06:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+<time datetime="2011-12-02T00:00:00-06:00" pubdate data-updated="true"></time>
         
-         | <a href="/blog/2011/12/02/december-2011-reading-list/#disqus_thread" data-disqus-identifier="http://whazzing.com/blog/2011/12/02/december-2011-reading-list/">Comments</a>
+           | <a href="/blog/2011/12/02/december-2011-reading-list/#disqus_thread"
+             data-disqus-identifier="http://whazzing.com/blog/2011/12/02/december-2011-reading-list/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I thought I&#8217;d jot down my current technical reading list.  I tend not to read technical books straight through, but instead I pick up a few at a time and refresh myself on whatever I&#8217;m interested in at the time.  (Full disclosure: these links include my Amazon affiliate code).</p>
+  <div class="entry-content"><p>I thought I&rsquo;d jot down my current technical reading list.  I tend not to read technical books straight through, but instead I pick up a few at a time and refresh myself on whatever I&rsquo;m interested in at the time.  (Full disclosure: these links include my Amazon affiliate code).</p>
 
 <ul>
 <li><a href="http://www.amazon.com/gp/product/0596008643/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596008643">Learning Mysql</a><p>Back in 2002 I got my exposure to SQL while doing elemntary PHP programming.  I read a little about MySQL back then, but never really went deep into things such as indexes and optimizations.  Rails obscures a lot of that stuff, but I wanted to be able to optimize efficiently and learn more about the underlying technology. So far this book has been really good at diving down underneath your SELECT, UPDATE, CREATE, and DROP actions.</p></li>
-<li><a href="http://www.amazon.com/gp/product/1934356476/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1934356476">Metaprogramming Ruby</a> <p>This is bar none my favorite Ruby book, and in my opinion is far better than the Pickaxe book for those who are coming to Ruby from another language/ecosystem.  The fellas at <a href="http://www.bendyworks.com">Bendyworks</a> have been doing a bi-weekly book club on this book and I&#8217;ve happily attended as many as I could to talk about it.  This book goes into incredible, understandable detail about the object model and dynamic nature of programming in Ruby.  It gets my highest recommendation.</p></li>
-<li><a href="http://www.amazon.com/gp/product/0393979504/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0393979504">C Programming: A Modern Approach</a> <p>My college computer science curriculum was in C++ and Java.  My job at <a href="http://www.intuit.com">Intuit</a> involves C/C++/C# development, but it tends to fall heavily into the C++/C# side of things.  I respect the hell out of Zed Shaw&#8217;s outlook on programming, and truly believe that a working knowledge of C development will take you far.  To that end, I&#8217;ve been working through <a href="http://c.learncodethehardway.org/">Learn C the Hard Way</a> online while reading this superb book.  I also purchased the original <a href="http://www.amazon.com/gp/product/0131103628/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0131103628">The C Programming Language</a> book, but A Modern Approach is, in my opinion, superior as a reference and primer.</p></li>
+<li><a href="http://www.amazon.com/gp/product/1934356476/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1934356476">Metaprogramming Ruby</a> <p>This is bar none my favorite Ruby book, and in my opinion is far better than the Pickaxe book for those who are coming to Ruby from another language/ecosystem.  The fellas at <a href="http://www.bendyworks.com">Bendyworks</a> have been doing a bi-weekly book club on this book and I&rsquo;ve happily attended as many as I could to talk about it.  This book goes into incredible, understandable detail about the object model and dynamic nature of programming in Ruby.  It gets my highest recommendation.</p></li>
+<li><a href="http://www.amazon.com/gp/product/0393979504/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0393979504">C Programming: A Modern Approach</a> <p>My college computer science curriculum was in C++ and Java.  My job at <a href="http://www.intuit.com">Intuit</a> involves C/C++/C# development, but it tends to fall heavily into the C++/C# side of things.  I respect the hell out of Zed Shaw&rsquo;s outlook on programming, and truly believe that a working knowledge of C development will take you far.  To that end, I&rsquo;ve been working through <a href="http://c.learncodethehardway.org/">Learn C the Hard Way</a> online while reading this superb book.  I also purchased the original <a href="http://www.amazon.com/gp/product/0131103628/ref=as_li_tf_tl?ie=UTF8&amp;tag=whazzingcom-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0131103628">The C Programming Language</a> book, but A Modern Approach is, in my opinion, superior as a reference and primer.</p></li>
 </ul>
 
 
-<p>My technical reading list changes often; I&#8217;ll usually read through three books over the course of several weeks and then pull more off my shelf and refresh myself on a different topic.  It&#8217;s why I also buy books on the periphery of my interests just to have them on my shelf.  I enjoy having the references available, even if I don&#8217;t read them as soon as they arrive.</p>
+<p>My technical reading list changes often; I&rsquo;ll usually read through three books over the course of several weeks and then pull more off my shelf and refresh myself on a different topic.  It&rsquo;s why I also buy books on the periphery of my interests just to have them on my shelf.  I enjoy having the references available, even if I don&rsquo;t read them as soon as they arrive.</p>
 </div>
   
   
@@ -273,9 +336,10 @@ for information on how to interpret each of the error codes.</li>
   
 
 
-<time datetime="2011-10-25T00:00:00-05:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
+<time datetime="2011-10-25T00:00:00-05:00" pubdate data-updated="true"></time>
         
-         | <a href="/blog/2011/10/25/whazzing-com-v1-2/#disqus_thread" data-disqus-identifier="http://whazzing.com/blog/2011/10/25/whazzing-com-v1-2/">Comments</a>
+           | <a href="/blog/2011/10/25/whazzing-com-v1-2/#disqus_thread"
+             data-disqus-identifier="http://whazzing.com/blog/2011/10/25/whazzing-com-v1-2/">Comments</a>
         
       </p>
     
@@ -288,7 +352,7 @@ for information on how to interpret each of the error codes.</li>
 <li>Posts can now be attached to projects in order to create news feeds on a per-project basis.</li>
 <li>Added favicon to the site</li>
 <li>Added ranking implementation for posts using <a href="http://redis.io/">Redis</a>.  Not in use yet.</li>
-<li>Added RSS feed for posts.  Available at http://www.whazzing.com/posts.rss</li>
+<li>Added RSS feed for posts.  Available at <a href="http://www.whazzing.com/posts.rss">http://www.whazzing.com/posts.rss</a></li>
 <li>Updated styles for the post and project pages</li>
 </ul>
 
@@ -330,9 +394,10 @@ for information on how to interpret each of the error codes.</li>
   
 
 
-<time datetime="2011-10-25T00:00:00-05:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
+<time datetime="2011-10-25T00:00:00-05:00" pubdate data-updated="true"></time>
         
-         | <a href="/blog/2011/10/25/fitgem-v0-3-6/#disqus_thread" data-disqus-identifier="http://whazzing.com/blog/2011/10/25/fitgem-v0-3-6/">Comments</a>
+           | <a href="/blog/2011/10/25/fitgem-v0-3-6/#disqus_thread"
+             data-disqus-identifier="http://whazzing.com/blog/2011/10/25/fitgem-v0-3-6/">Comments</a>
         
       </p>
     
@@ -541,26 +606,27 @@ pp client.find_food("GoLean Raisin Bran Crunch Cereal")
   
 
 
-<time datetime="2011-09-26T00:00:00-05:00" pubdate data-updated="true">Sep 26<span>th</span>, 2011</time>
+<time datetime="2011-09-26T00:00:00-05:00" pubdate data-updated="true"></time>
         
-         | <a href="/blog/2011/09/26/searching-vs-finding/#disqus_thread" data-disqus-identifier="http://whazzing.com/blog/2011/09/26/searching-vs-finding/">Comments</a>
+           | <a href="/blog/2011/09/26/searching-vs-finding/#disqus_thread"
+             data-disqus-identifier="http://whazzing.com/blog/2011/09/26/searching-vs-finding/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;ve found that many of the truly interesting and outlook-altering pieces of information I&#8217;ve acquired have come via finding something randomly or pseudo-randomly as opposed to searching it out.</p>
+  <div class="entry-content"><p>I&rsquo;ve found that many of the truly interesting and outlook-altering pieces of information I&rsquo;ve acquired have come via finding something randomly or pseudo-randomly as opposed to searching it out.</p>
 
 <p>These days the information in question is often a tool, configuration, or piece of code that radically shortcuts an oft-repeated activity.  It has nothing to with luck, or ability to use Google, however.  <strong>The delight in finding the perfect tool or option is often that you never conceived that it could exist in the first place</strong>.</p>
 
-<p>The most stark example I&#8217;ve had recently is in pursuit of my quest to <a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">learn vim</a>.  In changing over from TextMate to vim many times I would end up pondering really newb questions: how do I cut a line of text? How do I move to the end of a file?  A couple of HI-YAH&#8217;s of Google-Fu later I&#8217;ve got the answer an I&#8217;m trucking along.  Some days, however, I&#8217;ll be reading something unrelated and all of a sudden learn that <strong>dt followed by a character</strong> <em>will delete from the cursor position to the next instance of that character</em>.  It&#8217;s weird, but that was a game-changer for me.  Changing out strings became: <strong>dt&#8221;</strong> and then insert and go.</p>
+<p>The most stark example I&rsquo;ve had recently is in pursuit of my quest to <a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">learn vim</a>.  In changing over from TextMate to vim many times I would end up pondering really newb questions: how do I cut a line of text? How do I move to the end of a file?  A couple of HI-YAH&rsquo;s of Google-Fu later I&rsquo;ve got the answer an I&rsquo;m trucking along.  Some days, however, I&rsquo;ll be reading something unrelated and all of a sudden learn that <strong>dt followed by a character</strong> <em>will delete from the cursor position to the next instance of that character</em>.  It&rsquo;s weird, but that was a game-changer for me.  Changing out strings became: <strong>dt&#8221;</strong> and then insert and go.</p>
 
-<p>I could also characterize my use of <a href="https://github.com/guard/guard">guard</a> in this way.  I was at a <a href="http://www.meetup.com/Mad-Railers/">Mad-Railers</a> hack day awhile back and <a href="http://twitter.com/#!/listrophy">Brad</a> happened to be using <a href="https://github.com/guard/guard-rspec">guard for his rspec execution</a> during TDD.  It was a revelation that I could just edit files and tests and it would automatically rerun.  Here&#8217;s where things get interesting, however.  It had previously never occurred to me to even look for a way to speed up my tests or optimize the time spent manually executing them.  It was a problem I didn&#8217;t know I had.  After learning about guard I looked through <a href="https://github.com/guard/guard/wiki/List-of-available-Guards">the list of available guards</a>, however, and found some other interesting ones.  These additional plugins for the guard model were also solving problems I didn&#8217;t even know were bugging me until I found they were solved problems.</p>
+<p>I could also characterize my use of <a href="https://github.com/guard/guard">guard</a> in this way.  I was at a <a href="http://www.meetup.com/Mad-Railers/">Mad-Railers</a> hack day awhile back and <a href="http://twitter.com/#!/listrophy">Brad</a> happened to be using <a href="https://github.com/guard/guard-rspec">guard for his rspec execution</a> during TDD.  It was a revelation that I could just edit files and tests and it would automatically rerun.  Here&rsquo;s where things get interesting, however.  It had previously never occurred to me to even look for a way to speed up my tests or optimize the time spent manually executing them.  It was a problem I didn&rsquo;t know I had.  After learning about guard I looked through <a href="https://github.com/guard/guard/wiki/List-of-available-Guards">the list of available guards</a>, however, and found some other interesting ones.  These additional plugins for the guard model were also solving problems I didn&rsquo;t even know were bugging me until I found they were solved problems.</p>
 
 <p>This all came to me this morning as I was watching Ryan Bates&#8217; <a href="http://railscasts.com/episodes/285-spork">Railscast on using Spork</a> to speed up test execution further by preloading the Rails framework and keeping it in memory between tests.</p>
 
-<p>When worrying about getting a primary goal completed (say, a feature in an application) you don&#8217;t often think about solutions to one-off problems or annoyances, let alone prioritize solving them.  This is partially why I invest time at the beginning of a project to develop and optimize the code-test-fix cycle, why I obsess over the deployment model when I only have a README, and why I like continuous integration before a test has been written.  Once your process for coding is solid, you can optimize it piecemeal as you <strong>need to</strong> or as you <strong>find unexpected tools or processes</strong> that would increase your productivity drastically.</p>
+<p>When worrying about getting a primary goal completed (say, a feature in an application) you don&rsquo;t often think about solutions to one-off problems or annoyances, let alone prioritize solving them.  This is partially why I invest time at the beginning of a project to develop and optimize the code-test-fix cycle, why I obsess over the deployment model when I only have a README, and why I like continuous integration before a test has been written.  Once your process for coding is solid, you can optimize it piecemeal as you <strong>need to</strong> or as you <strong>find unexpected tools or processes</strong> that would increase your productivity drastically.</p>
 
 <p>An example: my tests were already running really well under guard, but 15 minutes or install and configuration of <a href="https://github.com/guard/guard-spork">guard-spork</a> I saw immediate speed gains.</p>
 </div>
@@ -591,18 +657,19 @@ pp client.find_food("GoLean Raisin Bran Crunch Cereal")
   
 
 
-<time datetime="2011-09-23T00:00:00-05:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2011</time>
+<time datetime="2011-09-23T00:00:00-05:00" pubdate data-updated="true"></time>
         
-         | <a href="/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/#disqus_thread" data-disqus-identifier="http://whazzing.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/">Comments</a>
+           | <a href="/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/#disqus_thread"
+             data-disqus-identifier="http://whazzing.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>In getting the <a href="https://github.com/thoughtbot/paperclip">paperclip gem</a> working on my server for some screenshots I ran into a frustrating problem.  I kept getting an error during model saving: <strong>&#8220;/tmp/1234bduct-123.png is not recognized by the &#8216;identify&#8217; command&#8221;</strong>.  Eventually I solved the problem, so here is my solution, hoping that it helps someone else out there.</p>
+  <div class="entry-content"><p>In getting the <a href="https://github.com/thoughtbot/paperclip">paperclip gem</a> working on my server for some screenshots I ran into a frustrating problem.  I kept getting an error during model saving: <strong>&ldquo;/tmp/1234bduct-123.png is not recognized by the &lsquo;identify&rsquo; command&rdquo;</strong>.  Eventually I solved the problem, so here is my solution, hoping that it helps someone else out there.</p>
 
-<p>After some googling and reading <a href="http://www.stackoverflow.com">Stack Overflow</a> I quickly came across the solution that Paperclips :command_path option wasn&#8217;t being set correctly.  The problem, however, was that it looked like I was correctly setting the ImageMagick path:</p>
+<p>After some googling and reading <a href="http://www.stackoverflow.com">Stack Overflow</a> I quickly came across the solution that Paperclips :command_path option wasn&rsquo;t being set correctly.  The problem, however, was that it looked like I was correctly setting the ImageMagick path:</p>
 
 <pre lang="bash">
 $ which identify
@@ -620,14 +687,14 @@ end
 </pre>
 
 
-<p>That seemed to be correct, but I still kept getting the same error.  Eventually I came across an <a href="http://blog.e-thang.net/2009/12/30/paperclipimagemagickrmagick-error-is-not-recognized-by-the-identify-command/comment-page-1/#comment-1067">excellent suggestion</a> that perhaps my installed version of ImageMagick was incomplete, corrupt, or missing libs or dependencies.  First I reran the ImageMagick apt-get install&#8230;</p>
+<p>That seemed to be correct, but I still kept getting the same error.  Eventually I came across an <a href="http://blog.e-thang.net/2009/12/30/paperclipimagemagickrmagick-error-is-not-recognized-by-the-identify-command/comment-page-1/#comment-1067">excellent suggestion</a> that perhaps my installed version of ImageMagick was incomplete, corrupt, or missing libs or dependencies.  First I reran the ImageMagick apt-get install&hellip;</p>
 
 <pre lang="bash">
 $ sudo apt-get install imagemagick --fix-missing
 </pre>
 
 
-<p>&#8230;which installed identify to <strong>/usr/bin</strong> rather than the existing version in <strong>/usr/local/bin</strong>.  I then updated my environment file to the following&#8230;</p>
+<p>&hellip;which installed identify to <strong>/usr/bin</strong> rather than the existing version in <strong>/usr/local/bin</strong>.  I then updated my environment file to the following&hellip;</p>
 
 <pre lang="ruby">
 WhazzingCom::Application.configure do
@@ -637,7 +704,7 @@ end
 </pre>
 
 
-<p>&#8230;and refreshed the page and everthing worked as expected!</p>
+<p>&hellip;and refreshed the page and everthing worked as expected!</p>
 </div>
   
   
@@ -666,24 +733,25 @@ end
   
 
 
-<time datetime="2011-09-21T00:00:00-05:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
+<time datetime="2011-09-21T00:00:00-05:00" pubdate data-updated="true"></time>
         
-         | <a href="/blog/2011/09/21/redesigning-whazzing-com/#disqus_thread" data-disqus-identifier="http://whazzing.com/blog/2011/09/21/redesigning-whazzing-com/">Comments</a>
+           | <a href="/blog/2011/09/21/redesigning-whazzing-com/#disqus_thread"
+             data-disqus-identifier="http://whazzing.com/blog/2011/09/21/redesigning-whazzing-com/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>For the last month I&#8217;ve been working to create this new development-focused blog and project repository for my work.  I was previously self-hosting a <a href="http://www.wordpress.org">Wordpress</a> blog, but I&#8217;ve developed a desire to own my destiny when it comes to the display of my work.  There were a ton of little features I wanted to develop but didn&#8217;t really want to delve (back) into the PHP world or hack at the Wordpress template framework.</p>
+  <div class="entry-content"><p>For the last month I&rsquo;ve been working to create this new development-focused blog and project repository for my work.  I was previously self-hosting a <a href="http://www.wordpress.org">Wordpress</a> blog, but I&rsquo;ve developed a desire to own my destiny when it comes to the display of my work.  There were a ton of little features I wanted to develop but didn&rsquo;t really want to delve (back) into the PHP world or hack at the Wordpress template framework.</p>
 
-<p>I&#8217;d recently read the excellent <a href="http://www.abookapart.com/products/responsive-web-design">Responsive Web Design</a> and it made me very excited to design a site that effortlessly works on phones, tablets, monitors, and TVs.  Another project I have in mind is primarily aimed at mobile form factors, so I thought a semi-major experiment was in order to ensure I was thinking in the right direction when it came to media queries and mobile design.</p>
+<p>I&rsquo;d recently read the excellent <a href="http://www.abookapart.com/products/responsive-web-design">Responsive Web Design</a> and it made me very excited to design a site that effortlessly works on phones, tablets, monitors, and TVs.  Another project I have in mind is primarily aimed at mobile form factors, so I thought a semi-major experiment was in order to ensure I was thinking in the right direction when it came to media queries and mobile design.</p>
 
 <h2>Technology</h2>
 
 <p>I built <a href="http://whazzing.com">whazzing.com</a> with ruby 1.9.2, rails 3.1, mysql, and various gems.  My first commit was August 19th, 2011 and I deployed version 1.0 to production on September 20th, 2011.</p>
 
-<p>As I started coding this site, Rails 3.1 was entering it&#8217;s final release candidate testing phase so I decided to start fresh on it.  The asset pipeline is just a terrific addition to the framework, and combining it with the style organization I&#8217;ve been developing off of Dale Sande&#8217;s incredible <a href="http://axle.dalesande.com">Axle framework</a> provided for a <strong>very smooth visual design experience</strong>.  I added a little bit to Dale&#8217;s CSS organization to support the media queries I wanted to support.</p>
+<p>As I started coding this site, Rails 3.1 was entering it&rsquo;s final release candidate testing phase so I decided to start fresh on it.  The asset pipeline is just a terrific addition to the framework, and combining it with the style organization I&rsquo;ve been developing off of Dale Sande&rsquo;s incredible <a href="http://axle.dalesande.com">Axle framework</a> provided for a <strong>very smooth visual design experience</strong>.  I added a little bit to Dale&rsquo;s CSS organization to support the media queries I wanted to support.</p>
 
 <pre>
 assets
@@ -706,17 +774,17 @@ assets
 </pre>
 
 
-<p>One of the interesting takeways from the excellent testing panel at <a href="http://madisonruby.org/schedule">Madison Ruby</a> was that people are divided about the usefulness of <a href="http://cukes.info/">cucumber</a>.  I had always stumbled in wrangling cucumber to be really useful for the applications I was writing and so I decided to eschew its usage this time. I focused instead on getting good coverage via my <a href="https://www.relishapp.com/rspec">RSpec</a> controller and model tests.  I found that leaving cucumber aside really streamlined the process and didn&#8217;t leave me eternally feeling like I was losing focus on the functionality I wanted due to the the myriad tests that were demanded by all the tools I was using.</p>
+<p>One of the interesting takeways from the excellent testing panel at <a href="http://madisonruby.org/schedule">Madison Ruby</a> was that people are divided about the usefulness of <a href="http://cukes.info/">cucumber</a>.  I had always stumbled in wrangling cucumber to be really useful for the applications I was writing and so I decided to eschew its usage this time. I focused instead on getting good coverage via my <a href="https://www.relishapp.com/rspec">RSpec</a> controller and model tests.  I found that leaving cucumber aside really streamlined the process and didn&rsquo;t leave me eternally feeling like I was losing focus on the functionality I wanted due to the the myriad tests that were demanded by all the tools I was using.</p>
 
-<p>Madison Ruby was a fantastic source of information on how to write better ruby code and rails applications.  In particular, <a href="http://twitter.com/#!/j3">Jeff Casimir&#8217;s</a> talk on using view-models and decorators as opposed to helpers in rails was food for thought.  Halfway through implementation on this site I switched over to using <a href="https://github.com/jcasimir/draper">draper</a> for my presentation logic and I <strong>love it</strong>.</p>
+<p>Madison Ruby was a fantastic source of information on how to write better ruby code and rails applications.  In particular, <a href="http://twitter.com/#!/j3">Jeff Casimir&rsquo;s</a> talk on using view-models and decorators as opposed to helpers in rails was food for thought.  Halfway through implementation on this site I switched over to using <a href="https://github.com/jcasimir/draper">draper</a> for my presentation logic and I <strong>love it</strong>.</p>
 
-<p>Another tool I wanted to test out for this project was <a href="https://github.com/nvie/gitflow">git-flow</a>.  At <a href="http://scottchacon.com/">Scott Chacon&#8217;s</a> eye-opening Git workshop I increased my git knowledge 10 times, easily.  Going through the underlying structures of git taught me a lot about what&#8217;s really going on during commits, push, and branching, and I wanted to try to formalize the release process of this project a bit more using git-flow&#8217;s branching model.  The result: I loved the structure of the branches, even if this was a one-man project, and will definitely use it on more projects in the future.</p>
+<p>Another tool I wanted to test out for this project was <a href="https://github.com/nvie/gitflow">git-flow</a>.  At <a href="http://scottchacon.com/">Scott Chacon&rsquo;s</a> eye-opening Git workshop I increased my git knowledge 10 times, easily.  Going through the underlying structures of git taught me a lot about what&rsquo;s really going on during commits, push, and branching, and I wanted to try to formalize the release process of this project a bit more using git-flow&rsquo;s branching model.  The result: I loved the structure of the branches, even if this was a one-man project, and will definitely use it on more projects in the future.</p>
 
-<p>Finally, I&#8217;ve been more and more intrigued by <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> since Github and many other sites support it these days.  Instead of pouring time into creating a WYSIWYG editor or trying to drop one in, I instead grabbed the <a href="https://github.com/blog/832-rolling-out-the-redcarpet">Redcarpet</a> gem and simply use markdown to create the posts and project descriptions.  I also use <a href="https://github.com/github/albino">albino</a> and <a href="http://pygments.org/">pygments</a> for code highlighting.</p>
+<p>Finally, I&rsquo;ve been more and more intrigued by <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> since Github and many other sites support it these days.  Instead of pouring time into creating a WYSIWYG editor or trying to drop one in, I instead grabbed the <a href="https://github.com/blog/832-rolling-out-the-redcarpet">Redcarpet</a> gem and simply use markdown to create the posts and project descriptions.  I also use <a href="https://github.com/github/albino">albino</a> and <a href="http://pygments.org/">pygments</a> for code highlighting.</p>
 
 <h2>Methodology &amp; Features</h2>
 
-<p>The problem I had to overcome this time (and every time I jumpstart a project) is that too often I get bogged down on tangents.  I&#8217;ll get fixated on one unimportant feature or line of code, I&#8217;ll get frustrated that I can&#8217;t get it the way I want, and eventually I won&#8217;t even want to open the text editor due to feelings of dread.  This time I was determined to mercilessly cut features until I had something simple I could get coded and deployed, and then iterate from there.  A few times I almost got bogged down, but forced myself to leave features on the table for future releases so that I could get my high priority functionality into production.</p>
+<p>The problem I had to overcome this time (and every time I jumpstart a project) is that too often I get bogged down on tangents.  I&rsquo;ll get fixated on one unimportant feature or line of code, I&rsquo;ll get frustrated that I can&rsquo;t get it the way I want, and eventually I won&rsquo;t even want to open the text editor due to feelings of dread.  This time I was determined to mercilessly cut features until I had something simple I could get coded and deployed, and then iterate from there.  A few times I almost got bogged down, but forced myself to leave features on the table for future releases so that I could get my high priority functionality into production.</p>
 
 <p>I settled on <strong>four</strong> main features for the first release:</p>
 
@@ -738,21 +806,21 @@ assets
 </ul>
 
 
-<p>I&#8217;ll also, of course, be correcting anything that shakes out while using it.</p>
+<p>I&rsquo;ll also, of course, be correcting anything that shakes out while using it.</p>
 
-<h2>What&#8217;s Next</h2>
+<h2>What&rsquo;s Next</h2>
 
-<p>I&#8217;m looking forward to extending this project, while using it as a platform to document the other things I&#8217;m working on.  I would really like to use <a href="http://redis.io/">redis</a> for some analytics/tracking ideas I have, and I&#8217;m interested in how to tie in <a href="http://akismet.com/">akismet</a> spam-blocking for comments.</p>
+<p>I&rsquo;m looking forward to extending this project, while using it as a platform to document the other things I&rsquo;m working on.  I would really like to use <a href="http://redis.io/">redis</a> for some analytics/tracking ideas I have, and I&rsquo;m interested in how to tie in <a href="http://akismet.com/">akismet</a> spam-blocking for comments.</p>
 
-<p>The images along the left side don&#8217;t scan well on mobile devices, so I&#8217;m going to look into replacing them in the next release as well.  I like the structure of the site, but the specific details could be tightened a little.</p>
+<p>The images along the left side don&rsquo;t scan well on mobile devices, so I&rsquo;m going to look into replacing them in the next release as well.  I like the structure of the site, but the specific details could be tightened a little.</p>
 
-<p>I&#8217;d like to get a styleguide up and running so that my CSS can be standardized a little.  I tried as much as possible to be OO in my CSS but failed in a few places that I&#8217;d like to clean up.</p>
+<p>I&rsquo;d like to get a styleguide up and running so that my CSS can be standardized a little.  I tried as much as possible to be OO in my CSS but failed in a few places that I&rsquo;d like to clean up.</p>
 
 <h2>Thanks</h2>
 
 <p>Many, many thanks to <a href="http://begriffsschrift.com/">Joe Nelson</a>, from whom I shamelessly stole the idea for the micro-resume.  Thanks so much for the idea- it jump-started what became the new site, blog, etc.</p>
 
-<p>Also, thanks to <a href="http://kev.inburke.com/">Kevin Burke</a>. I read his blog post on <a href="http://kev.inburke.com/kevin/site-redesign/">designing your personal site</a> and was inspired to go beyond the usual &#8220;reverse chronological order of posts&#8221; home page.  Instead I tried to create a homepage that advertises all the things I&#8217;m working on, blog posts being only one of the pieces.</p>
+<p>Also, thanks to <a href="http://kev.inburke.com/">Kevin Burke</a>. I read his blog post on <a href="http://kev.inburke.com/kevin/site-redesign/">designing your personal site</a> and was inspired to go beyond the usual &ldquo;reverse chronological order of posts&rdquo; home page.  Instead I tried to create a homepage that advertises all the things I&rsquo;m working on, blog posts being only one of the pieces.</p>
 
 <p>Thanks to <a href="http://www.dalesande.com/">Dale Sande</a>, who helped me step up my CSS game with his excellent <a href="http://axle.dalesande.com">Axle framework</a> and thoughts on OOCSS (object-oriented CSS).  If you ever get a chance to attend his OOCSS talk definitely do it; as a primarily backend dude I found it immensely helpful for structuring my CSS and semantic markup.</p>
 </div>
@@ -786,11 +854,15 @@ assets
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy using Powershell and MSBuild</a>
+        <a href="/blog/2013/12/01/catching-up/">Catching Up</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF applications with ReactiveUI</a>
+        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy Using Powershell and MSBuild</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF Applications With ReactiveUI</a>
       </li>
     
       <li class="post">
@@ -798,11 +870,7 @@ assets
       </li>
     
       <li class="post">
-        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem To Be Getting Along Fine Without Facebook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/27/madison-ruby-2012/">Madison Ruby 2012</a>
+        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem to Be Getting Along Fine Without Facebook</a>
       </li>
     
   </ul>
@@ -817,7 +885,7 @@ assets
   <a href="https://github.com/whazzmaster">@whazzmaster</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -879,7 +947,7 @@ assets
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -895,7 +963,7 @@ assets
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

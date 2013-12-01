@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: year in review | whazzing around]]></title>
+  <link href="http://whazzing.com/blog/categories/year-in-review/atom.xml" rel="self"/>
+  <link href="http://whazzing.com/"/>
+  <updated>2013-12-01T17:11:12-06:00</updated>
+  <id>http://whazzing.com/</id>
+  <author>
+    <name><![CDATA[Zachery Moneypenny]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Catching Up]]></title>
+    <link href="http://whazzing.com/blog/2013/12/01/catching-up/"/>
+    <updated>2013-12-01T08:45:00-06:00</updated>
+    <id>http://whazzing.com/blog/2013/12/01/catching-up</id>
+    <content type="html"><![CDATA[<p>Since this summer I&rsquo;ve been quite busy both at work and on local projects and
+figured it was time to reflect and look towards the upcoming year.</p>
+
+<h2>2013: The Year in Review</h2>
+
+<p>Let&rsquo;s talk about work stuff and home stuff.</p>
+
+<h3>@Work</h3>
+
+<p>At work, I started 2013 as primarily a <strong>C/C++ developer</strong> working on connecting
+our flagship accounting application to connected services.
+It was extremely interesting, if sometimes frustrating, to enhance a 15-year-old
+code base to talk to a new generation of more nimble web services. Throughout
+the summer we stamped out bugs and responded to early feedback from testers, as
+well as worked on merges out to all the major versions of the code base. At the
+same time we started prepping documentation and transition materials to ease the
+difficulty in transferring knowledge of a 20+ year-old
+code base to a new team.</p>
+
+<p>Starting in August I began splitting my time between my desktop development
+tasks and my new group. I&rsquo;m now working on
+<a href="http://paychecks.intuit.com">ViewMyPaycheck</a>, which is built on
+<a href="http://backbonejs.org">Backbone.js</a>/HTML5/<a href="http://sass-lang.com">SCSS</a> for
+the front-end and Java Web Services on the backend. It&rsquo;s really my first time
+developing in Java, and so I&rsquo;m learning new things every day.</p>
+
+<p>Luckily, due to my extensive tours of different Javascript frameworks in my
+Rails projects at home I was able to come strong out of the gate in working
+on the Backbone code. My experience with Sass allowed me to not only pick
+up our styles quickly, but re-architect them to ease the evolution and
+concurrent development by multiple engineers.</p>
+
+<p>There was some tech debt wrapped up in the new code base but my excellent team
+has thus far done a great job of prioritizing refactoring and
+build/infrastructure improvements against the race to be feature-complete for
+the 2013 tax season.</p>
+
+<h3>@Home</h3>
+
+<p>The holiday season of 2012 was quite a disaster in my family&rsquo;s annual gift
+exchange. Each adult had to submit a list of things they wanted to my mom, and
+then she drew the names for <strong>two</strong> different exchanges: one for our immediate
+family and one for our extended family. When Xmas Morning arrived we found a
+ridiculous outcome: <em>since most everyone had gone for the &lsquo;easy&rsquo; thing on their
+target&rsquo;s gift list, most people received two of one thing on their list</em>.</p>
+
+<p>It spoke to an age-old problem of holiday gift-giving where, when grandparents,
+aunts, uncles, etc. all clamor for a list of things a kid wants, they have no
+way of ensuring that someone else didn&rsquo;t already buy something on the list.
+So in the ensuing winter, when I just so happened to have a lot of time on my
+hands due to the birth of my son, I set out to create a web app to solve the
+problem.</p>
+
+<p>I finished a pre-alpha version of <a href="http://giftr.us">giftr.us</a> in the spring and
+my family used it for birthdays throughout the spring and summer. It&rsquo;s in a
+pretty good spot right now, but I wasn&rsquo;t able to finish the formal <strong>Gift
+Exchange</strong> functionality for the 2013 Holidays.</p>
+
+<p>This year I also began a journey to help out the
+<a href="http://madrailers.org">MadRailers Meetup</a> which culminated in me taking over
+the organization in the fall. I&rsquo;ve been a member of the meetup since roundabouts
+shortly after I moved back from California, and it&rsquo;s enabled me to meet a ton
+of great folks in the Madison tech community. I started out volunteering for
+talks in the spring, and in the summer I started suggesting other topics or
+speakers.  By the time of the
+<a href="http://madisonruby.com">Madison Ruby conference</a> we&rsquo;d laid out a great schedule
+of speakers throughout the end of the year, and I&rsquo;m really pleased with where
+the group is headed and our new space: the newly-renovated
+<a href="http://mynewlibrary.org/">Madison Public Library</a>!</p>
+
+<h2>2014: The Year to Come</h2>
+
+<h3>@Work</h3>
+
+<p>I&rsquo;m incredibly excited to continue the modernization our Backbone app. A short
+list of the changes and/or improvements I&rsquo;m planning:</p>
+
+<ul>
+<li>Move to using DevOps-provided <a href="http://www.vagrantup.com/">Vagrant</a> images on
+developer machines to more closely align development and deployment
+environments.</li>
+<li>Move our static site code (HTML/CSS/JS/Images) to a CDN to improve load times.</li>
+<li>Move from <a href="http://ant.apache.org/">Ant</a> to <a href="http://gruntjs.com">Grunt</a> to
+build the site (transpile SCSS, run JS tests, etc.)</li>
+<li>Move from base Backbone.js to <a href="http://marionettejs.com/">Marionette.js</a> to
+get better support for composing layouts, regions, and views.</li>
+<li>Router changes to better control the fetching of data.</li>
+</ul>
+
+
+<p>These are all technical in nature; we&rsquo;re obviously going to parallelize these
+more architectural and platform-ish changes alongside the improvements to the
+user workflow and enhancements based on user feedback. My ultimate goal is to
+get the app into a continuously deployable build process. We&rsquo;re a ways off right
+now but it&rsquo;s definitely doable.</p>
+
+<h3>@Home</h3>
+
+<p>I&rsquo;m going to continue to develop Giftr&rsquo;s gift exchange functionality, and I may
+explore either turning it into a single-page app via Ember.js or similar, or
+I may dip my toe into mobile native development. I&rsquo;m incredibly interested
+in learning more about <a href="http://xamarin.com/">Xamarin</a> for doing cross-platform
+mobile development.</p>
+
+<p>I&rsquo;m also going to continue to develop more programming for MadRailers. In 2014
+we&rsquo;d love to explore joint-sponsored meetups with other local tech groups,
+as well as move towards more diversity in our speaker lineups and membership.
+We&rsquo;ll be sponsoring more Newbie Nights as well as itermittent Hack Days.</p>
+
+<h2>And Sooooo&hellip;</h2>
+
+<p>It&rsquo;s been a pretty good year! I was somehow able to maintain <em>some</em> level of
+progress on my own development projects even with the birth of the first kid,
+and I&rsquo;m getting out of my comfort zone in my professional development which
+is refreshing. Here&rsquo;s to continuing to learn and improve in 2014!</p>
+]]></content>
+  </entry>
+  
+</feed>

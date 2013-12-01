@@ -4,7 +4,7 @@
   <title><![CDATA[Category: deployment | whazzing around]]></title>
   <link href="http://whazzing.com/blog/categories/deployment/atom.xml" rel="self"/>
   <link href="http://whazzing.com/"/>
-  <updated>2013-06-26T10:36:57-05:00</updated>
+  <updated>2013-12-01T17:11:12-06:00</updated>
   <id>http://whazzing.com/</id>
   <author>
     <name><![CDATA[Zachery Moneypenny]]></name>
@@ -20,19 +20,19 @@
     <id>http://whazzing.com/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild</id>
     <content type="html"><![CDATA[<p>As I was nearing completion on the <a href="">WPF app I described in an earlier post</a> I became focused on how to easily build and deploy it to our developer and QA team. I had decided to use <a href="http://en.wikipedia.org/wiki/ClickOnce">ClickOnce</a> to facilitate easy updates, but I wanted to make it dead-simple to build and deploy the installer/updater to the network share so that anyone could easily contribute to the tool development.</p>
 
-<p>At the time I'd been doing quite a bit of Powershell work and coincidentally I stumbled on the <a href="https://github.com/blog/1271-how-we-ship-github-for-windows">Github post</a> on how they build the <a href="http://windows.github.com/">Github for Windows application</a>. In that post I saw a tantalizing screen capture of their build/deploy script output and knew at once that I must have it.</p>
+<p>At the time I&rsquo;d been doing quite a bit of Powershell work and coincidentally I stumbled on the <a href="https://github.com/blog/1271-how-we-ship-github-for-windows">Github post</a> on how they build the <a href="http://windows.github.com/">Github for Windows application</a>. In that post I saw a tantalizing screen capture of their build/deploy script output and knew at once that I must have it.</p>
 
 <p style="text-align:center;"><img src="http://whazzing.com/images/github-for-windows.png" height="183" width="673"/></p>
 
 
-<p>From that image I reverse engineered the steps my script needed to take, and then I had to figure out how to implement each step. It's worth noting that <strong>ClickOnce setting manipulation and deployment is not available via scripting or MSBuild commands</strong>. The code below includes my solution to these issues.</p>
+<p>From that image I reverse engineered the steps my script needed to take, and then I had to figure out how to implement each step. It&rsquo;s worth noting that <strong>ClickOnce setting manipulation and deployment is not available via scripting or MSBuild commands</strong>. The code below includes my solution to these issues.</p>
 
 <h2>Build &amp; Deployment Script Output</h2>
 
 <p>Below is the output of my own build and deployment script. A couple of important notes:</p>
 
 <ul>
-<li>My application consisted of one .exe file and one .dll file corresponding to two projects in a single Visual Studio solution. In the example code below I've replaced my .exe project name with <strong>Executable</strong> and my .dll project name with <strong>Library</strong>. The ClickOnce settings are maintained in the Executable project file.</li>
+<li>My application consisted of one .exe file and one .dll file corresponding to two projects in a single Visual Studio solution. In the example code below I&rsquo;ve replaced my .exe project name with <strong>Executable</strong> and my .dll project name with <strong>Library</strong>. The ClickOnce settings are maintained in the Executable project file.</li>
 <li><strong>I should note that a decision I made is that the installer version should always be the same as the executable version.</strong> For a small tool like this it makes things simpler than to version the installer independently of the application it installs.</li>
 </ul>
 
@@ -47,13 +47,13 @@
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>PS C:\dev\tools\Executable> .\Deploy.ps1
-</span><span class='line'> Checking prerequisites...
-</span><span class='line'> Checking out the AssemblyInfo.cs files for version increment...
-</span><span class='line'> Cleaning the build directory...
-</span><span class='line'> Building Executable application...
-</span><span class='line'> Building ClickOnce installer...
-</span><span class='line'> Deploying updates to network server...
-</span><span class='line'> Comitting version increments to Perforce...
+</span><span class='line'> Checking prerequisites&hellip;
+</span><span class='line'> Checking out the AssemblyInfo.cs files for version increment&hellip;
+</span><span class='line'> Cleaning the build directory&hellip;
+</span><span class='line'> Building Executable application&hellip;
+</span><span class='line'> Building ClickOnce installer&hellip;
+</span><span class='line'> Deploying updates to network server&hellip;
+</span><span class='line'> Comitting version increments to Perforce&hellip;
 </span><span class='line'>PS C:\dev\tools\Executable></span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>The script is written to be very silent unless an error occurs, so below is a description in more detail. The script does the following:</p>
@@ -64,7 +64,7 @@
 <li>Cleans the build directory.</li>
 <li>Builds the DLL and executable.</li>
 <li>Retrieves the (file) version of the newly-build executable.</li>
-<li>Forces (hacks) the executable version into the executable's .csproj definition of the ClickOnce settings.</li>
+<li>Forces (hacks) the executable version into the executable&rsquo;s .csproj definition of the ClickOnce settings.</li>
 <li>Builds the installer with the new version and the just-built binaries.</li>
 <li>Copies all of the installer files to the appropriate network fileserver.</li>
 <li>Commit the changes to the AssemblyInfo and csproj files (i.e., the version changes).</li>
@@ -73,7 +73,7 @@
 
 <h2>Build &amp; Deployment Script</h2>
 
-<p><strong>Please note</strong> that I've changed a few things about the script below:</p>
+<p><strong>Please note</strong> that I&rsquo;ve changed a few things about the script below:</p>
 
 <ul>
 <li>Perforce repository paths</li>
@@ -82,7 +82,7 @@
 </ul>
 
 
-<p>I've included the entire (sanitized) script below, and after it describe in greater detail the interesting parts.</p>
+<p>I&rsquo;ve included the entire (sanitized) script below, and after it describe in greater detail the interesting parts.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -144,15 +144,15 @@
 <span class='line-number'>58</span>
 <span class='line-number'>59</span>
 <span class='line-number'>60</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Write-Host "Tool Build/Deployment Script"&lt;/p>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Write-Host &ldquo;Tool Build/Deployment Script&rdquo;&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>$outputPrefix = " "
-</span><span class='line'>$msbuild = "C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.EXE"&lt;/p>
+</span><span class='line'>&lt;p>$outputPrefix = &ldquo; &rdquo;
+</span><span class='line'>$msbuild = &ldquo;C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.EXE&rdquo;&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>Write-Host $outputPrefix"Checking prerequisites..."&lt;/p>
+</span><span class='line'>&lt;p>Write-Host $outputPrefix"Checking prerequisites&hellip;"&lt;/p>
 </span><span class='line'>
 </span><span class='line'>&lt;p>$p4Output = p4
-</span><span class='line'>if($p4Output -match "'p4' is not recognized as an internal or external command")
+</span><span class='line'>if($p4Output -match &ldquo;&lsquo;p4&rsquo; is not recognized as an internal or external command&rdquo;)
 </span><span class='line'>{&lt;/p>
 </span><span class='line'>
 </span><span class='line'>&lt;pre>&lt;code>Write-Error "Cannot find p4.exe in your PATH."
@@ -161,24 +161,24 @@
 </span><span class='line'>
 </span><span class='line'>&lt;p>}&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>Write-Host $outputPrefix"Checking out the AssemblyInfo.cs files for version increment..."
+</span><span class='line'>&lt;p>Write-Host $outputPrefix"Checking out the AssemblyInfo.cs files for version increment&hellip;&ldquo;
 </span><span class='line'>p4 edit //my/project/tool/path/Library/Properties/AssemblyInfo.cs | Out-Null
 </span><span class='line'>p4 edit //my/project/tool/path/Executable/Properties/AssemblyInfo.cs | Out-Null
 </span><span class='line'>p4 edit //my/project/tool/path/Executable/Executable.csproj | Out-Null&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>Write-Host $outputPrefix"Cleaning the build directory..."
-</span><span class='line'>Invoke-Expression "$msbuild Executable\Executable.csproj /p:Configuration=Release /p:Platform=AnyCPU /t:clean /v:quiet /nologo"&lt;/p>
+</span><span class='line'>&lt;p>Write-Host $outputPrefix"Cleaning the build directory&hellip;&ldquo;
+</span><span class='line'>Invoke-Expression &rdquo;$msbuild Executable\Executable.csproj /p:Configuration=Release /p:Platform=AnyCPU /t:clean /v:quiet /nologo"&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>Write-Host $outputPrefix"Building Executable application..."
-</span><span class='line'>Invoke-Expression "$msbuild Executable\Executable.csproj /p:Configuration=Release /p:Platform=AnyCPU /t:build /v:quiet /nologo"&lt;/p>
+</span><span class='line'>&lt;p>Write-Host $outputPrefix"Building Executable application&hellip;&ldquo;
+</span><span class='line'>Invoke-Expression &rdquo;$msbuild Executable\Executable.csproj /p:Configuration=Release /p:Platform=AnyCPU /t:build /v:quiet /nologo"&lt;/p>
 </span><span class='line'>
 </span><span class='line'>&lt;p>$newExeVersion = Get-ChildItem .\Executable\bin\Release\Executable.exe | Select-Object -ExpandProperty VersionInfo | % { $&lt;em>.FileVersion }
 </span><span class='line'>$newLibVersion = Get-ChildItem .\Executable\bin\Release\Library.dll | Select-Object -ExpandProperty VersionInfo | % { $&lt;/em>.FileVersion }&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>Write-Host $outputPrefix"Building ClickOnce installer..."
+</span><span class='line'>&lt;p>Write-Host $outputPrefix"Building ClickOnce installer&hellip;&ldquo;
 </span><span class='line'>#&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;h1>Because the ClickOnce target doesn't automatically update or sync the application version&lt;/h1>
+</span><span class='line'>&lt;h1>Because the ClickOnce target doesn&rsquo;t automatically update or sync the application version&lt;/h1>
 </span><span class='line'>
 </span><span class='line'>&lt;h1>with the assembly version of the EXE, we need to grab the version off of the built assembly&lt;/h1>
 </span><span class='line'>
@@ -187,31 +187,31 @@
 </span><span class='line'>&lt;p>#
 </span><span class='line'>$ProjectXml = &lt;a href="Get-Content%20Executable\Executable.csproj">xml&lt;/a>
 </span><span class='line'>$ns = new-object Xml.XmlNamespaceManager $ProjectXml.NameTable
-</span><span class='line'>$ns.AddNamespace('msb', 'http://schemas.microsoft.com/developer/msbuild/2003')
-</span><span class='line'>$AppVersion = $ProjectXml.SelectSingleNode("//msb:Project/msb:PropertyGroup/msb:ApplicationVersion", $ns)
+</span><span class='line'>$ns.AddNamespace(&lsquo;msb&rsquo;, &lsquo;&lt;a href="http://schemas.microsoft.com/developer/msbuild/2003">http://schemas.microsoft.com/developer/msbuild/2003&lt;/a>&rsquo;)
+</span><span class='line'>$AppVersion = $ProjectXml.SelectSingleNode(&ldquo;//msb:Project/msb:PropertyGroup/msb:ApplicationVersion&rdquo;, $ns)
 </span><span class='line'>$AppVersion.InnerText = $newExeVersion
-</span><span class='line'>$TargetPath = Resolve-Path "Executable\Executable.csproj"
+</span><span class='line'>$TargetPath = Resolve-Path &ldquo;Executable\Executable.csproj&rdquo;
 </span><span class='line'>$ProjectXml.Save($TargetPath)&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>Invoke-Expression "$msbuild Executable\Executable.csproj /p:Configuration=Release /p:Platform=AnyCPU /t:publish /v:quiet /nologo"&lt;/p>
+</span><span class='line'>&lt;p>Invoke-Expression &ldquo;$msbuild Executable\Executable.csproj /p:Configuration=Release /p:Platform=AnyCPU /t:publish /v:quiet /nologo&rdquo;&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>Write-Host $outputPrefix"Deploying updates to network server..."
-</span><span class='line'>$LocalInstallerPath = (Resolve-Path "Executable\bin\Release\app.publish").ToString() + "*"
-</span><span class='line'>$RemoteInstallerPath = "\network\path\Executable\DesktopClient\"
+</span><span class='line'>&lt;p>Write-Host $outputPrefix"Deploying updates to network server&hellip;&ldquo;
+</span><span class='line'>$LocalInstallerPath = (Resolve-Path "Executable\bin\Release\app.publish&rdquo;).ToString() + &ldquo;*&rdquo;
+</span><span class='line'>$RemoteInstallerPath = &ldquo;\network\path\Executable\DesktopClient\&rdquo;
 </span><span class='line'>Copy-Item $LocalInstallerPath $RemoteInstallerPath -Recurse -Force&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>Write-Host $outputPrefix"Committing version increments to Perforce..."
-</span><span class='line'>p4 submit -d "Updating Executable ClickOnce Installer to version $newExeVersion" //my/project/tool/path/Executable/Executable.csproj | Out-Null
-</span><span class='line'>p4 submit -d "Updating Library to version $newLibVersion" //my/project/tool/path/Library/Properties/AssemblyInfo.cs | Out-Null
-</span><span class='line'>p4 submit -d "Updating Executable to version $newExeVersion" //my/project/tool/path/Executable/Properties/AssemblyInfo.cs | Out-Null</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'>&lt;p>Write-Host $outputPrefix"Committing version increments to Perforce&hellip;&ldquo;
+</span><span class='line'>p4 submit -d "Updating Executable ClickOnce Installer to version $newExeVersion&rdquo; //my/project/tool/path/Executable/Executable.csproj | Out-Null
+</span><span class='line'>p4 submit -d &ldquo;Updating Library to version $newLibVersion&rdquo; //my/project/tool/path/Library/Properties/AssemblyInfo.cs | Out-Null
+</span><span class='line'>p4 submit -d &ldquo;Updating Executable to version $newExeVersion&rdquo; //my/project/tool/path/Executable/Properties/AssemblyInfo.cs | Out-Null</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h3>Automated Version Increment</h3>
 
-<p>You may have noticed that I don't take any specific action to manage the version numbers of Executable.exe and Library.dll even though I explicitly check out the AssemblyInfo.cs files.</p>
+<p>You may have noticed that I don&rsquo;t take any specific action to manage the version numbers of Executable.exe and Library.dll even though I explicitly check out the AssemblyInfo.cs files.</p>
 
 <p>The <a href="http://msbuildextensionpack.codeplex.com/">MSBuild Extension Pack</a> is an open-source collection of MSBuild targets that make things like version management much easier. After adding the extensions to a relative path to my projects I just needed to add the following near the bottom of <code>Executable.csproj</code>.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -249,7 +249,7 @@
 
 <h3>Propagate Exe Version to ClickOnce Installer</h3>
 
-<p>As I mentioned earlier, I wanted to keep the installer version the same as the executable version. The problem was that there's no way to manage the ClickOnce settings via MSBuild or other API. Lines 35-41 of the script are the, ahem, workaround that I devised.</p>
+<p>As I mentioned earlier, I wanted to keep the installer version the same as the executable version. The problem was that there&rsquo;s no way to manage the ClickOnce settings via MSBuild or other API. Lines 35-41 of the script are the, ahem, workaround that I devised.</p>
 
 <p>Since we want to set the ClickOnce installer version to the same as the executable, we must first fetch the executable version:</p>
 
@@ -260,7 +260,7 @@
 
 <p>Once we have the executable version, we must then somehow insert it into <code>Executable.csproj</code> where the ClickOnce settings are defined. For reference, the associated XML from the csproj file is:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;PropertyGroup&gt;</span>
@@ -272,11 +272,11 @@
 
 <h2>Summary</h2>
 
-<p>Through automating the build and deployment process I've learned a lot about Powershell and MSBuild and I'll definitely be improving this in the future. The great thing about this particular combination of tools is that Powershell provides the glue that holds together the powerful build automation (and logging) that MSBuild offers.</p>
+<p>Through automating the build and deployment process I&rsquo;ve learned a lot about Powershell and MSBuild and I&rsquo;ll definitely be improving this in the future. The great thing about this particular combination of tools is that Powershell provides the glue that holds together the powerful build automation (and logging) that MSBuild offers.</p>
 
-<p>While it's unfortunate that ClickOnce has so many manual aspects to it (and I think I know why) the ease of XML manipulation and file processing from Powershell make it easy to work around ClickOnce's lack of automation.</p>
+<p>While it&rsquo;s unfortunate that ClickOnce has so many manual aspects to it (and I think I know why) the ease of XML manipulation and file processing from Powershell make it easy to work around ClickOnce&rsquo;s lack of automation.</p>
 
-<p>In the future I may look at moving the install/upgrade process to the <a href="http://www.wixtoolset.org/">WiX Toolset</a> as it's much more configurable and automatable. ClickOnce was really a stop-gap solution because it's for an internal tool and simple enough for my bootstrapping needs.</p>
+<p>In the future I may look at moving the install/upgrade process to the <a href="http://www.wixtoolset.org/">WiX Toolset</a> as it&rsquo;s much more configurable and automatable. ClickOnce was really a stop-gap solution because it&rsquo;s for an internal tool and simple enough for my bootstrapping needs.</p>
 ]]></content>
   </entry>
   

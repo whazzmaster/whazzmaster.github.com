@@ -23,10 +23,11 @@ room &hellip;">
   <link rel="canonical" href="http://whazzing.com/blog/2012/08/19/i-have-an-idea">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="whazzing around" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -101,7 +102,8 @@ room &hellip;">
 
 <time datetime="2012-08-19T22:14:00-05:00" pubdate data-updated="true">Aug 19<span>th</span>, 2012</time>
         
-         | <a href="#disqus_thread" data-disqus-identifier="http://whazzing.com">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://whazzing.com">Comments</a>
         
       </p>
     
@@ -116,11 +118,11 @@ our way across the landscape.</p>
 <p>At around 3am one friend drunkenly burst into the hotel room and started
 going on and on about how great he was doing, gambling-wise.  He talked
 at length even as it became obvious that he was winding down like some
-kind of strange children&#8217;s toy.  Then he surged out of bed and said, &#8220;I
-have an idea!&#8221;  Another friend asked what it was and got the classic
-response, &#8220;I&#8217;ll need $300 of your money.&#8221;</p>
+kind of strange children&rsquo;s toy.  Then he surged out of bed and said, &ldquo;I
+have an idea!&rdquo;  Another friend asked what it was and got the classic
+response, &ldquo;I&rsquo;ll need $300 of your money.&rdquo;</p>
 
-<p>&#8220;And then what?&#8221; asked the friend, genuinely intrigued.</p>
+<p>&ldquo;And then what?&rdquo; asked the friend, genuinely intrigued.</p>
 
 <p>Alas, friend one was already passed out.  When asked the next morning
 what the great $300 was he had no idea what we were talking about.</p>
@@ -130,7 +132,7 @@ ill-conceived <a href="http://www.kickstarter.com">Kickstarter campaign</a> that
 will ultimately result in a fugue state where everyone wonders what
 happened to their money in the morning.</p>
 
-<p>(Note: this is not a jab at Kickstarter itself; I think there&#8217;s some
+<p>(Note: this is not a jab at Kickstarter itself; I think there&rsquo;s some
 great stuff going on there.)</p>
 </div>
 
@@ -159,7 +161,7 @@ great stuff going on there.)</p>
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/gambling/'>gambling</a>, <a class='category' href='/blog/categories/kickstarter-/'>kickstarter,</a>
+    <a class='category' href='/blog/categories/gambling/'>gambling</a>, <a class='category' href='/blog/categories/kickstarter/'>kickstarter,</a>
   
 </span>
 
@@ -168,7 +170,7 @@ great stuff going on there.)</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whazzing.com/blog/2012/08/19/i-have-an-idea/" data-via="whazzmaster" data-counturl="http://whazzing.com/blog/2012/08/19/i-have-an-idea/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://whazzing.com/blog/2012/08/19/i-have-an-idea/" data-via="whazzmaster" data-counturl="http://whazzing.com/blog/2012/08/19/i-have-an-idea/" >Tweet</a>
   
   
   
@@ -210,11 +212,15 @@ great stuff going on there.)</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy using Powershell and MSBuild</a>
+        <a href="/blog/2013/12/01/catching-up/">Catching Up</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF applications with ReactiveUI</a>
+        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy Using Powershell and MSBuild</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF Applications With ReactiveUI</a>
       </li>
     
       <li class="post">
@@ -222,11 +228,7 @@ great stuff going on there.)</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem To Be Getting Along Fine Without Facebook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/27/madison-ruby-2012/">Madison Ruby 2012</a>
+        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem to Be Getting Along Fine Without Facebook</a>
       </li>
     
   </ul>
@@ -241,7 +243,7 @@ great stuff going on there.)</p>
   <a href="https://github.com/whazzmaster">@whazzmaster</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -307,7 +309,7 @@ great stuff going on there.)</p>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -323,7 +325,7 @@ great stuff going on there.)</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

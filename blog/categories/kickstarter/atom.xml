@@ -2,9 +2,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: kickstarter, | whazzing around]]></title>
-  <link href="http://whazzing.com/blog/categories/kickstarter-/atom.xml" rel="self"/>
+  <link href="http://whazzing.com/blog/categories/kickstarter/atom.xml" rel="self"/>
   <link href="http://whazzing.com/"/>
-  <updated>2013-06-26T10:36:57-05:00</updated>
+  <updated>2013-12-01T17:11:12-06:00</updated>
   <id>http://whazzing.com/</id>
   <author>
     <name><![CDATA[Zachery Moneypenny]]></name>
@@ -26,11 +26,11 @@ our way across the landscape.</p>
 <p>At around 3am one friend drunkenly burst into the hotel room and started
 going on and on about how great he was doing, gambling-wise.  He talked
 at length even as it became obvious that he was winding down like some
-kind of strange children's toy.  Then he surged out of bed and said, "I
-have an idea!"  Another friend asked what it was and got the classic
-response, "I'll need $300 of your money."</p>
+kind of strange children&rsquo;s toy.  Then he surged out of bed and said, &ldquo;I
+have an idea!&rdquo;  Another friend asked what it was and got the classic
+response, &ldquo;I&rsquo;ll need $300 of your money.&rdquo;</p>
 
-<p>"And then what?" asked the friend, genuinely intrigued.</p>
+<p>&ldquo;And then what?&rdquo; asked the friend, genuinely intrigued.</p>
 
 <p>Alas, friend one was already passed out.  When asked the next morning
 what the great $300 was he had no idea what we were talking about.</p>
@@ -40,7 +40,7 @@ ill-conceived <a href="http://www.kickstarter.com">Kickstarter campaign</a> that
 will ultimately result in a fugue state where everyone wonders what
 happened to their money in the morning.</p>
 
-<p>(Note: this is not a jab at Kickstarter itself; I think there's some
+<p>(Note: this is not a jab at Kickstarter itself; I think there&rsquo;s some
 great stuff going on there.)</p>
 ]]></content>
   </entry>

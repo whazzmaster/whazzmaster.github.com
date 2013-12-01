@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Responsive WPF applications with ReactiveUI - whazzing around</title>
+  <title>Responsive WPF Applications With ReactiveUI - whazzing around</title>
   <meta name="author" content="Zachery Moneypenny">
 
   
@@ -21,10 +21,11 @@
   <link rel="canonical" href="http://whazzing.com/blog/2013/02/22/responsive-wpf-applications-with-reactiveui">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="whazzing around" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -99,7 +100,8 @@
 
 <time datetime="2013-02-22T21:25:00-06:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2013</time>
         
-         | <a href="#disqus_thread" data-disqus-identifier="http://whazzing.com">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://whazzing.com">Comments</a>
         
       </p>
     
@@ -108,19 +110,19 @@
 
 <div class="entry-content"><p>Learn about my newfound love for the <a href="http://reactiveui.net/">ReactiveUI MVVM framework</a>.</p>
 
-<p>My day job is to wrangle 12 million lines of 20+ year-old C and C++ using a custom Win32-based UI library that was built in the mid-90s and never fundamentally improved. It does what it was designed to do really well (bind transactions to views, zoom between list items, the transactions they compose, and the reports on those transactions) but sometimes I idly wonder what&#8217;s been going on in bleeding edge Windows app development in the interim.</p>
+<p>My day job is to wrangle 12 million lines of 20+ year-old C and C++ using a custom Win32-based UI library that was built in the mid-90s and never fundamentally improved. It does what it was designed to do really well (bind transactions to views, zoom between list items, the transactions they compose, and the reports on those transactions) but sometimes I idly wonder what&rsquo;s been going on in bleeding edge Windows app development in the interim.</p>
 
-<p>Last week I downloaded and played around with <a href="http://windows.github.com/">GitHub&#8217;s excellent Windows client</a>. I vaguely remembered <a href="https://github.com/blog/1151-designing-github-for-windows">a blog post</a> on the gear underlying the desktop app awhile back, and I was interested to see where it was at these days. You know you&#8217;re a geek when you read the entire list of licenses in the About view to get a sense of the underlying technology.</p>
+<p>Last week I downloaded and played around with <a href="http://windows.github.com/">GitHub&rsquo;s excellent Windows client</a>. I vaguely remembered <a href="https://github.com/blog/1151-designing-github-for-windows">a blog post</a> on the gear underlying the desktop app awhile back, and I was interested to see where it was at these days. You know you&rsquo;re a geek when you read the entire list of licenses in the About view to get a sense of the underlying technology.</p>
 
 <p>After looking around at the various .NET libraries involved, and reading <a href="https://github.com/blog/1127-github-for-windows">some follow-up</a> <a href="https://github.com/blog/1420-github-for-windows-recent-improvements">blog posts</a> I decided to <strong>build a front-end to a developer tool</strong> I whipped up for our developers and QA engineers at work.</p>
 
-<p>Essentially, in debug mode QuickBooks Payroll can talk to a variety of backend environments. Configuring the various endpoints involves editing several config files that are in different places depending on whether you have an installed build or a developer build. To make it easier to configure things I wrote a command-line tool that can tell you what environments you&#8217;re currently configured to talk to, as well as list available environments and change the current environment. I built the command-line tool on top of a library that implemented all the core logic because I knew that I&#8217;d eventually want to build an easier-to-use GUI on top of it.</p>
+<p>Essentially, in debug mode QuickBooks Payroll can talk to a variety of backend environments. Configuring the various endpoints involves editing several config files that are in different places depending on whether you have an installed build or a developer build. To make it easier to configure things I wrote a command-line tool that can tell you what environments you&rsquo;re currently configured to talk to, as well as list available environments and change the current environment. I built the command-line tool on top of a library that implemented all the core logic because I knew that I&rsquo;d eventually want to build an easier-to-use GUI on top of it.</p>
 
-<p>So as a little weekend project I took inspiration from GitHub for Windows Metro/Modern visual design and a desire to look further into ReactiveUI&#8217;s take on multi-threaded UI.</p>
+<p>So as a little weekend project I took inspiration from GitHub for Windows Metro/Modern visual design and a desire to look further into ReactiveUI&rsquo;s take on multi-threaded UI.</p>
 
-<p>Multi-threaded UI development typically has one sticking point; it&#8217;s easy enough to define a lambda or function and set it up to run on a separate thread but one has to be very careful when moving the result of that lambda back onto the UI thread to display it. <strong>Reactive&#8217;s</strong> secret sauce is to simplify this dangerous activity and deliver a true &#8216;fire-and-forget&#8217; multi-thread solution.</p>
+<p>Multi-threaded UI development typically has one sticking point; it&rsquo;s easy enough to define a lambda or function and set it up to run on a separate thread but one has to be very careful when moving the result of that lambda back onto the UI thread to display it. <strong>Reactive&rsquo;s</strong> secret sauce is to simplify this dangerous activity and deliver a true &lsquo;fire-and-forget&rsquo; multi-thread solution.</p>
 
-<p>Thus far I&#8217;ve found that it&#8217;s very easy to chain async commands AND provide a nice responsive user experience. In cases where you have certain application behaviors that are gated upon other actions completing the ReactiveUI framework makes it extremely simple.</p>
+<p>Thus far I&rsquo;ve found that it&rsquo;s very easy to chain async commands AND provide a nice responsive user experience. In cases where you have certain application behaviors that are gated upon other actions completing the ReactiveUI framework makes it extremely simple.</p>
 
 <p>An example:</p>
 
@@ -135,12 +137,12 @@
 </ul>
 
 
-<p>The state machine representing the above workflow was implemented with three View Models bound to one XAML MainWindow. The cleanest one is below, and I&#8217;ve commented how the commands to <strong>check for updates</strong> and <strong>download and install updates</strong> are implemented (I&#8217;m still working on tightening up the other two).</p>
+<p>The state machine representing the above workflow was implemented with three View Models bound to one XAML MainWindow. The cleanest one is below, and I&rsquo;ve commented how the commands to <strong>check for updates</strong> and <strong>download and install updates</strong> are implemented (I&rsquo;m still working on tightening up the other two).</p>
 
-<p>I&#8217;ve included the entire file below because I think it&#8217;s valuable to view the initialization of the commands and observers and their targets in context. This view model encapsulates all of the updater functionality and how the different states of updating are exposed to the UI.</p>
+<p>I&rsquo;ve included the entire file below because I think it&rsquo;s valuable to view the initialization of the commands and observers and their targets in context. This view model encapsulates all of the updater functionality and how the different states of updating are exposed to the UI.</p>
 
 <figure class='code'><figcaption><span>EnvironmentsUpdaterViewModel.cs </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -387,14 +389,14 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The data that the updater object fetches from is located on an intranet share, and so it was important to check for and apply updates asynchronously (especially if, like me, you&#8217;re working over the VPN).</p>
+<p>The data that the updater object fetches from is located on an intranet share, and so it was important to check for and apply updates asynchronously (especially if, like me, you&rsquo;re working over the VPN).</p>
 
-<p>I&#8217;m unsure at this point if it&#8217;s ok that I&#8217;m updating the <code>UpdateState</code> property from within many of the lambdas. I feel that there&#8217;s something risky going on there but everything seems to work fine for me as it is.</p>
+<p>I&rsquo;m unsure at this point if it&rsquo;s ok that I&rsquo;m updating the <code>UpdateState</code> property from within many of the lambdas. I feel that there&rsquo;s something risky going on there but everything seems to work fine for me as it is.</p>
 
-<p>I&#8217;ll break down the two main uses of Reactive&#8217;s async commands below. Note that I&#8217;m using the <code>UpdateState</code> property primarily outside of this class; the window binds certain elements&#8217; visibility to the state of the updater object, but only when the state has certain values.</p>
+<p>I&rsquo;ll break down the two main uses of Reactive&rsquo;s async commands below. Note that I&rsquo;m using the <code>UpdateState</code> property primarily outside of this class; the window binds certain elements&#8217; visibility to the state of the updater object, but only when the state has certain values.</p>
 
-<figure class='code'><figcaption><span>Initialize the Check for Updates Command  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Initialize the Check for Updates Command </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -421,10 +423,10 @@
 
 <p>When the async function returns the new <code>EnvironmentsFileUpdater</code> instance and sets the backing field of the <code>Updater</code> property, I then lean on an Observable. Below you can see that I set it up such that when the <code>Updater</code> field changes we check whether an update is available and then either kick off the <code>DownloadUpdates</code> command or set the overall state to <code>UpdateState.Completed</code> to signal to the external listeners that the update process is complete.</p>
 
-<p>The <code>Status</code> property is the string value that&#8217;s bound to the UI that updates the user as to what&#8217;s happening in the update process.</p>
+<p>The <code>Status</code> property is the string value that&rsquo;s bound to the UI that updates the user as to what&rsquo;s happening in the update process.</p>
 
-<figure class='code'><figcaption><span>Initialize the Updater Observer  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Initialize the Updater Observer </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -461,10 +463,10 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The <code>DownloadUpdates</code> command actually handles the work of downloading the latest environment definitions and installing them to the appropriate local storage mechanism. Again, it must reach out over the intranet and so it&#8217;s best to make this action asynchronous.  Most of the code you see below is concerned with updating the UI-bound status value; line 5 is the key method.</p>
+<p>The <code>DownloadUpdates</code> command actually handles the work of downloading the latest environment definitions and installing them to the appropriate local storage mechanism. Again, it must reach out over the intranet and so it&rsquo;s best to make this action asynchronous.  Most of the code you see below is concerned with updating the UI-bound status value; line 5 is the key method.</p>
 
-<figure class='code'><figcaption><span>Initialize the Download Updates Command  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Initialize the Download Updates Command </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -525,7 +527,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/c-/'>c#</a>, <a class='category' href='/blog/categories/mahapps-metro/'>mahapps.metro</a>, <a class='category' href='/blog/categories/reactiveui/'>reactiveui</a>, <a class='category' href='/blog/categories/wpf/'>wpf</a>, <a class='category' href='/blog/categories/xaml/'>xaml</a>
+    <a class='category' href='/blog/categories/c-number/'>c#</a>, <a class='category' href='/blog/categories/mahapps-dot-metro/'>mahapps.metro</a>, <a class='category' href='/blog/categories/reactiveui/'>reactiveui</a>, <a class='category' href='/blog/categories/wpf/'>wpf</a>, <a class='category' href='/blog/categories/xaml/'>xaml</a>
   
 </span>
 
@@ -534,7 +536,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whazzing.com/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/" data-via="whazzmaster" data-counturl="http://whazzing.com/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://whazzing.com/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/" data-via="whazzmaster" data-counturl="http://whazzing.com/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/" >Tweet</a>
   
   
   
@@ -576,11 +578,15 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy using Powershell and MSBuild</a>
+        <a href="/blog/2013/12/01/catching-up/">Catching Up</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF applications with ReactiveUI</a>
+        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy Using Powershell and MSBuild</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF Applications With ReactiveUI</a>
       </li>
     
       <li class="post">
@@ -588,11 +594,7 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem To Be Getting Along Fine Without Facebook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/27/madison-ruby-2012/">Madison Ruby 2012</a>
+        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem to Be Getting Along Fine Without Facebook</a>
       </li>
     
   </ul>
@@ -607,7 +609,7 @@
   <a href="https://github.com/whazzmaster">@whazzmaster</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -673,7 +675,7 @@
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -689,7 +691,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

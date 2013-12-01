@@ -9,7 +9,7 @@
   <meta name="author" content="Zachery Moneypenny">
 
   
-  <meta name="description" content="For the last month I&#8217;ve been working to create this new development-focused blog and project repository for my work. I was previously self- &hellip;">
+  <meta name="description" content="For the last month I&rsquo;ve been working to create this new development-focused blog and project repository for my work. I was previously self- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,10 +21,11 @@
   <link rel="canonical" href="http://whazzing.com/blog/2011/09/21/redesigning-whazzing-com">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="whazzing around" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -97,24 +98,25 @@
   
 
 
-<time datetime="2011-09-21T00:00:00-05:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
+<time datetime="2011-09-21T00:00:00-05:00" pubdate data-updated="true"></time>
         
-         | <a href="#disqus_thread" data-disqus-identifier="http://whazzing.com">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://whazzing.com">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>For the last month I&#8217;ve been working to create this new development-focused blog and project repository for my work.  I was previously self-hosting a <a href="http://www.wordpress.org">Wordpress</a> blog, but I&#8217;ve developed a desire to own my destiny when it comes to the display of my work.  There were a ton of little features I wanted to develop but didn&#8217;t really want to delve (back) into the PHP world or hack at the Wordpress template framework.</p>
+<div class="entry-content"><p>For the last month I&rsquo;ve been working to create this new development-focused blog and project repository for my work.  I was previously self-hosting a <a href="http://www.wordpress.org">Wordpress</a> blog, but I&rsquo;ve developed a desire to own my destiny when it comes to the display of my work.  There were a ton of little features I wanted to develop but didn&rsquo;t really want to delve (back) into the PHP world or hack at the Wordpress template framework.</p>
 
-<p>I&#8217;d recently read the excellent <a href="http://www.abookapart.com/products/responsive-web-design">Responsive Web Design</a> and it made me very excited to design a site that effortlessly works on phones, tablets, monitors, and TVs.  Another project I have in mind is primarily aimed at mobile form factors, so I thought a semi-major experiment was in order to ensure I was thinking in the right direction when it came to media queries and mobile design.</p>
+<p>I&rsquo;d recently read the excellent <a href="http://www.abookapart.com/products/responsive-web-design">Responsive Web Design</a> and it made me very excited to design a site that effortlessly works on phones, tablets, monitors, and TVs.  Another project I have in mind is primarily aimed at mobile form factors, so I thought a semi-major experiment was in order to ensure I was thinking in the right direction when it came to media queries and mobile design.</p>
 
 <h2>Technology</h2>
 
 <p>I built <a href="http://whazzing.com">whazzing.com</a> with ruby 1.9.2, rails 3.1, mysql, and various gems.  My first commit was August 19th, 2011 and I deployed version 1.0 to production on September 20th, 2011.</p>
 
-<p>As I started coding this site, Rails 3.1 was entering it&#8217;s final release candidate testing phase so I decided to start fresh on it.  The asset pipeline is just a terrific addition to the framework, and combining it with the style organization I&#8217;ve been developing off of Dale Sande&#8217;s incredible <a href="http://axle.dalesande.com">Axle framework</a> provided for a <strong>very smooth visual design experience</strong>.  I added a little bit to Dale&#8217;s CSS organization to support the media queries I wanted to support.</p>
+<p>As I started coding this site, Rails 3.1 was entering it&rsquo;s final release candidate testing phase so I decided to start fresh on it.  The asset pipeline is just a terrific addition to the framework, and combining it with the style organization I&rsquo;ve been developing off of Dale Sande&rsquo;s incredible <a href="http://axle.dalesande.com">Axle framework</a> provided for a <strong>very smooth visual design experience</strong>.  I added a little bit to Dale&rsquo;s CSS organization to support the media queries I wanted to support.</p>
 
 <pre>
 assets
@@ -137,17 +139,17 @@ assets
 </pre>
 
 
-<p>One of the interesting takeways from the excellent testing panel at <a href="http://madisonruby.org/schedule">Madison Ruby</a> was that people are divided about the usefulness of <a href="http://cukes.info/">cucumber</a>.  I had always stumbled in wrangling cucumber to be really useful for the applications I was writing and so I decided to eschew its usage this time. I focused instead on getting good coverage via my <a href="https://www.relishapp.com/rspec">RSpec</a> controller and model tests.  I found that leaving cucumber aside really streamlined the process and didn&#8217;t leave me eternally feeling like I was losing focus on the functionality I wanted due to the the myriad tests that were demanded by all the tools I was using.</p>
+<p>One of the interesting takeways from the excellent testing panel at <a href="http://madisonruby.org/schedule">Madison Ruby</a> was that people are divided about the usefulness of <a href="http://cukes.info/">cucumber</a>.  I had always stumbled in wrangling cucumber to be really useful for the applications I was writing and so I decided to eschew its usage this time. I focused instead on getting good coverage via my <a href="https://www.relishapp.com/rspec">RSpec</a> controller and model tests.  I found that leaving cucumber aside really streamlined the process and didn&rsquo;t leave me eternally feeling like I was losing focus on the functionality I wanted due to the the myriad tests that were demanded by all the tools I was using.</p>
 
-<p>Madison Ruby was a fantastic source of information on how to write better ruby code and rails applications.  In particular, <a href="http://twitter.com/#!/j3">Jeff Casimir&#8217;s</a> talk on using view-models and decorators as opposed to helpers in rails was food for thought.  Halfway through implementation on this site I switched over to using <a href="https://github.com/jcasimir/draper">draper</a> for my presentation logic and I <strong>love it</strong>.</p>
+<p>Madison Ruby was a fantastic source of information on how to write better ruby code and rails applications.  In particular, <a href="http://twitter.com/#!/j3">Jeff Casimir&rsquo;s</a> talk on using view-models and decorators as opposed to helpers in rails was food for thought.  Halfway through implementation on this site I switched over to using <a href="https://github.com/jcasimir/draper">draper</a> for my presentation logic and I <strong>love it</strong>.</p>
 
-<p>Another tool I wanted to test out for this project was <a href="https://github.com/nvie/gitflow">git-flow</a>.  At <a href="http://scottchacon.com/">Scott Chacon&#8217;s</a> eye-opening Git workshop I increased my git knowledge 10 times, easily.  Going through the underlying structures of git taught me a lot about what&#8217;s really going on during commits, push, and branching, and I wanted to try to formalize the release process of this project a bit more using git-flow&#8217;s branching model.  The result: I loved the structure of the branches, even if this was a one-man project, and will definitely use it on more projects in the future.</p>
+<p>Another tool I wanted to test out for this project was <a href="https://github.com/nvie/gitflow">git-flow</a>.  At <a href="http://scottchacon.com/">Scott Chacon&rsquo;s</a> eye-opening Git workshop I increased my git knowledge 10 times, easily.  Going through the underlying structures of git taught me a lot about what&rsquo;s really going on during commits, push, and branching, and I wanted to try to formalize the release process of this project a bit more using git-flow&rsquo;s branching model.  The result: I loved the structure of the branches, even if this was a one-man project, and will definitely use it on more projects in the future.</p>
 
-<p>Finally, I&#8217;ve been more and more intrigued by <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> since Github and many other sites support it these days.  Instead of pouring time into creating a WYSIWYG editor or trying to drop one in, I instead grabbed the <a href="https://github.com/blog/832-rolling-out-the-redcarpet">Redcarpet</a> gem and simply use markdown to create the posts and project descriptions.  I also use <a href="https://github.com/github/albino">albino</a> and <a href="http://pygments.org/">pygments</a> for code highlighting.</p>
+<p>Finally, I&rsquo;ve been more and more intrigued by <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> since Github and many other sites support it these days.  Instead of pouring time into creating a WYSIWYG editor or trying to drop one in, I instead grabbed the <a href="https://github.com/blog/832-rolling-out-the-redcarpet">Redcarpet</a> gem and simply use markdown to create the posts and project descriptions.  I also use <a href="https://github.com/github/albino">albino</a> and <a href="http://pygments.org/">pygments</a> for code highlighting.</p>
 
 <h2>Methodology &amp; Features</h2>
 
-<p>The problem I had to overcome this time (and every time I jumpstart a project) is that too often I get bogged down on tangents.  I&#8217;ll get fixated on one unimportant feature or line of code, I&#8217;ll get frustrated that I can&#8217;t get it the way I want, and eventually I won&#8217;t even want to open the text editor due to feelings of dread.  This time I was determined to mercilessly cut features until I had something simple I could get coded and deployed, and then iterate from there.  A few times I almost got bogged down, but forced myself to leave features on the table for future releases so that I could get my high priority functionality into production.</p>
+<p>The problem I had to overcome this time (and every time I jumpstart a project) is that too often I get bogged down on tangents.  I&rsquo;ll get fixated on one unimportant feature or line of code, I&rsquo;ll get frustrated that I can&rsquo;t get it the way I want, and eventually I won&rsquo;t even want to open the text editor due to feelings of dread.  This time I was determined to mercilessly cut features until I had something simple I could get coded and deployed, and then iterate from there.  A few times I almost got bogged down, but forced myself to leave features on the table for future releases so that I could get my high priority functionality into production.</p>
 
 <p>I settled on <strong>four</strong> main features for the first release:</p>
 
@@ -169,21 +171,21 @@ assets
 </ul>
 
 
-<p>I&#8217;ll also, of course, be correcting anything that shakes out while using it.</p>
+<p>I&rsquo;ll also, of course, be correcting anything that shakes out while using it.</p>
 
-<h2>What&#8217;s Next</h2>
+<h2>What&rsquo;s Next</h2>
 
-<p>I&#8217;m looking forward to extending this project, while using it as a platform to document the other things I&#8217;m working on.  I would really like to use <a href="http://redis.io/">redis</a> for some analytics/tracking ideas I have, and I&#8217;m interested in how to tie in <a href="http://akismet.com/">akismet</a> spam-blocking for comments.</p>
+<p>I&rsquo;m looking forward to extending this project, while using it as a platform to document the other things I&rsquo;m working on.  I would really like to use <a href="http://redis.io/">redis</a> for some analytics/tracking ideas I have, and I&rsquo;m interested in how to tie in <a href="http://akismet.com/">akismet</a> spam-blocking for comments.</p>
 
-<p>The images along the left side don&#8217;t scan well on mobile devices, so I&#8217;m going to look into replacing them in the next release as well.  I like the structure of the site, but the specific details could be tightened a little.</p>
+<p>The images along the left side don&rsquo;t scan well on mobile devices, so I&rsquo;m going to look into replacing them in the next release as well.  I like the structure of the site, but the specific details could be tightened a little.</p>
 
-<p>I&#8217;d like to get a styleguide up and running so that my CSS can be standardized a little.  I tried as much as possible to be OO in my CSS but failed in a few places that I&#8217;d like to clean up.</p>
+<p>I&rsquo;d like to get a styleguide up and running so that my CSS can be standardized a little.  I tried as much as possible to be OO in my CSS but failed in a few places that I&rsquo;d like to clean up.</p>
 
 <h2>Thanks</h2>
 
 <p>Many, many thanks to <a href="http://begriffsschrift.com/">Joe Nelson</a>, from whom I shamelessly stole the idea for the micro-resume.  Thanks so much for the idea- it jump-started what became the new site, blog, etc.</p>
 
-<p>Also, thanks to <a href="http://kev.inburke.com/">Kevin Burke</a>. I read his blog post on <a href="http://kev.inburke.com/kevin/site-redesign/">designing your personal site</a> and was inspired to go beyond the usual &#8220;reverse chronological order of posts&#8221; home page.  Instead I tried to create a homepage that advertises all the things I&#8217;m working on, blog posts being only one of the pieces.</p>
+<p>Also, thanks to <a href="http://kev.inburke.com/">Kevin Burke</a>. I read his blog post on <a href="http://kev.inburke.com/kevin/site-redesign/">designing your personal site</a> and was inspired to go beyond the usual &ldquo;reverse chronological order of posts&rdquo; home page.  Instead I tried to create a homepage that advertises all the things I&rsquo;m working on, blog posts being only one of the pieces.</p>
 
 <p>Thanks to <a href="http://www.dalesande.com/">Dale Sande</a>, who helped me step up my CSS game with his excellent <a href="http://axle.dalesande.com">Axle framework</a> and thoughts on OOCSS (object-oriented CSS).  If you ever get a chance to attend his OOCSS talk definitely do it; as a primarily backend dude I found it immensely helpful for structuring my CSS and semantic markup.</p>
 </div>
@@ -208,7 +210,7 @@ assets
   
 
 
-<time datetime="2011-09-21T00:00:00-05:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
+<time datetime="2011-09-21T00:00:00-05:00" pubdate data-updated="true"></time>
       
 
 
@@ -216,7 +218,7 @@ assets
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whazzing.com/blog/2011/09/21/redesigning-whazzing-com/" data-via="whazzmaster" data-counturl="http://whazzing.com/blog/2011/09/21/redesigning-whazzing-com/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://whazzing.com/blog/2011/09/21/redesigning-whazzing-com/" data-via="whazzmaster" data-counturl="http://whazzing.com/blog/2011/09/21/redesigning-whazzing-com/" >Tweet</a>
   
   
   
@@ -250,11 +252,15 @@ assets
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy using Powershell and MSBuild</a>
+        <a href="/blog/2013/12/01/catching-up/">Catching Up</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF applications with ReactiveUI</a>
+        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy Using Powershell and MSBuild</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF Applications With ReactiveUI</a>
       </li>
     
       <li class="post">
@@ -262,11 +268,7 @@ assets
       </li>
     
       <li class="post">
-        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem To Be Getting Along Fine Without Facebook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/27/madison-ruby-2012/">Madison Ruby 2012</a>
+        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem to Be Getting Along Fine Without Facebook</a>
       </li>
     
   </ul>
@@ -281,7 +283,7 @@ assets
   <a href="https://github.com/whazzmaster">@whazzmaster</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -344,7 +346,7 @@ assets
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -360,7 +362,7 @@ assets
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

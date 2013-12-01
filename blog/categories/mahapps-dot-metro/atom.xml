@@ -2,9 +2,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: mahapps.metro | whazzing around]]></title>
-  <link href="http://whazzing.com/blog/categories/mahapps-metro/atom.xml" rel="self"/>
+  <link href="http://whazzing.com/blog/categories/mahapps-dot-metro/atom.xml" rel="self"/>
   <link href="http://whazzing.com/"/>
-  <updated>2013-06-26T10:36:57-05:00</updated>
+  <updated>2013-12-01T17:11:12-06:00</updated>
   <id>http://whazzing.com/</id>
   <author>
     <name><![CDATA[Zachery Moneypenny]]></name>
@@ -20,19 +20,19 @@
     <id>http://whazzing.com/blog/2013/02/22/responsive-wpf-applications-with-reactiveui</id>
     <content type="html"><![CDATA[<p>Learn about my newfound love for the <a href="http://reactiveui.net/">ReactiveUI MVVM framework</a>.</p>
 
-<p>My day job is to wrangle 12 million lines of 20+ year-old C and C++ using a custom Win32-based UI library that was built in the mid-90s and never fundamentally improved. It does what it was designed to do really well (bind transactions to views, zoom between list items, the transactions they compose, and the reports on those transactions) but sometimes I idly wonder what's been going on in bleeding edge Windows app development in the interim.</p>
+<p>My day job is to wrangle 12 million lines of 20+ year-old C and C++ using a custom Win32-based UI library that was built in the mid-90s and never fundamentally improved. It does what it was designed to do really well (bind transactions to views, zoom between list items, the transactions they compose, and the reports on those transactions) but sometimes I idly wonder what&rsquo;s been going on in bleeding edge Windows app development in the interim.</p>
 
-<p>Last week I downloaded and played around with <a href="http://windows.github.com/">GitHub's excellent Windows client</a>. I vaguely remembered <a href="https://github.com/blog/1151-designing-github-for-windows">a blog post</a> on the gear underlying the desktop app awhile back, and I was interested to see where it was at these days. You know you're a geek when you read the entire list of licenses in the About view to get a sense of the underlying technology.</p>
+<p>Last week I downloaded and played around with <a href="http://windows.github.com/">GitHub&rsquo;s excellent Windows client</a>. I vaguely remembered <a href="https://github.com/blog/1151-designing-github-for-windows">a blog post</a> on the gear underlying the desktop app awhile back, and I was interested to see where it was at these days. You know you&rsquo;re a geek when you read the entire list of licenses in the About view to get a sense of the underlying technology.</p>
 
 <p>After looking around at the various .NET libraries involved, and reading <a href="https://github.com/blog/1127-github-for-windows">some follow-up</a> <a href="https://github.com/blog/1420-github-for-windows-recent-improvements">blog posts</a> I decided to <strong>build a front-end to a developer tool</strong> I whipped up for our developers and QA engineers at work.</p>
 
-<p>Essentially, in debug mode QuickBooks Payroll can talk to a variety of backend environments. Configuring the various endpoints involves editing several config files that are in different places depending on whether you have an installed build or a developer build. To make it easier to configure things I wrote a command-line tool that can tell you what environments you're currently configured to talk to, as well as list available environments and change the current environment. I built the command-line tool on top of a library that implemented all the core logic because I knew that I'd eventually want to build an easier-to-use GUI on top of it.</p>
+<p>Essentially, in debug mode QuickBooks Payroll can talk to a variety of backend environments. Configuring the various endpoints involves editing several config files that are in different places depending on whether you have an installed build or a developer build. To make it easier to configure things I wrote a command-line tool that can tell you what environments you&rsquo;re currently configured to talk to, as well as list available environments and change the current environment. I built the command-line tool on top of a library that implemented all the core logic because I knew that I&rsquo;d eventually want to build an easier-to-use GUI on top of it.</p>
 
-<p>So as a little weekend project I took inspiration from GitHub for Windows Metro/Modern visual design and a desire to look further into ReactiveUI's take on multi-threaded UI.</p>
+<p>So as a little weekend project I took inspiration from GitHub for Windows Metro/Modern visual design and a desire to look further into ReactiveUI&rsquo;s take on multi-threaded UI.</p>
 
-<p>Multi-threaded UI development typically has one sticking point; it's easy enough to define a lambda or function and set it up to run on a separate thread but one has to be very careful when moving the result of that lambda back onto the UI thread to display it. <strong>Reactive's</strong> secret sauce is to simplify this dangerous activity and deliver a true 'fire-and-forget' multi-thread solution.</p>
+<p>Multi-threaded UI development typically has one sticking point; it&rsquo;s easy enough to define a lambda or function and set it up to run on a separate thread but one has to be very careful when moving the result of that lambda back onto the UI thread to display it. <strong>Reactive&rsquo;s</strong> secret sauce is to simplify this dangerous activity and deliver a true &lsquo;fire-and-forget&rsquo; multi-thread solution.</p>
 
-<p>Thus far I've found that it's very easy to chain async commands AND provide a nice responsive user experience. In cases where you have certain application behaviors that are gated upon other actions completing the ReactiveUI framework makes it extremely simple.</p>
+<p>Thus far I&rsquo;ve found that it&rsquo;s very easy to chain async commands AND provide a nice responsive user experience. In cases where you have certain application behaviors that are gated upon other actions completing the ReactiveUI framework makes it extremely simple.</p>
 
 <p>An example:</p>
 
@@ -47,12 +47,12 @@
 </ul>
 
 
-<p>The state machine representing the above workflow was implemented with three View Models bound to one XAML MainWindow. The cleanest one is below, and I've commented how the commands to <strong>check for updates</strong> and <strong>download and install updates</strong> are implemented (I'm still working on tightening up the other two).</p>
+<p>The state machine representing the above workflow was implemented with three View Models bound to one XAML MainWindow. The cleanest one is below, and I&rsquo;ve commented how the commands to <strong>check for updates</strong> and <strong>download and install updates</strong> are implemented (I&rsquo;m still working on tightening up the other two).</p>
 
-<p>I've included the entire file below because I think it's valuable to view the initialization of the commands and observers and their targets in context. This view model encapsulates all of the updater functionality and how the different states of updating are exposed to the UI.</p>
+<p>I&rsquo;ve included the entire file below because I think it&rsquo;s valuable to view the initialization of the commands and observers and their targets in context. This view model encapsulates all of the updater functionality and how the different states of updating are exposed to the UI.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>EnvironmentsUpdaterViewModel.cs </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -328,14 +328,14 @@
 </span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>The data that the updater object fetches from is located on an intranet share, and so it was important to check for and apply updates asynchronously (especially if, like me, you're working over the VPN).</p>
+<p>The data that the updater object fetches from is located on an intranet share, and so it was important to check for and apply updates asynchronously (especially if, like me, you&rsquo;re working over the VPN).</p>
 
-<p>I'm unsure at this point if it's ok that I'm updating the <code>UpdateState</code> property from within many of the lambdas. I feel that there's something risky going on there but everything seems to work fine for me as it is.</p>
+<p>I&rsquo;m unsure at this point if it&rsquo;s ok that I&rsquo;m updating the <code>UpdateState</code> property from within many of the lambdas. I feel that there&rsquo;s something risky going on there but everything seems to work fine for me as it is.</p>
 
-<p>I'll break down the two main uses of Reactive's async commands below. Note that I'm using the <code>UpdateState</code> property primarily outside of this class; the window binds certain elements' visibility to the state of the updater object, but only when the state has certain values.</p>
+<p>I&rsquo;ll break down the two main uses of Reactive&rsquo;s async commands below. Note that I&rsquo;m using the <code>UpdateState</code> property primarily outside of this class; the window binds certain elements' visibility to the state of the updater object, but only when the state has certain values.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Initialize the Check for Updates Command  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Initialize the Check for Updates Command </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -350,7 +350,7 @@
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 </pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">CheckForUpdates</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ReactiveAsyncCommand</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
-</span><span class='line'><span class="n">var</span> <span class="n">updaterFuture</span> <span class="p">=</span> <span class="n">CheckForUpdates</span><span class="p">.</span><span class="n">RegisterAsyncFunction</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'><span class="kt">var</span> <span class="n">updaterFuture</span> <span class="p">=</span> <span class="n">CheckForUpdates</span><span class="p">.</span><span class="n">RegisterAsyncFunction</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;{</span>
 </span><span class='line'>    <span class="c1">// Set the current state</span>
@@ -362,15 +362,15 @@
 </span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span><span class="c1">// Connect the future object to the helper object that backs the Updater property.</span>
-</span><span class='line'><span class="n">_Updater</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableAsPropertyHelper</span><span class="p">&lt;</span><span class="n">EnvironmentsFileUpdater</span><span class="p">&gt;(</span><span class="n">updaterFuture</span><span class="p">,</span> <span class="n">_</span> <span class="p">=&gt;</span> <span class="n">raisePropertyChanged</span><span class="p">(</span><span class="s">&quot;Updater&quot;</span><span class="p">));</span>
+</span><span class='line'><span class="n">_Updater</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ObservableAsPropertyHelper</span><span class="p">&lt;</span><span class="n">EnvironmentsFileUpdater</span><span class="p">&gt;(</span><span class="n">updaterFuture</span><span class="p">,</span> <span class="n">_</span> <span class="p">=&gt;</span> <span class="n">raisePropertyChanged</span><span class="p">(&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Updater</span><span class="p">&amp;</span><span class="n">rdquo</span><span class="p">;));</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>When the async function returns the new <code>EnvironmentsFileUpdater</code> instance and sets the backing field of the <code>Updater</code> property, I then lean on an Observable. Below you can see that I set it up such that when the <code>Updater</code> field changes we check whether an update is available and then either kick off the <code>DownloadUpdates</code> command or set the overall state to <code>UpdateState.Completed</code> to signal to the external listeners that the update process is complete.</p>
 
-<p>The <code>Status</code> property is the string value that's bound to the UI that updates the user as to what's happening in the update process.</p>
+<p>The <code>Status</code> property is the string value that&rsquo;s bound to the UI that updates the user as to what&rsquo;s happening in the update process.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Initialize the Updater Observer  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Initialize the Updater Observer </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -414,10 +414,10 @@
 </span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>The <code>DownloadUpdates</code> command actually handles the work of downloading the latest environment definitions and installing them to the appropriate local storage mechanism. Again, it must reach out over the intranet and so it's best to make this action asynchronous.  Most of the code you see below is concerned with updating the UI-bound status value; line 5 is the key method.</p>
+<p>The <code>DownloadUpdates</code> command actually handles the work of downloading the latest environment definitions and installing them to the appropriate local storage mechanism. Again, it must reach out over the intranet and so it&rsquo;s best to make this action asynchronous.  Most of the code you see below is concerned with updating the UI-bound status value; line 5 is the key method.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Initialize the Download Updates Command  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Initialize the Download Updates Command </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>

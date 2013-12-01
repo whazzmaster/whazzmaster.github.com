@@ -21,10 +21,11 @@
   <link rel="canonical" href="http://whazzing.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="whazzing around" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -97,18 +98,19 @@
   
 
 
-<time datetime="2011-09-23T00:00:00-05:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2011</time>
+<time datetime="2011-09-23T00:00:00-05:00" pubdate data-updated="true"></time>
         
-         | <a href="#disqus_thread" data-disqus-identifier="http://whazzing.com">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://whazzing.com">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>In getting the <a href="https://github.com/thoughtbot/paperclip">paperclip gem</a> working on my server for some screenshots I ran into a frustrating problem.  I kept getting an error during model saving: <strong>&#8220;/tmp/1234bduct-123.png is not recognized by the &#8216;identify&#8217; command&#8221;</strong>.  Eventually I solved the problem, so here is my solution, hoping that it helps someone else out there.</p>
+<div class="entry-content"><p>In getting the <a href="https://github.com/thoughtbot/paperclip">paperclip gem</a> working on my server for some screenshots I ran into a frustrating problem.  I kept getting an error during model saving: <strong>&ldquo;/tmp/1234bduct-123.png is not recognized by the &lsquo;identify&rsquo; command&rdquo;</strong>.  Eventually I solved the problem, so here is my solution, hoping that it helps someone else out there.</p>
 
-<p>After some googling and reading <a href="http://www.stackoverflow.com">Stack Overflow</a> I quickly came across the solution that Paperclips :command_path option wasn&#8217;t being set correctly.  The problem, however, was that it looked like I was correctly setting the ImageMagick path:</p>
+<p>After some googling and reading <a href="http://www.stackoverflow.com">Stack Overflow</a> I quickly came across the solution that Paperclips :command_path option wasn&rsquo;t being set correctly.  The problem, however, was that it looked like I was correctly setting the ImageMagick path:</p>
 
 <pre lang="bash">
 $ which identify
@@ -126,14 +128,14 @@ end
 </pre>
 
 
-<p>That seemed to be correct, but I still kept getting the same error.  Eventually I came across an <a href="http://blog.e-thang.net/2009/12/30/paperclipimagemagickrmagick-error-is-not-recognized-by-the-identify-command/comment-page-1/#comment-1067">excellent suggestion</a> that perhaps my installed version of ImageMagick was incomplete, corrupt, or missing libs or dependencies.  First I reran the ImageMagick apt-get install&#8230;</p>
+<p>That seemed to be correct, but I still kept getting the same error.  Eventually I came across an <a href="http://blog.e-thang.net/2009/12/30/paperclipimagemagickrmagick-error-is-not-recognized-by-the-identify-command/comment-page-1/#comment-1067">excellent suggestion</a> that perhaps my installed version of ImageMagick was incomplete, corrupt, or missing libs or dependencies.  First I reran the ImageMagick apt-get install&hellip;</p>
 
 <pre lang="bash">
 $ sudo apt-get install imagemagick --fix-missing
 </pre>
 
 
-<p>&#8230;which installed identify to <strong>/usr/bin</strong> rather than the existing version in <strong>/usr/local/bin</strong>.  I then updated my environment file to the following&#8230;</p>
+<p>&hellip;which installed identify to <strong>/usr/bin</strong> rather than the existing version in <strong>/usr/local/bin</strong>.  I then updated my environment file to the following&hellip;</p>
 
 <pre lang="ruby">
 WhazzingCom::Application.configure do
@@ -143,7 +145,7 @@ end
 </pre>
 
 
-<p>&#8230;and refreshed the page and everthing worked as expected!</p>
+<p>&hellip;and refreshed the page and everthing worked as expected!</p>
 </div>
 
 
@@ -166,7 +168,7 @@ end
   
 
 
-<time datetime="2011-09-23T00:00:00-05:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2011</time>
+<time datetime="2011-09-23T00:00:00-05:00" pubdate data-updated="true"></time>
       
 
 
@@ -174,7 +176,7 @@ end
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://whazzing.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/" data-via="whazzmaster" data-counturl="http://whazzing.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://whazzing.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/" data-via="whazzmaster" data-counturl="http://whazzing.com/blog/2011/09/23/paperclip-and-imagemagick-on-ubuntu/" >Tweet</a>
   
   
   
@@ -210,11 +212,15 @@ end
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy using Powershell and MSBuild</a>
+        <a href="/blog/2013/12/01/catching-up/">Catching Up</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF applications with ReactiveUI</a>
+        <a href="/blog/2013/04/11/automated-clickonce-build-and-deploy-using-powershell-and-msbuild/">Automated ClickOnce Build and Deploy Using Powershell and MSBuild</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/22/responsive-wpf-applications-with-reactiveui/">Responsive WPF Applications With ReactiveUI</a>
       </li>
     
       <li class="post">
@@ -222,11 +228,7 @@ end
       </li>
     
       <li class="post">
-        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem To Be Getting Along Fine Without Facebook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/27/madison-ruby-2012/">Madison Ruby 2012</a>
+        <a href="/blog/2012/11/26/i-seem-to-be-getting-along-fine-without-facebook/">I Seem to Be Getting Along Fine Without Facebook</a>
       </li>
     
   </ul>
@@ -241,7 +243,7 @@ end
   <a href="https://github.com/whazzmaster">@whazzmaster</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -304,7 +306,7 @@ end
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -320,7 +322,7 @@ end
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
